@@ -8,12 +8,11 @@ import {
   checkAndRecordChatMessage,
   getUserPlan,
 } from "@/lib/rag/rate-limit";
+import { chatModel } from "@/lib/ai/models";
 import { routing, type Locale } from "@/i18n/routing";
 
 export const runtime = "nodejs";
 export const maxDuration = 60;
-
-const CHAT_MODEL = "openai/gpt-4o-mini";
 
 const requestSchema = z.object({
   messages: z
@@ -74,7 +73,7 @@ export async function POST(request: Request) {
   const chunks = await retrieveChunks(lastUserText);
 
   const result = streamText({
-    model: CHAT_MODEL,
+    model: chatModel(),
     system: buildSystemPrompt({ locale, chunks }),
     messages: await convertToModelMessages(messages),
     temperature: 0.2,

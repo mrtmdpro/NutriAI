@@ -1,7 +1,7 @@
 import "server-only";
 import { generateObject } from "ai";
 import { z } from "zod";
-import { requireServerEnv } from "@/lib/env/server";
+import { chatModel } from "@/lib/ai/models";
 
 /**
  * Bilingual translation pipeline.
@@ -14,7 +14,14 @@ import { requireServerEnv } from "@/lib/env/server";
  * columns on ingested data. Cost is amortized across many rows
  * because we generally translate short summaries (200-400 tokens).
  */
-export const TRANSLATION_MODEL = "openai/gpt-4o-mini";
+
+function ensureProviderConfigured(): void {
+  if (process.env.AI_GATEWAY_API_KEY) return;
+  if (process.env.OPENAI_API_KEY) return;
+  throw new Error(
+    "Missing required env var: AI_GATEWAY_API_KEY or OPENAI_API_KEY. Set one in .env.local or via 'vercel env pull'."
+  );
+}
 
 const translationSchema = z.object({
   vn: z
@@ -33,7 +40,7 @@ export async function translateBoth(
   source: string,
   contextHint?: string
 ): Promise<Bilingual> {
-  requireServerEnv("AI_GATEWAY_API_KEY");
+  ensureProviderConfigured();
 
   const system = [
     "You translate scientific nutrition content between Vietnamese and English.",
@@ -46,7 +53,7 @@ export async function translateBoth(
     .join("\n");
 
   const { object } = await generateObject({
-    model: TRANSLATION_MODEL,
+    model: chatModel(),
     schema: translationSchema,
     system,
     prompt: `Source text:\n${source}`,

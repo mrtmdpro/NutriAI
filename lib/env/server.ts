@@ -10,7 +10,11 @@ const optionalEmail = z.string().email().optional();
 
 const schema = z.object({
   SUPABASE_SERVICE_ROLE_KEY: optionalString,
+  // Either AI_GATEWAY_API_KEY (Vercel Gateway) or OPENAI_API_KEY
+  // (direct OpenAI) unlocks embeddings + chat. lib/ai/models.ts
+  // prefers the gateway when both are set.
   AI_GATEWAY_API_KEY: optionalString,
+  OPENAI_API_KEY: optionalString,
   CRON_SECRET: optionalString,
   RESEND_API_KEY: optionalString,
   STITCH_API_KEY: optionalString,
@@ -26,6 +30,7 @@ const schema = z.object({
 export const serverEnv = schema.parse({
   SUPABASE_SERVICE_ROLE_KEY: process.env.SUPABASE_SERVICE_ROLE_KEY,
   AI_GATEWAY_API_KEY: process.env.AI_GATEWAY_API_KEY,
+  OPENAI_API_KEY: process.env.OPENAI_API_KEY,
   CRON_SECRET: process.env.CRON_SECRET,
   RESEND_API_KEY: process.env.RESEND_API_KEY,
   STITCH_API_KEY: process.env.STITCH_API_KEY,
