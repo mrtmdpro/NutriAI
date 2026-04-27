@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800;900&amp;family=Geist+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed": "#092014",
+                        "surface-dim": "#c9e0cf",
+                        "on-tertiary-fixed": "#2b1700",
+                        "surface": "#e8ffee",
+                        "primary-fixed": "#8ff8b4",
+                        "on-tertiary-container": "#7a5931",
+                        "surface-bright": "#e8ffee",
+                        "secondary-fixed-dim": "#b2cdbb",
+                        "on-tertiary-fixed-variant": "#5e411c",
+                        "primary": "#006d3e",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "background": "#e8ffee",
+                        "primary-fixed-dim": "#73db9a",
+                        "inverse-surface": "#213429",
+                        "on-secondary": "#ffffff",
+                        "outline-variant": "#bdcabe",
+                        "on-secondary-fixed-variant": "#354c3e",
+                        "surface-tint": "#006d3e",
+                        "error": "#ba1a1a",
+                        "on-surface": "#0c1f15",
+                        "surface-container-low": "#e2f9e8",
+                        "surface-container": "#ddf4e3",
+                        "tertiary-container": "#ffd2a1",
+                        "inverse-primary": "#73db9a",
+                        "surface-container-highest": "#d1e8d8",
+                        "on-primary-fixed-variant": "#00522d",
+                        "surface-variant": "#d1e8d8",
+                        "on-surface-variant": "#3e4a40",
+                        "surface-container-high": "#d7eedd",
+                        "tertiary": "#795831",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#86efac",
+                        "secondary": "#4c6455",
+                        "inverse-on-surface": "#e0f6e6",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-container": "#006d3e",
+                        "on-secondary-container": "#526a5b",
+                        "secondary-container": "#cee9d6",
+                        "on-primary-fixed": "#00210f",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#eabf8f",
+                        "tertiary-fixed": "#ffddb9",
+                        "on-background": "#0c1f15",
+                        "outline": "#6e7a70",
+                        "secondary-fixed": "#cee9d6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Be Vietnam Pro"],
+                        "display": ["Be Vietnam Pro"],
+                        "body": ["Be Vietnam Pro"],
+                        "label": ["Be Vietnam Pro"],
+                        "geist-mono": ["Geist Mono"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Be Vietnam Pro', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="bg-[#e8ffee] dark:bg-emerald-950 flex justify-between items-center px-6 py-4 w-full sticky top-0 z-40">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#006d3e] dark:text-emerald-400">menu</span>
+<h1 class="text-lg font-semibold font-headline text-[#006d3e] dark:text-emerald-400">Phác đồ của bạn</h1>
+</div>
+<button class="bg-primary-container hover:bg-[#d1e8d8] transition-colors text-on-primary-fixed text-sm font-geist-mono px-4 py-2 rounded-xl active:scale-95 duration-150">
+            + Phác đồ mới
+        </button>
+</header>
+<main class="px-6 py-8 max-w-2xl mx-auto space-y-12">
+<!-- Section Header -->
+<div class="space-y-1">
+<h2 class="text-3xl font-extrabold tracking-tight text-on-background">Phác đồ của bạn</h2>
+<p class="text-sm font-geist-mono text-on-surface-variant opacity-70">Your Active Regimens</p>
+</div>
+<!-- Bento Grid / Tonal Planes Layout -->
+<div class="space-y-6">
+<!-- Daily Card -->
+<section class="bg-surface-container-low p-1 rounded-[2rem]">
+<div class="bg-surface-container-lowest rounded-[1.8rem] p-6 shadow-[0_-12px_40px_rgba(12,31,21,0.06)]">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h3 class="text-xl font-bold text-on-surface">Hằng ngày</h3>
+<span class="text-xs font-geist-mono text-on-surface-variant">Asia/Ho_Chi_Minh</span>
+</div>
+<button class="p-2 bg-surface-variant rounded-full text-on-surface hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+</div>
+<div class="space-y-4">
+<!-- Row 1 -->
+<div class="flex justify-between items-center py-3 border-b border-outline-variant/10">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">Vitamin D3 5000 IU</span>
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant font-geist-mono">Supplement</span>
+</div>
+<span class="font-geist-mono text-sm bg-surface px-3 py-1 rounded-lg border border-outline-variant/20 text-primary">08:00</span>
+</div>
+<!-- Row 2 -->
+<div class="flex justify-between items-center py-3">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">Magnesium 200 mg</span>
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant font-geist-mono">Mineral</span>
+</div>
+<span class="font-geist-mono text-sm bg-surface px-3 py-1 rounded-lg border border-outline-variant/20 text-primary">22:00</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Weekend Card -->
+<section class="bg-surface-container-low p-1 rounded-[2rem]">
+<div class="bg-surface-container-lowest rounded-[1.8rem] p-6 shadow-[0_-12px_40px_rgba(12,31,21,0.06)]">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h3 class="text-xl font-bold text-on-surface">Cuối tuần</h3>
+<span class="text-xs font-geist-mono text-on-surface-variant">Asia/Ho_Chi_Minh</span>
+</div>
+<button class="p-2 bg-surface-variant rounded-full text-on-surface hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+</div>
+<div class="space-y-4">
+<!-- Row 1 -->
+<div class="flex justify-between items-center py-3">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">Omega-3 EPA 1000 mg</span>
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant font-geist-mono">Essential Fatty Acid</span>
+</div>
+<span class="font-geist-mono text-sm bg-surface px-3 py-1 rounded-lg border border-outline-variant/20 text-primary">12:00</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Decorative Scientific Element -->
+<div class="bg-tertiary-container/20 rounded-xl p-4 flex items-center gap-4 border border-outline-variant/10">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">verified</span>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+<span class="font-bold text-tertiary uppercase font-geist-mono mr-1">Note:</span> 
+                    Các phác đồ này được tối ưu hóa dựa trên dữ liệu sinh học cá nhân. Đảm bảo uống đủ nước khi sử dụng các loại thực phẩm bổ sung.
+                </p>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-[#ffffff] dark:bg-slate-900 z-50 rounded-t-3xl shadow-[0_-12px_40px_rgba(12,31,21,0.06)]">
+<button class="flex flex-col items-center justify-center text-[#3e4a40] dark:text-emerald-500 px-5 py-2 hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-medium font-headline uppercase tracking-wider mt-1">Trang chủ</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-[#86efac] dark:bg-emerald-800 text-[#00210f] dark:text-emerald-50 rounded-2xl px-5 py-2 transform scale-90 duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">rebase_edit</span>
+<span class="text-[10px] font-bold font-headline uppercase tracking-wider mt-1">Phác đồ</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#3e4a40] dark:text-emerald-500 px-5 py-2 hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined">bar_chart</span>
+<span class="text-[10px] font-medium font-headline uppercase tracking-wider mt-1">Báo cáo</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#3e4a40] dark:text-emerald-500 px-5 py-2 hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-medium font-headline uppercase tracking-wider mt-1">Hồ sơ</span>
+</button>
+</nav>
+</body></html>

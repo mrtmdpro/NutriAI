@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NutriAI - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#9fefff",
+                        "secondary-container": "#cee9d6",
+                        "on-primary-fixed-variant": "#00522d",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed-variant": "#004e59",
+                        "on-background": "#0c1f15",
+                        "secondary-fixed": "#cee9d6",
+                        "on-secondary-container": "#526a5b",
+                        "outline": "#6e7a70",
+                        "tertiary-container": "#76eaff",
+                        "primary": "#006d3e",
+                        "surface-container-highest": "#d1e8d8",
+                        "surface-bright": "#e8ffee",
+                        "on-primary": "#ffffff",
+                        "surface-container": "#ddf4e3",
+                        "on-tertiary-fixed": "#001f24",
+                        "primary-container": "#86efac",
+                        "on-primary-fixed": "#00210f",
+                        "background": "#e8ffee",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary": "#006876",
+                        "surface-dim": "#c9e0cf",
+                        "on-secondary-fixed-variant": "#354c3e",
+                        "primary-fixed": "#8ff8b4",
+                        "on-error": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "inverse-primary": "#73db9a",
+                        "on-surface": "#0c1f15",
+                        "inverse-on-surface": "#e0f6e6",
+                        "surface-variant": "#d1e8d8",
+                        "tertiary-fixed-dim": "#60d6eb",
+                        "on-surface-variant": "#3e4a40",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "inverse-surface": "#213429",
+                        "on-primary-container": "#006d3e",
+                        "outline-variant": "#bdcabe",
+                        "surface-tint": "#006d3e",
+                        "secondary-fixed-dim": "#b2cdbb",
+                        "surface-container-low": "#e2f9e8",
+                        "on-secondary-fixed": "#092014",
+                        "surface": "#e8ffee",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#d7eedd",
+                        "on-tertiary-container": "#006976",
+                        "primary-fixed-dim": "#73db9a",
+                        "secondary": "#4c6455"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Be Vietnam Pro"],
+                        "display": ["Be Vietnam Pro"],
+                        "body": ["Be Vietnam Pro"],
+                        "label": ["Inter"],
+                        "mono": ["ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", "monospace"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body { font-family: 'Be Vietnam Pro', sans-serif; }
+        .mono-text { font-family: 'Inter', monospace; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen pb-32">
+<!-- TopAppBar Execution -->
+<header class="w-full top-0 sticky bg-[#e2f9e8] z-50 flex items-center justify-between px-6 py-4 w-full">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#0c1f15]" data-icon="science">science</span>
+<span class="text-xl font-bold tracking-tighter text-[#0c1f15]">NutriAI</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-[#d1e8d8] transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined text-[#0c1f15]" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 rounded-full hover:bg-[#d1e8d8] transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined text-[#0c1f15]" data-icon="settings">settings</span>
+</button>
+</div>
+</header>
+<main class="px-6 pt-8 max-w-2xl mx-auto">
+<!-- Header Section -->
+<section class="mb-8">
+<h1 class="text-3xl font-bold tracking-tight text-on-surface mb-1">Hôm nay của bạn</h1>
+<p class="text-on-surface-variant font-medium flex items-center gap-2">
+                Phác đồ hôm nay. Chạm để đánh dấu đã uống.
+                <span class="text-xs opacity-50 block font-normal italic">/ Today's regimen. Tap to mark as taken.</span>
+</p>
+</section>
+<!-- Stats Row: Bento-ish Grid -->
+<section class="grid grid-cols-3 gap-3 mb-10">
+<div class="bg-surface-container-low p-4 rounded-xl border border-outline-variant/15 flex flex-col justify-between h-32">
+<span class="material-symbols-outlined text-on-surface-variant text-xl" data-icon="local_fire_department">local_fire_department</span>
+<div>
+<div class="mono-text text-lg font-bold text-on-surface">0 ngày</div>
+<div class="text-[10px] uppercase tracking-wider text-on-surface-variant leading-tight">liên tiếp <br/><span class="opacity-60">/ streak</span></div>
+</div>
+</div>
+<div class="bg-surface-container-low p-4 rounded-xl border border-outline-variant/15 flex flex-col justify-between h-32">
+<span class="material-symbols-outlined text-on-surface-variant text-xl" data-icon="calendar_view_week">calendar_view_week</span>
+<div>
+<div class="mono-text text-lg font-bold text-on-surface">0%</div>
+<div class="text-[10px] uppercase tracking-wider text-on-surface-variant leading-tight">Tuân thủ tuần <br/><span class="opacity-60">/ weekly</span></div>
+</div>
+</div>
+<div class="bg-surface-container-low p-4 rounded-xl border border-outline-variant/15 flex flex-col justify-between h-32">
+<span class="material-symbols-outlined text-on-surface-variant text-xl" data-icon="monitoring">monitoring</span>
+<div>
+<div class="mono-text text-lg font-bold text-on-surface">0%</div>
+<div class="text-[10px] uppercase tracking-wider text-on-surface-variant leading-tight">Tuân thủ tháng <br/><span class="opacity-60">/ monthly</span></div>
+</div>
+</div>
+</section>
+<!-- Empty State Central Card -->
+<section class="relative">
+<div class="bg-surface-container-lowest p-12 rounded-xl text-center shadow-[0_12_32px_-4px_rgba(12,31,21,0.06)] border border-outline-variant/10">
+<div class="mb-8 relative inline-block">
+<div class="w-32 h-32 bg-surface-container rounded-full flex items-center justify-center mx-auto mb-6">
+<span class="material-symbols-outlined text-5xl text-primary/40" data-icon="pill">pill</span>
+</div>
+<!-- Decorative scientific elements -->
+<div class="absolute -top-2 -right-2 w-8 h-8 bg-primary-container rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="add" style="font-variation-settings: 'FILL' 1;">add</span>
+</div>
+</div>
+<h2 class="text-xl font-semibold text-on-surface mb-2">Bạn chưa có phác đồ nào.</h2>
+<p class="text-on-surface-variant text-sm mb-10 max-w-xs mx-auto">
+                    Bắt đầu hành trình sức khỏe của bạn bằng cách thiết lập lịch trình bổ sung vi chất được cá nhân hóa.
+                    <br/>
+<span class="text-xs opacity-60">You don't have any regimens yet. Start by setting up your personalized supplement schedule.</span>
+</p>
+<button class="w-full py-4 px-6 bg-[#86EFAC] text-[#0c1f15] font-bold rounded-xl flex items-center justify-center gap-3 active:scale-[0.98] transition-transform hover:opacity-90 shadow-sm">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+                    Tạo phác đồ đầu tiên
+                </button>
+</div>
+<!-- Contextual Hint -->
+<div class="mt-8 flex items-start gap-4 p-5 bg-surface-container/50 rounded-xl">
+<span class="material-symbols-outlined text-primary mt-0.5" data-icon="info">info</span>
+<div>
+<p class="text-sm font-medium text-on-surface">Mẹo lâm sàng / <span class="opacity-60 italic text-xs">Clinical Tip</span></p>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+                        Sử dụng phác đồ đều đặn giúp tăng hiệu quả hấp thụ vi chất lên tới 40%. NutriAI sẽ nhắc nhở bạn vào thời điểm tối ưu nhất trong ngày.
+                    </p>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar Execution -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-[#ffffff] rounded-t-[1.5rem] border-t border-[#bdcabe]/15 shadow-[0_-12px_32px_-4px_rgba(12,31,21,0.06)] z-50">
+<!-- Active: Dashboard -->
+<a class="flex flex-col items-center justify-center bg-[#86EFAC] text-[#0c1f15] rounded-xl px-4 py-1.5 active:scale-90 duration-200 transition-opacity" href="#">
+<span class="material-symbols-outlined" data-icon="home_health" style="font-variation-settings: 'FILL' 1;">home_health</span>
+<span class="font-mono text-[10px] uppercase tracking-widest mt-1">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#3e4a40] px-4 py-1.5 hover:opacity-80 transition-opacity active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+<span class="font-mono text-[10px] uppercase tracking-widest mt-1">Library</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#3e4a40] px-4 py-1.5 hover:opacity-80 transition-opacity active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="query_stats">query_stats</span>
+<span class="font-mono text-[10px] uppercase tracking-widest mt-1">Analysis</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#3e4a40] px-4 py-1.5 hover:opacity-80 transition-opacity active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="person_outline">person_outline</span>
+<span class="font-mono text-[10px] uppercase tracking-widest mt-1">Profile</span>
+</a>
+</nav>
+</body></html>

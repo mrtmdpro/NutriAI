@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NutriAI Chat Assistant</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;900&amp;family=Space+Grotesk:wght@400;500;700&amp;family=Geist+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-background": "#0c1f15",
+                      "surface-variant": "#d1e8d8",
+                      "primary-fixed-dim": "#73db9a",
+                      "tertiary-fixed-dim": "#eabf8f",
+                      "on-tertiary-container": "#7a5931",
+                      "on-secondary-fixed-variant": "#354c3e",
+                      "secondary-fixed": "#cee9d6",
+                      "surface-dim": "#c9e0cf",
+                      "on-primary-fixed-variant": "#00522d",
+                      "background": "#e8ffee",
+                      "on-surface": "#0c1f15",
+                      "tertiary-fixed": "#ffddb9",
+                      "surface-container-low": "#e2f9e8",
+                      "on-surface-variant": "#3e4a40",
+                      "on-tertiary": "#ffffff",
+                      "primary": "#006d3e",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary-fixed-variant": "#5e411c",
+                      "on-tertiary-fixed": "#2b1700",
+                      "on-error-container": "#93000a",
+                      "on-primary": "#ffffff",
+                      "inverse-on-surface": "#e0f6e6",
+                      "surface": "#e8ffee",
+                      "surface-container-highest": "#d1e8d8",
+                      "on-secondary-fixed": "#092014",
+                      "primary-container": "#86efac",
+                      "error-container": "#ffdad6",
+                      "on-secondary": "#ffffff",
+                      "secondary-container": "#cee9d6",
+                      "surface-container-high": "#d7eedd",
+                      "on-primary-fixed": "#00210f",
+                      "surface-container": "#ddf4e3",
+                      "on-secondary-container": "#526a5b",
+                      "primary-fixed": "#8ff8b4",
+                      "outline": "#6e7a70",
+                      "inverse-surface": "#213429",
+                      "on-primary-container": "#006d3e",
+                      "outline-variant": "#bdcabe",
+                      "inverse-primary": "#73db9a",
+                      "surface-tint": "#006d3e",
+                      "surface-bright": "#e8ffee",
+                      "tertiary-container": "#ffd2a1",
+                      "on-error": "#ffffff",
+                      "tertiary": "#795831",
+                      "secondary-fixed-dim": "#b2cdbb",
+                      "secondary": "#4c6455",
+                      "error": "#ba1a1a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "fontFamily": {
+                      "headline": ["Be Vietnam Pro"],
+                      "display": ["Be Vietnam Pro"],
+                      "body": ["Be Vietnam Pro"],
+                      "label": ["Space Grotesk"],
+                      "mono": ["Geist Mono"]
+              }
+            }
+          }
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+            line-height: 1;
+        }
+        .citation-sup {
+            font-family: 'Geist Mono', monospace;
+            font-size: 10px;
+            color: #006d3e;
+            text-decoration: underline;
+            vertical-align: super;
+            margin-left: 2px;
+        }
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            background-color: #e8ffee;
+        }
+      </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-surface">
+<!-- TopAppBar from JSON -->
+<header class="bg-[#ffffff] dark:bg-[#0c1f15] sticky top-0 z-50 flex justify-between items-center h-12 px-6 w-full max-w-full mx-auto border-b-0">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#006d3e] dark:text-[#86efac]" data-icon="clinical_notes">clinical_notes</span>
+<div class="flex items-center gap-2">
+<span class="font-['Be_Vietnam_Pro'] font-black tracking-tighter text-[#006d3e] dark:text-[#86efac]">BOTANICAL LAB</span>
+<span class="w-[1px] h-4 bg-outline-variant/30"></span>
+<span class="font-['Be_Vietnam_Pro'] font-bold tracking-tight text-sm text-[#006d3e] dark:text-[#86efac]">Trợ lý NutriAI</span>
+</div>
+</div>
+<div class="flex items-center">
+<div class="px-3 py-0.5 border border-primary/20 rounded-full flex items-center gap-2">
+<span class="font-['Geist_Mono'] text-[10px] tabular-nums font-bold text-primary">Miễn phí · 10 tin/ngày</span>
+<span class="font-['Geist_Mono'] text-[10px] tabular-nums text-on-surface-variant/60">FREE</span>
+</div>
+</div>
+</header>
+<main class="max-w-3xl mx-auto px-4 py-8 pb-32">
+<!-- Date Marker -->
+<div class="flex justify-center mb-8">
+<span class="font-mono text-[10px] uppercase tracking-widest text-on-surface-variant bg-surface-container-low px-4 py-1 rounded-full">
+                Hôm nay • Today
+            </span>
+</div>
+<div class="space-y-8">
+<!-- User Message -->
+<div class="flex flex-col items-end">
+<div class="max-w-[85%] bg-primary-container text-on-primary-container p-5 rounded-xl rounded-tr-none shadow-sm">
+<p class="text-md font-medium leading-relaxed">Vitamin D3 nên uống lúc nào trong ngày?</p>
+</div>
+<div class="mt-2 px-2">
+<span class="font-mono text-[10px] text-on-surface-variant">09:41 AM</span>
+</div>
+</div>
+<!-- Assistant Message -->
+<div class="flex flex-col items-start">
+<div class="max-w-[90%] bg-surface-container-lowest p-6 rounded-xl rounded-tl-none shadow-[0_4px_20px_rgba(12,31,21,0.04)] border border-outline-variant/10">
+<div class="space-y-4 text-on-surface leading-relaxed">
+<p>
+                            Vitamin D là loại vitamin tan trong chất béo, vì vậy thời điểm tối ưu nhất để bổ sung là <strong>cùng với bữa ăn có chứa chất béo</strong>. Việc này giúp tăng cường khả năng hấp thụ của cơ thể lên đến 32% so với khi uống lúc bụng đói<span class="citation-sup">[c1]</span>.
+                        </p>
+<p>
+                            Nên ưu tiên uống vào <strong>buổi sáng hoặc buổi trưa</strong>. Bổ sung Vitamin D vào đầu ngày giúp mô phỏng quá trình tổng hợp tự nhiên từ ánh sáng mặt trời, giúp cơ thể duy trì nhịp sinh học ổn định hơn<span class="citation-sup">[c2]</span>.
+                        </p>
+<p>
+                            Cần lưu ý tránh uống Vitamin D quá muộn vào buổi tối. Một số nghiên cứu chỉ ra rằng hàm lượng Vitamin D cao trong máu có thể ức chế sản sinh melatonin, từ đó gây ảnh hưởng tiêu cực đến chất lượng giấc ngủ của bạn<span class="citation-sup">[c3]</span>.
+                        </p>
+</div>
+<!-- Citation Row -->
+<div class="mt-6 pt-6 border-t border-outline-variant/10 flex flex-wrap gap-3">
+<div class="flex items-center gap-2 bg-surface-container-low px-3 py-1.5 rounded-full hover:bg-surface-container transition-colors cursor-pointer group">
+<span class="font-mono text-[10px] font-bold text-primary w-5 h-5 flex items-center justify-center border border-primary/30 rounded-full bg-white">c1</span>
+<span class="font-mono text-[10px] text-on-secondary-container">NIH Office of...</span>
+<span class="material-symbols-outlined text-[14px] text-primary" data-icon="open_in_new">open_in_new</span>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-low px-3 py-1.5 rounded-full hover:bg-surface-container transition-colors cursor-pointer group">
+<span class="font-mono text-[10px] font-bold text-primary w-5 h-5 flex items-center justify-center border border-primary/30 rounded-full bg-white">c2</span>
+<span class="font-mono text-[10px] text-on-secondary-container">Journal of Clini...</span>
+<span class="material-symbols-outlined text-[14px] text-primary" data-icon="open_in_new">open_in_new</span>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-low px-3 py-1.5 rounded-full hover:bg-surface-container transition-colors cursor-pointer group">
+<span class="font-mono text-[10px] font-bold text-primary w-5 h-5 flex items-center justify-center border border-primary/30 rounded-full bg-white">c3</span>
+<span class="font-mono text-[10px] text-on-secondary-container">Harvard Health...</span>
+<span class="material-symbols-outlined text-[14px] text-primary" data-icon="open_in_new">open_in_new</span>
+</div>
+</div>
+</div>
+<div class="mt-2 px-2 flex items-center gap-2">
+<span class="font-mono text-[10px] text-on-surface-variant">09:42 AM</span>
+<span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+<span class="font-mono text-[10px] text-primary font-bold">Verified Evidence</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Composer -->
+<div class="fixed bottom-0 left-0 w-full bg-surface/80 backdrop-blur-md pb-safe">
+<div class="max-w-3xl mx-auto p-4 flex items-center gap-3">
+<div class="flex-1 relative group">
+<input class="w-full bg-surface-container-lowest border-none focus:ring-2 focus:ring-primary/20 rounded-xl py-4 px-6 text-on-surface placeholder:text-on-surface-variant/50 shadow-[0_4px_12px_rgba(0,0,0,0.03)] transition-all" placeholder="Hỏi về thực phẩm bổ sung của bạn..." type="text"/>
+<div class="absolute right-4 top-1/2 -translate-y-1/2 flex items-center gap-2 text-on-surface-variant/40">
+<span class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors" data-icon="mic">mic</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors" data-icon="image">image</span>
+</div>
+</div>
+<button class="w-14 h-14 bg-primary text-on-primary rounded-full flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="send">send</span>
+</button>
+</div>
+<!-- Bottom Bar Navigation from JSON -->
+<nav class="bg-[#ffffff] dark:bg-[#0c1f15] border-t border-[#bdcabe]/20 shadow-[0_-10px_30px_rgba(12,31,21,0.05)] w-full z-50 flex justify-around items-center px-4 py-3 pb-safe">
+<div class="flex flex-col items-center justify-center text-[#3e4a40] dark:text-[#bdcabe] p-2 hover:bg-[#e2f9e8] transition-all rounded-xl">
+<span class="material-symbols-outlined" data-icon="Analytics">analytics</span>
+<span class="font-['Geist_Mono'] text-[10px] tabular-nums mt-1">Analytics</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-[#cee9d6] dark:bg-[#006d3e] text-[#006d3e] dark:text-[#ffffff] rounded-xl p-2 px-6">
+<span class="material-symbols-outlined" data-icon="Chat" style="font-variation-settings: 'FILL' 1;">chat</span>
+<span class="font-['Geist_Mono'] text-[10px] tabular-nums mt-1 font-bold">Chat</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#3e4a40] dark:text-[#bdcabe] p-2 hover:bg-[#e2f9e8] transition-all rounded-xl">
+<span class="material-symbols-outlined" data-icon="Set_Meal">set_meal</span>
+<span class="font-['Geist_Mono'] text-[10px] tabular-nums mt-1">Meals</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#3e4a40] dark:text-[#bdcabe] p-2 hover:bg-[#e2f9e8] transition-all rounded-xl">
+<span class="material-symbols-outlined" data-icon="Settings">settings</span>
+<span class="font-['Geist_Mono'] text-[10px] tabular-nums mt-1">Config</span>
+</div>
+</nav>
+</div>
+</body></html>

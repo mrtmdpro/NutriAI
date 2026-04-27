@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Magnesium Search Results</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#6e7a70",
+                    "surface-container": "#ddf4e3",
+                    "on-secondary-container": "#526a5b",
+                    "primary-fixed": "#8ff8b4",
+                    "on-primary-fixed": "#00210f",
+                    "surface-container-high": "#d7eedd",
+                    "secondary-container": "#cee9d6",
+                    "secondary": "#4c6455",
+                    "error": "#ba1a1a",
+                    "tertiary": "#795831",
+                    "secondary-fixed-dim": "#b2cdbb",
+                    "on-error": "#ffffff",
+                    "outline-variant": "#bdcabe",
+                    "tertiary-container": "#ffd2a1",
+                    "surface-bright": "#e8ffee",
+                    "surface-tint": "#006d3e",
+                    "inverse-primary": "#73db9a",
+                    "on-primary-container": "#006d3e",
+                    "inverse-surface": "#213429",
+                    "tertiary-fixed": "#ffddb9",
+                    "on-surface": "#0c1f15",
+                    "surface-container-low": "#e2f9e8",
+                    "background": "#e8ffee",
+                    "primary": "#006d3e",
+                    "on-tertiary": "#ffffff",
+                    "on-surface-variant": "#3e4a40",
+                    "surface-dim": "#c9e0cf",
+                    "secondary-fixed": "#cee9d6",
+                    "on-secondary-fixed-variant": "#354c3e",
+                    "on-primary-fixed-variant": "#00522d",
+                    "on-tertiary-container": "#7a5931",
+                    "primary-fixed-dim": "#73db9a",
+                    "tertiary-fixed-dim": "#eabf8f",
+                    "surface-variant": "#d1e8d8",
+                    "on-background": "#0c1f15",
+                    "on-secondary-fixed": "#092014",
+                    "on-secondary": "#ffffff",
+                    "primary-container": "#86efac",
+                    "error-container": "#ffdad6",
+                    "inverse-on-surface": "#e0f6e6",
+                    "on-primary": "#ffffff",
+                    "surface-container-highest": "#d1e8d8",
+                    "surface": "#e8ffee",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed": "#2b1700",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-fixed-variant": "#5e411c"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Be Vietnam Pro"],
+                    "display": ["Be Vietnam Pro"],
+                    "body": ["Inter"],
+                    "label": ["Inter"],
+                    "mono": ["Geist Mono"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Be Vietnam Pro', sans-serif; }
+        .tabular-nums { font-family: 'Geist Mono', monospace; font-variant-numeric: tabular-nums; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="bg-[#e8ffee] dark:bg-emerald-950 docked full-width top-0 sticky z-50">
+<div class="flex flex-col w-full px-6 py-4 max-w-screen-xl mx-auto">
+<div class="flex items-center justify-between gap-4">
+<div class="flex-1 flex items-center bg-surface-container-lowest rounded-xl px-4 py-2 ring-1 ring-outline-variant/30 focus-within:ring-primary transition-all">
+<span class="material-symbols-outlined text-primary mr-3" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 w-full text-on-surface font-medium placeholder:text-on-surface-variant/50" placeholder="Tìm kiếm dưỡng chất..." type="text" value="magnesium"/>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-xl font-bold hover:opacity-90 active:scale-[0.98] transition-all">
+                    Tìm
+                </button>
+</div>
+</div>
+</header>
+<main class="max-w-screen-xl mx-auto px-6 mt-4">
+<!-- Filter Row -->
+<section class="flex items-center gap-4 overflow-hidden mb-8">
+<span class="text-on-surface-variant font-bold whitespace-nowrap text-sm">BỘ LỌC / FILTER</span>
+<div class="flex gap-2 overflow-x-auto hide-scrollbar py-1">
+<button class="px-4 py-1.5 rounded-full bg-surface-container-highest text-on-surface-variant text-sm font-semibold whitespace-nowrap hover:bg-primary-container transition-colors">Tất cả</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container-highest text-on-surface-variant text-sm font-semibold whitespace-nowrap hover:bg-primary-container transition-colors">Vitamin</button>
+<button class="px-4 py-1.5 rounded-full bg-primary text-on-primary text-sm font-semibold whitespace-nowrap">Khoáng chất</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container-highest text-on-surface-variant text-sm font-semibold whitespace-nowrap hover:bg-primary-container transition-colors">Axit amin</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container-highest text-on-surface-variant text-sm font-semibold whitespace-nowrap hover:bg-primary-container transition-colors">Chất béo</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container-highest text-on-surface-variant text-sm font-semibold whitespace-nowrap hover:bg-primary-container transition-colors">Protein</button>
+</div>
+</section>
+<!-- Products Section -->
+<section class="mb-12">
+<div class="flex items-baseline justify-between mb-6">
+<h2 class="text-2xl font-extrabold tracking-tight text-on-surface">Sản phẩm / Products</h2>
+<span class="text-on-surface-variant text-sm tabular-nums">06 RESULTS</span>
+</div>
+<div class="flex flex-col gap-3">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl flex items-center justify-between group cursor-pointer hover:shadow-[0_20px_40px_-10px_rgba(12,31,21,0.06)] transition-all">
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 bg-surface-container rounded-lg flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="pill">pill</span>
+</div>
+<div>
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">NutriPure</p>
+<h3 class="text-lg font-bold text-on-surface leading-tight">Magnesium Glycinate</h3>
+<div class="mt-2 flex items-center gap-3">
+<span class="bg-primary-container text-on-primary-container text-[11px] font-mono font-bold px-2 py-0.5 rounded">S | 98.5</span>
+<span class="text-sm tabular-nums text-on-surface font-medium">8.200₫ <span class="text-[10px] text-on-surface-variant">/ liều</span></span>
+</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl flex items-center justify-between group cursor-pointer hover:shadow-[0_20px_40px_-10px_rgba(12,31,21,0.06)] transition-all">
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 bg-surface-container rounded-lg flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="science">science</span>
+</div>
+<div>
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">BioClinic</p>
+<h3 class="text-lg font-bold text-on-surface leading-tight">Magnesium L-Threonate</h3>
+<div class="mt-2 flex items-center gap-3">
+<span class="bg-primary-container text-on-primary-container text-[11px] font-mono font-bold px-2 py-0.5 rounded">A+ | 99.1</span>
+<span class="text-sm tabular-nums text-on-surface font-medium">15.500₫ <span class="text-[10px] text-on-surface-variant">/ liều</span></span>
+</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl flex items-center justify-between group cursor-pointer hover:shadow-[0_20px_40px_-10px_rgba(12,31,21,0.06)] transition-all">
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 bg-surface-container rounded-lg flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="medication">medication</span>
+</div>
+<div>
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">NatureMade</p>
+<h3 class="text-lg font-bold text-on-surface leading-tight">Magnesium Citrate</h3>
+<div class="mt-2 flex items-center gap-3">
+<span class="bg-primary-container text-on-primary-container text-[11px] font-mono font-bold px-2 py-0.5 rounded">B | 87.2</span>
+<span class="text-sm tabular-nums text-on-surface font-medium">4.100₫ <span class="text-[10px] text-on-surface-variant">/ liều</span></span>
+</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl flex items-center justify-between group cursor-pointer hover:shadow-[0_20px_40px_-10px_rgba(12,31,21,0.06)] transition-all">
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 bg-surface-container rounded-lg flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="vital_signs">vital_signs</span>
+</div>
+<div>
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">ZenHealth</p>
+<h3 class="text-lg font-bold text-on-surface leading-tight">Magnesium Malate</h3>
+<div class="mt-2 flex items-center gap-3">
+<span class="bg-primary-container text-on-primary-container text-[11px] font-mono font-bold px-2 py-0.5 rounded">S | 97.8</span>
+<span class="text-sm tabular-nums text-on-surface font-medium">9.800₫ <span class="text-[10px] text-on-surface-variant">/ liều</span></span>
+</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</div>
+<!-- Card 5 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl flex items-center justify-between group cursor-pointer hover:shadow-[0_20px_40px_-10px_rgba(12,31,21,0.06)] transition-all">
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 bg-surface-container rounded-lg flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="biotech">biotech</span>
+</div>
+<div>
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">PureLabs</p>
+<h3 class="text-lg font-bold text-on-surface leading-tight">Magnesium Taurate</h3>
+<div class="mt-2 flex items-center gap-3">
+<span class="bg-primary-container text-on-primary-container text-[11px] font-mono font-bold px-2 py-0.5 rounded">A | 95.4</span>
+<span class="text-sm tabular-nums text-on-surface font-medium">12.200₫ <span class="text-[10px] text-on-surface-variant">/ liều</span></span>
+</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</div>
+<!-- Card 6 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl flex items-center justify-between group cursor-pointer hover:shadow-[0_20px_40px_-10px_rgba(12,31,21,0.06)] transition-all">
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 bg-surface-container rounded-lg flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="microbiology">microbiology</span>
+</div>
+<div>
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">OasisHealth</p>
+<h3 class="text-lg font-bold text-on-surface leading-tight">Magnesium Oxide Complex</h3>
+<div class="mt-2 flex items-center gap-3">
+<span class="bg-primary-container text-on-primary-container text-[11px] font-mono font-bold px-2 py-0.5 rounded">C | 74.2</span>
+<span class="text-sm tabular-nums text-on-surface font-medium">2.800₫ <span class="text-[10px] text-on-surface-variant">/ liều</span></span>
+</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</section>
+<!-- Ingredients Section -->
+<section class="mb-12">
+<div class="flex items-baseline justify-between mb-6">
+<h2 class="text-2xl font-extrabold tracking-tight text-on-surface">Hoạt chất / Compounds</h2>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<!-- Ingredient 1 -->
+<div class="bg-surface-container-low p-5 rounded-xl">
+<span class="inline-block px-2 py-0.5 border border-outline/30 text-[10px] font-bold text-on-secondary-container uppercase rounded mb-3">Khoáng chất</span>
+<h3 class="text-md font-bold text-on-surface mb-2">Magnesium Citrate</h3>
+<p class="text-xs text-on-surface-variant leading-relaxed line-clamp-2">Dạng muối hữu cơ có độ hấp thụ cao, thường dùng hỗ trợ tiêu hóa.</p>
+</div>
+<!-- Ingredient 2 -->
+<div class="bg-surface-container-low p-5 rounded-xl">
+<span class="inline-block px-2 py-0.5 border border-outline/30 text-[10px] font-bold text-on-secondary-container uppercase rounded mb-3">Khoáng chất</span>
+<h3 class="text-md font-bold text-on-surface mb-2">Magnesium Malate</h3>
+<p class="text-xs text-on-surface-variant leading-relaxed line-clamp-2">Liên kết với axit malic, tối ưu cho việc sản xuất năng lượng tế bào.</p>
+</div>
+<!-- Ingredient 3 -->
+<div class="bg-surface-container-low p-5 rounded-xl">
+<span class="inline-block px-2 py-0.5 border border-outline/30 text-[10px] font-bold text-on-secondary-container uppercase rounded mb-3">Khoáng chất</span>
+<h3 class="text-md font-bold text-on-surface mb-2">Magnesium Glycinate</h3>
+<p class="text-xs text-on-surface-variant leading-relaxed line-clamp-2">Dạng chelated êm dịu nhất cho dạ dày, hỗ trợ giấc ngủ và giảm căng thẳng.</p>
+</div>
+<!-- Ingredient 4 -->
+<div class="bg-surface-container-low p-5 rounded-xl">
+<span class="inline-block px-2 py-0.5 border border-outline/30 text-[10px] font-bold text-on-secondary-container uppercase rounded mb-3">Khoáng chất</span>
+<h3 class="text-md font-bold text-on-surface mb-2">Magnesium Sulfate</h3>
+<p class="text-xs text-on-surface-variant leading-relaxed line-clamp-2">Thường được gọi là muối Epsom, sử dụng rộng rãi trong trị liệu cơ bắp.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full h-20 bg-white dark:bg-emerald-950 flex justify-around items-center px-4 pb-safe z-50 shadow-[0_-4px_20px_-10px_rgba(12,31,21,0.06)] border-t border-emerald-100 dark:border-emerald-900">
+<div class="flex flex-col items-center justify-center text-emerald-800/50 dark:text-emerald-200/40 px-3 py-1.5 hover:text-[#006d3e] dark:hover:text-[#86efac] transition-all">
+<span class="material-symbols-outlined mb-1" data-icon="grid_view">grid_view</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] uppercase tracking-wider font-semibold">Tổng quan</span>
+</div>
+<div class="flex flex-col items-center justify-center text-emerald-800/50 dark:text-emerald-200/40 px-3 py-1.5 hover:text-[#006d3e] dark:hover:text-[#86efac] transition-all">
+<span class="material-symbols-outlined mb-1" data-icon="book">book</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] uppercase tracking-wider font-semibold">Nhật ký</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-[#86efac] dark:bg-[#006d3e] text-[#006d3e] dark:text-white rounded-xl px-3 py-1.5 opacity-100 transition-all">
+<span class="material-symbols-outlined mb-1" data-icon="biotech">biotech</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] uppercase tracking-wider font-semibold">Phòng lab</span>
+</div>
+<div class="flex flex-col items-center justify-center text-emerald-800/50 dark:text-emerald-200/40 px-3 py-1.5 hover:text-[#006d3e] dark:hover:text-[#86efac] transition-all">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] uppercase tracking-wider font-semibold">Hồ sơ</span>
+</div>
+</nav>
+</body></html>

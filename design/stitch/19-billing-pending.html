@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&amp;family=Space+Grotesk:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        @font-face {
+            font-family: 'Geist Mono';
+            src: url('https://cdn.jsdelivr.net/npm/@fontsource/geist-mono@5.0.1/files/geist-mono-latin-400-normal.woff2') format('woff2');
+        }
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .mono {
+            font-family: 'Geist Mono', monospace;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#73db9a",
+                        "secondary": "#4c6455",
+                        "surface-bright": "#e8ffee",
+                        "inverse-on-surface": "#e0f6e6",
+                        "on-secondary-container": "#526a5b",
+                        "on-primary-fixed-variant": "#00522d",
+                        "error-container": "#ffdad6",
+                        "secondary-container": "#cee9d6",
+                        "on-secondary-fixed-variant": "#354c3e",
+                        "surface-container-high": "#d7eedd",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#0c1f15",
+                        "on-secondary-fixed": "#092014",
+                        "tertiary-fixed-dim": "#eabf8f",
+                        "surface-tint": "#006d3e",
+                        "tertiary-fixed": "#ffddb9",
+                        "surface-variant": "#d1e8d8",
+                        "tertiary": "#795831",
+                        "on-background": "#0c1f15",
+                        "inverse-surface": "#213429",
+                        "surface-container": "#ddf4e3",
+                        "primary-fixed": "#8ff8b4",
+                        "inverse-primary": "#73db9a",
+                        "surface-container-highest": "#d1e8d8",
+                        "tertiary-container": "#ffd2a1",
+                        "on-tertiary-fixed-variant": "#5e411c",
+                        "on-secondary": "#ffffff",
+                        "on-primary-container": "#006d3e",
+                        "surface-dim": "#c9e0cf",
+                        "on-tertiary-container": "#7a5931",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed-dim": "#b2cdbb",
+                        "error": "#ba1a1a",
+                        "primary": "#006d3e",
+                        "primary-container": "#86efac",
+                        "background": "#e8ffee",
+                        "surface": "#e8ffee",
+                        "on-error": "#ffffff",
+                        "outline": "#6e7a70",
+                        "surface-container-low": "#e2f9e8",
+                        "on-primary-fixed": "#00210f",
+                        "outline-variant": "#bdcabe",
+                        "on-surface-variant": "#3e4a40",
+                        "secondary-fixed": "#cee9d6",
+                        "on-tertiary-fixed": "#2b1700"
+                    },
+                    "borderRadius": {
+                        "xl": "1.5rem",
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen pb-32">
+<!-- Top Navigation -->
+<header class="bg-[#e2f9e8] dark:bg-[#0c1f15] flex items-center justify-between px-6 h-16 w-full sticky top-0 z-40 transition-all">
+<div class="flex items-center gap-3">
+<button class="hover:bg-[#d7eedd] dark:hover:bg-[#1a2e21] scale-95 active:opacity-80 transition-all p-2 rounded-full">
+<span class="material-symbols-outlined text-[#006d3e] dark:text-[#86efac]">arrow_back</span>
+</button>
+<h1 class="text-xl font-bold text-[#006d3e] dark:text-[#86efac] tracking-tight">Hóa đơn &amp; Thanh toán</h1>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#006d3e] dark:text-[#86efac]">help</span>
+</div>
+</header>
+<main class="max-w-2xl mx-auto px-4 pt-6 space-y-6">
+<!-- Back Button Label (Editorial Style) -->
+<button class="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors py-2 group">
+<span class="material-symbols-outlined text-sm">west</span>
+<span class="text-sm font-medium">Quay lại</span>
+</button>
+<!-- Section: Current Plan Card -->
+<section class="bg-surface-container-lowest rounded-xl p-6 shadow-[0_20px_40px_-12px_rgba(12,31,21,0.08)]">
+<div class="flex justify-between items-center mb-2">
+<h2 class="text-on-surface-variant font-medium text-sm uppercase tracking-wider">Gói hiện tại</h2>
+<span class="px-3 py-1 rounded-full border border-outline-variant text-[10px] font-bold uppercase tracking-widest text-secondary">Miễn phí</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-extrabold tracking-tighter">NutriAI Lite</span>
+<span class="mono text-xs text-on-surface-variant">V-1.0</span>
+</div>
+<p class="text-on-surface-variant text-sm mt-2 leading-relaxed">Bạn đang sử dụng các tính năng cơ bản. Nâng cấp để nhận phân tích chi tiết hơn.</p>
+</section>
+<!-- Section: Pending Payment Card (High Impact) -->
+<section class="bg-surface-container-lowest rounded-xl border-2 border-primary-container relative overflow-hidden shadow-[0_20px_40px_-12px_rgba(12,31,21,0.08)]">
+<!-- Badge -->
+<div class="absolute top-4 right-4 bg-primary-container text-on-primary-container text-[10px] font-bold px-3 py-1 rounded-full uppercase">
+                Tháng
+            </div>
+<div class="p-6">
+<div class="mb-6">
+<h2 class="text-xl font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+                        Đang chờ thanh toán
+                    </h2>
+<p class="text-on-surface-variant text-sm mt-1">Vui lòng quét mã QR để hoàn tất giao dịch nâng cấp Gói Premium.</p>
+</div>
+<div class="grid md:grid-cols-2 gap-8 items-center border-t border-surface-container-low pt-6">
+<!-- Left: QR Code -->
+<div class="flex flex-col items-center justify-center p-4 bg-surface-container-low rounded-xl">
+<img alt="VietQR payment code for account upgrade" class="w-[200px] h-[200px] mix-blend-multiply bg-white p-2 rounded-lg" data-alt="digital payment QR code on a clean white background with a minimalist corporate branding frame" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWLuWKdCPgnQos_YhbTIisvLh2u0Yr5UYB9WHH0Mc50hvAnRO0S_q85-m2pQoYB7HrJFFdiMd5F4UKqmy2SJ4RYErPs3xBAv2ANaDyhSXlbF-3w6bY6460lIlmDIH9QdRwGMMSqlAH6NalvhIsdW6brnLNq203T99owEIaS5MP5cAJUj9Ca7X53_4ItF_OxEZewoKy9uzWCB3-HtZRAbzxBaqvVk8_hIt51uof8JU4w12rnSlp6YP5vNtQg1n_ouhiQsZPgSme4IlG"/>
+<span class="mono text-[10px] mt-3 text-secondary uppercase tracking-widest">VietQR Standard</span>
+</div>
+<!-- Right: Info Fields -->
+<div class="space-y-6">
+<div>
+<label class="text-[11px] font-bold text-on-surface-variant uppercase tracking-widest block mb-1">Số tiền</label>
+<div class="text-2xl font-extrabold text-primary">199.000 ₫</div>
+<span class="text-[10px] text-on-surface-variant uppercase tracking-tighter">Giá đã bao gồm thuế VAT</span>
+</div>
+<div>
+<label class="text-[11px] font-bold text-on-surface-variant uppercase tracking-widest block mb-2">Mã ghi chú</label>
+<div class="flex items-center gap-2">
+<div class="bg-surface-container-low px-4 py-2 rounded-xl flex-1 border border-outline-variant/20">
+<span class="mono text-sm font-medium text-on-surface">NUTRI-7829-XYZ</span>
+</div>
+<button class="p-2 bg-primary text-on-primary rounded-xl hover:opacity-90 transition-all active:scale-95">
+<span class="material-symbols-outlined text-sm">content_copy</span>
+</button>
+</div>
+<p class="text-[10px] text-on-surface-variant mt-2 italic leading-tight">* Vui lòng nhập chính xác mã này trong nội dung chuyển khoản.</p>
+</div>
+</div>
+</div>
+<!-- Footer Interaction -->
+<div class="mt-8 flex items-center justify-between pt-4 border-t border-surface-container-low">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+<span class="text-xs font-medium text-secondary flex items-center gap-2">
+                             Đang chờ xác nhận
+                        </span>
+</div>
+<button class="text-[11px] font-bold text-error/70 hover:text-error uppercase tracking-widest hover:bg-error-container/20 px-3 py-1.5 rounded-lg transition-colors">
+                        Hủy giao dịch
+                    </button>
+</div>
+</div>
+</section>
+<!-- Section: Transaction History -->
+<section class="space-y-4">
+<h3 class="text-sm font-bold text-on-surface-variant uppercase tracking-[0.2em] px-1">Lịch sử giao dịch</h3>
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0_10px_30px_-15px_rgba(12,31,21,0.05)]">
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-container-low">
+<th class="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Ngày</th>
+<th class="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Nội dung</th>
+<th class="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant text-right">Số tiền</th>
+<th class="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant text-center">Trạng thái</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-low">
+<tr class="bg-primary-container/10">
+<td class="px-6 py-4 text-xs font-medium mono">12/05/2024</td>
+<td class="px-6 py-4 text-xs font-medium">Nâng cấp NutriAI Premium</td>
+<td class="px-6 py-4 text-xs font-bold text-right">199.000 ₫</td>
+<td class="px-6 py-4 text-center">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-high text-[#795831] text-[9px] font-bold uppercase">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                                        Đang chờ
+                                    </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Shell -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-3 pb-6 bg-white dark:bg-[#0c1f15] rounded-t-[1.5rem] shadow-[0_-10px_40px_-12px_rgba(12,31,21,0.08)]">
+<a class="flex flex-col items-center justify-center text-[#3e4a40] dark:text-[#bdcabe] px-5 py-1.5 hover:bg-[#f0fff4] dark:hover:bg-[#1a2e21] transition-transform duration-200 scale-98" href="#">
+<span class="material-symbols-outlined mb-1">home</span>
+<span class="font-['Be_Vietnam_Pro'] text-[11px] font-medium leading-none">Trang chủ</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#3e4a40] dark:text-[#bdcabe] px-5 py-1.5 hover:bg-[#f0fff4] dark:hover:bg-[#1a2e21] transition-transform duration-200 scale-98" href="#">
+<span class="material-symbols-outlined mb-1">rebase_edit</span>
+<span class="font-['Be_Vietnam_Pro'] text-[11px] font-medium leading-none">Dinh dưỡng</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#3e4a40] dark:text-[#bdcabe] px-5 py-1.5 hover:bg-[#f0fff4] dark:hover:bg-[#1a2e21] transition-transform duration-200 scale-98" href="#">
+<span class="material-symbols-outlined mb-1">description</span>
+<span class="font-['Be_Vietnam_Pro'] text-[11px] font-medium leading-none">Báo cáo</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#86efac] dark:bg-[#006d3e] text-[#006d3e] dark:text-[#ffffff] rounded-xl px-5 py-1.5 transition-transform duration-200 scale-98" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-['Be_Vietnam_Pro'] text-[11px] font-medium leading-none">Tài khoản</span>
+</a>
+</nav>
+</body></html>

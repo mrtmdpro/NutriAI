@@ -1,0 +1,3 @@
+# Stitch-generated design outputs land here.
+# Generate via: npm run stitch:generate
+# Outputs are versioned to avoid burning the 350/month free quota.

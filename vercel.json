@@ -1,0 +1,21 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "crons": [
+    {
+      "path": "/api/cron/ingest-dsld",
+      "schedule": "0 2 * * *"
+    },
+    {
+      "path": "/api/cron/ingest-pubmed",
+      "schedule": "30 2 * * *"
+    },
+    {
+      "path": "/api/cron/ingest-openfda",
+      "schedule": "0 3 * * *"
+    },
+    {
+      "path": "/api/cron/dispatch-reminders",
+      "schedule": "*/5 * * * *"
+    }
+  ]
+}

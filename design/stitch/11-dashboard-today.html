@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;family=Geist+Mono:wght@100..900&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary": "#ffffff",
+                    "primary-fixed": "#8ff8b4",
+                    "surface-container-high": "#d7eedd",
+                    "on-primary-fixed-variant": "#00522d",
+                    "on-error": "#ffffff",
+                    "outline": "#6e7a70",
+                    "primary-fixed-dim": "#73db9a",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed-variant": "#5e411c",
+                    "on-primary-container": "#006d3e",
+                    "surface-container-lowest": "#ffffff",
+                    "background": "#e8ffee",
+                    "on-primary-fixed": "#00210f",
+                    "on-background": "#0c1f15",
+                    "surface-container-low": "#e2f9e8",
+                    "inverse-surface": "#213429",
+                    "secondary-container": "#cee9d6",
+                    "surface-bright": "#e8ffee",
+                    "primary": "#006d3e",
+                    "on-tertiary-fixed": "#2b1700",
+                    "secondary-fixed": "#cee9d6",
+                    "on-tertiary-container": "#7a5931",
+                    "surface-dim": "#c9e0cf",
+                    "on-error-container": "#93000a",
+                    "surface-container": "#ddf4e3",
+                    "tertiary-fixed-dim": "#eabf8f",
+                    "on-surface-variant": "#3e4a40",
+                    "on-surface": "#0c1f15",
+                    "on-tertiary": "#ffffff",
+                    "secondary": "#4c6455",
+                    "tertiary-container": "#ffd2a1",
+                    "outline-variant": "#bdcabe",
+                    "tertiary": "#795831",
+                    "tertiary-fixed": "#ffddb9",
+                    "inverse-primary": "#73db9a",
+                    "on-secondary-container": "#526a5b",
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed": "#092014",
+                    "surface": "#e8ffee",
+                    "inverse-on-surface": "#e0f6e6",
+                    "surface-tint": "#006d3e",
+                    "primary-container": "#86efac",
+                    "secondary-fixed-dim": "#b2cdbb",
+                    "surface-variant": "#d1e8d8",
+                    "on-secondary-fixed-variant": "#354c3e",
+                    "on-primary": "#ffffff",
+                    "surface-container-highest": "#d1e8d8"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "1.5rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Be Vietnam Pro"],
+                    "display": ["Be Vietnam Pro"],
+                    "body": ["Be Vietnam Pro"],
+                    "label": ["Manrope"],
+                    "mono": ["Geist Mono"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .tabular-nums {
+            font-variant-numeric: tabular-nums;
+        }
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="bg-[#e8ffee] dark:bg-emerald-950 font-['Be_Vietnam_Pro'] font-bold tracking-tight fixed top-0 w-full z-50">
+<div class="flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-primary-container" data-icon="clinical_notes">clinical_notes</span>
+<h1 class="text-xl font-black text-[#0c1f15] dark:text-emerald-50">NutriAI</h1>
+</div>
+<div class="flex gap-2">
+<button class="px-4 py-1.5 text-sm border border-outline-variant/30 text-[#0c1f15] rounded-xl transition-all active:scale-95">
+                    Phác đồ
+                </button>
+<button class="px-4 py-1.5 text-sm text-[#0c1f15]/60 hover:bg-[#86efac]/20 rounded-xl transition-all active:scale-95">
+                    Phân tích
+                </button>
+</div>
+</div>
+</header>
+<main class="pt-24 px-6 max-w-2xl mx-auto">
+<!-- Hero Section -->
+<section class="mb-8">
+<h2 class="text-3xl font-black tracking-tight mb-1 text-on-background">Hôm nay của bạn</h2>
+<div class="flex flex-col">
+<p class="text-on-surface-variant font-medium">Phác đồ hôm nay. Chạm để đánh dấu đã uống.</p>
+<span class="text-[11px] text-on-surface-variant/60 uppercase tracking-widest font-label mt-1">Today's Regimen • Tap to verify intake</span>
+</div>
+</section>
+<!-- Stats Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+<div class="bg-surface-container-lowest p-5 rounded-xl shadow-[0_12px_40px_-12px_rgba(12,31,21,0.08)]">
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant/70 font-label mb-2">Chuỗi hiện tại</p>
+<p class="text-xl font-bold flex items-center gap-2">5 ngày liên tiếp <span class="text-lg">🔥</span></p>
+<p class="text-[10px] text-on-surface-variant/50 font-mono mt-1">Current Streak</p>
+</div>
+<div class="bg-surface-container-lowest p-5 rounded-xl shadow-[0_12px_40px_-12px_rgba(12,31,21,0.08)] border-l-4 border-primary">
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant/70 font-label mb-2">Tuần này</p>
+<p class="text-xl font-black font-mono">92% <span class="text-sm font-headline font-bold">Tuân thủ</span></p>
+<p class="text-[10px] text-on-surface-variant/50 font-mono mt-1">Weekly Adherence</p>
+</div>
+<div class="bg-surface-container-lowest p-5 rounded-xl shadow-[0_12px_40px_-12px_rgba(12,31,21,0.08)]">
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant/70 font-label mb-2">Tháng này</p>
+<p class="text-xl font-bold">87% <span class="text-sm font-normal opacity-70">Tuân thủ</span></p>
+<p class="text-[10px] text-on-surface-variant/50 font-mono mt-1">Monthly Adherence</p>
+</div>
+</section>
+<!-- Regimen List -->
+<section class="space-y-6">
+<h3 class="text-[11px] uppercase tracking-[0.2em] font-label text-on-surface-variant/60 ml-1">Lịch trình chi tiết • Schedule</h3>
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl flex items-start gap-4 shadow-[0_12px_40px_-12px_rgba(12,31,21,0.06)] group transition-all">
+<div class="flex flex-col items-center gap-2">
+<span class="font-mono tabular-nums text-sm font-bold px-3 py-1 bg-surface-container-low rounded-lg border border-outline-variant/20">08:00</span>
+<div class="w-0.5 h-16 bg-surface-container rounded-full"></div>
+</div>
+<div class="flex-grow pt-0.5">
+<div class="flex justify-between items-start mb-1">
+<div>
+<p class="text-xs font-bold text-primary mb-0.5 uppercase tracking-wide">Buổi sáng</p>
+<h4 class="text-lg font-bold text-on-surface">Magnesium Glycinate 200mg</h4>
+</div>
+<span class="material-symbols-outlined text-primary-container bg-primary p-1.5 rounded-full text-xs" data-icon="check" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<div class="flex items-center justify-between mt-3">
+<a class="text-sm font-semibold text-primary/70 hover:text-primary transition-colors" href="#">Chi tiết</a>
+<button class="bg-secondary-container text-on-secondary-container px-4 py-2 rounded-xl text-sm font-bold transition-all active:scale-95 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="check_circle">check_circle</span>
+                            Đã uống
+                        </button>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl flex items-start gap-4 shadow-[0_12px_40px_-12px_rgba(12,31,21,0.06)]">
+<div class="flex flex-col items-center gap-2">
+<span class="font-mono tabular-nums text-sm font-bold px-3 py-1 bg-surface-container-low rounded-lg border border-outline-variant/20">12:00</span>
+<div class="w-0.5 h-16 bg-surface-container rounded-full"></div>
+</div>
+<div class="flex-grow pt-0.5">
+<div class="flex justify-between items-start mb-1">
+<div>
+<p class="text-xs font-bold text-primary mb-0.5 uppercase tracking-wide">Buổi trưa</p>
+<h4 class="text-lg font-bold text-on-surface">Vitamin D3 + K2</h4>
+</div>
+<span class="material-symbols-outlined text-primary-container bg-primary p-1.5 rounded-full text-xs" data-icon="check" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<div class="flex items-center justify-between mt-3">
+<a class="text-sm font-semibold text-primary/70 hover:text-primary transition-colors" href="#">Chi tiết</a>
+<button class="bg-secondary-container text-on-secondary-container px-4 py-2 rounded-xl text-sm font-bold transition-all active:scale-95 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="check_circle">check_circle</span>
+                            Đã uống
+                        </button>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl flex items-start gap-4 shadow-[0_12px_40px_-12px_rgba(12,31,21,0.06)]">
+<div class="flex flex-col items-center gap-2">
+<span class="font-mono tabular-nums text-sm font-bold px-3 py-1 bg-surface-container-low rounded-lg border border-outline-variant/20">19:00</span>
+<div class="w-0.5 h-16 bg-surface-container rounded-full"></div>
+</div>
+<div class="flex-grow pt-0.5">
+<div class="flex justify-between items-start mb-1">
+<div>
+<p class="text-xs font-bold text-primary mb-0.5 uppercase tracking-wide">Buổi tối</p>
+<h4 class="text-lg font-bold text-on-surface">Omega-3 Ultra Refined</h4>
+</div>
+<span class="material-symbols-outlined text-primary-container bg-primary p-1.5 rounded-full text-xs" data-icon="check" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<div class="flex items-center justify-between mt-3">
+<a class="text-sm font-semibold text-primary/70 hover:text-primary transition-colors" href="#">Chi tiết</a>
+<button class="bg-secondary-container text-on-secondary-container px-4 py-2 rounded-xl text-sm font-bold transition-all active:scale-95 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="check_circle">check_circle</span>
+                            Đã uống
+                        </button>
+</div>
+</div>
+</div>
+<!-- Card 4 (Pending) -->
+<div class="bg-surface-container-low/50 border border-white/50 p-5 rounded-xl flex items-start gap-4 shadow-[0_8px_30px_-12px_rgba(12,31,21,0.04)]">
+<div class="flex flex-col items-center gap-2">
+<span class="font-mono tabular-nums text-sm font-bold px-3 py-1 bg-white rounded-lg border border-outline-variant/10">22:00</span>
+<div class="w-0.5 h-16 bg-surface-container rounded-full"></div>
+</div>
+<div class="flex-grow pt-0.5">
+<div class="flex justify-between items-start mb-1">
+<div>
+<p class="text-xs font-bold text-on-surface-variant/60 mb-0.5 uppercase tracking-wide">Trước khi ngủ</p>
+<h4 class="text-lg font-bold text-on-surface">Zinc Bisglycinate 15mg</h4>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant/40 p-1.5" data-icon="radio_button_unchecked">radio_button_unchecked</span>
+</div>
+<div class="flex items-center justify-between mt-3">
+<a class="text-sm font-semibold text-primary/70 hover:text-primary transition-colors" href="#">Chi tiết</a>
+<button class="bg-primary text-white px-6 py-2 rounded-xl text-sm font-bold transition-all active:scale-95 hover:shadow-lg hover:shadow-primary/20">
+                            Chưa uống
+                        </button>
+</div>
+</div>
+</div>
+<!-- Card 5 (Pending) -->
+<div class="bg-surface-container-low/50 border border-white/50 p-5 rounded-xl flex items-start gap-4 shadow-[0_8px_30px_-12px_rgba(12,31,21,0.04)]">
+<div class="flex flex-col items-center gap-2">
+<span class="font-mono tabular-nums text-sm font-bold px-3 py-1 bg-white rounded-lg border border-outline-variant/10">22:00</span>
+</div>
+<div class="flex-grow pt-0.5">
+<div class="flex justify-between items-start mb-1">
+<div>
+<p class="text-xs font-bold text-on-surface-variant/60 mb-0.5 uppercase tracking-wide">Trước khi ngủ</p>
+<h4 class="text-lg font-bold text-on-surface">Melatonin 3mg</h4>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant/40 p-1.5" data-icon="radio_button_unchecked">radio_button_unchecked</span>
+</div>
+<div class="flex items-center justify-between mt-3">
+<a class="text-sm font-semibold text-primary/70 hover:text-primary transition-colors" href="#">Chi tiết</a>
+<button class="bg-primary text-white px-6 py-2 rounded-xl text-sm font-bold transition-all active:scale-95 hover:shadow-lg hover:shadow-primary/20">
+                            Chưa uống
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Illustration Area (Minimalist) -->
+<div class="mt-12 mb-8 bg-surface-container rounded-xl h-48 overflow-hidden relative">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent"></div>
+<div class="relative z-10 p-8 flex flex-col justify-center h-full">
+<p class="text-primary font-black text-2xl max-w-[200px] leading-tight">Phác đồ từ AI.<br/>Cơ thể thật.</p>
+<p class="text-[10px] uppercase font-label tracking-[0.3em] mt-2 opacity-60">Verified Clinical Data</p>
+</div>
+<div class="absolute right-[-20px] bottom-[-20px] w-64 h-64 opacity-20 rotate-12">
+<span class="material-symbols-outlined text-[240px] text-primary" data-icon="biotech">biotech</span>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-white/90 dark:bg-emerald-950/90 backdrop-blur-md flex justify-around items-center px-4 py-3 pb-safe border-t border-[#bdcabe]/20 shadow-[0_-12px_40px_-12px_rgba(12,31,21,0.08)] rounded-t-[1.5rem]">
+<a class="flex flex-col items-center justify-center bg-[#86efac] dark:bg-emerald-800 text-[#0c1f15] dark:text-emerald-50 rounded-xl px-4 py-1.5 transition-transform duration-300 ease-out active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-['Be_Vietnam_Pro'] text-[11px] font-medium uppercase tracking-wider mt-1">Bảng điều khiển</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#0c1f15]/50 dark:text-emerald-300/50 hover:text-[#006d3e] dark:hover:text-emerald-200 transition-transform duration-300 ease-out active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="auto_stories">auto_stories</span>
+<span class="font-['Be_Vietnam_Pro'] text-[11px] font-medium uppercase tracking-wider mt-1">Thư viện</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#0c1f15]/50 dark:text-emerald-300/50 hover:text-[#006d3e] dark:hover:text-emerald-200 transition-transform duration-300 ease-out active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="insights">insights</span>
+<span class="font-['Be_Vietnam_Pro'] text-[11px] font-medium uppercase tracking-wider mt-1">Phân tích</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#0c1f15]/50 dark:text-emerald-300/50 hover:text-[#006d3e] dark:hover:text-emerald-200 transition-transform duration-300 ease-out active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-['Be_Vietnam_Pro'] text-[11px] font-medium uppercase tracking-wider mt-1">Hồ sơ</span>
+</a>
+</nav>
+</body></html>

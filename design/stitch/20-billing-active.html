@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Hóa đơn &amp; Thanh toán | Billing &amp; Subscription</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Geist+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .font-headline { font-family: 'Be Vietnam Pro', sans-serif; }
+        .font-mono { font-family: 'Geist Mono', monospace; font-variant-numeric: tabular-nums; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container": "#eceeed",
+                      "inverse-surface": "#2e3131",
+                      "primary-fixed": "#8ff8b4",
+                      "inverse-primary": "#73db9a",
+                      "tertiary-fixed": "#cee9d6",
+                      "surface-variant": "#e1e3e2",
+                      "tertiary": "#4c6455",
+                      "on-background": "#191c1c",
+                      "surface-container-high": "#e6e9e8",
+                      "on-primary": "#ffffff",
+                      "surface-container-lowest": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "on-secondary-fixed": "#0c1f15",
+                      "on-surface": "#191c1c",
+                      "tertiary-fixed-dim": "#b2cdbb",
+                      "surface-tint": "#006d3e",
+                      "primary-fixed-dim": "#73db9a",
+                      "inverse-on-surface": "#eff1f0",
+                      "surface-bright": "#f8faf9",
+                      "secondary": "#4f6356",
+                      "on-secondary-container": "#55695c",
+                      "on-secondary-fixed-variant": "#374b3f",
+                      "secondary-container": "#d1e8d8",
+                      "on-primary-fixed-variant": "#00522d",
+                      "error-container": "#ffdad6",
+                      "surface": "#f8faf9",
+                      "on-error": "#ffffff",
+                      "outline": "#6e7a70",
+                      "surface-container-low": "#f2f4f3",
+                      "on-primary-fixed": "#00210f",
+                      "outline-variant": "#bdcabe",
+                      "on-surface-variant": "#3e4a40",
+                      "secondary-fixed": "#d1e8d8",
+                      "on-tertiary-fixed": "#092014",
+                      "secondary-fixed-dim": "#b6ccbc",
+                      "error": "#ba1a1a",
+                      "primary-container": "#86efac",
+                      "background": "#f8faf9",
+                      "primary": "#006d3e",
+                      "on-primary-container": "#006d3e",
+                      "on-tertiary": "#ffffff",
+                      "surface-dim": "#d8dada",
+                      "on-tertiary-container": "#4c6455",
+                      "surface-container-highest": "#e1e3e2",
+                      "tertiary-container": "#c5e0cd",
+                      "on-secondary": "#ffffff",
+                      "on-tertiary-fixed-variant": "#354c3e"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              }
+            },
+          }
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-secondary-fixed min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-[#f8faf9] dark:bg-[#0c1f15]">
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#d1e8d8] transition-colors scale-95 active:duration-100">
+<span class="material-symbols-outlined text-[#006d3e] dark:text-[#86efac]">arrow_back</span>
+</button>
+<div>
+<h1 class="font-headline text-lg font-bold tracking-tight text-[#0c1f15] dark:text-[#f8faf9] uppercase">Hóa đơn &amp; Thanh toán</h1>
+<p class="text-[10px] font-medium text-[#0c1f15]/60 dark:text-[#f8faf9]/60 uppercase tracking-wider">Billing &amp; Subscription</p>
+</div>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#d1e8d8] transition-colors scale-95 active:duration-100">
+<span class="material-symbols-outlined text-[#006d3e] dark:text-[#86efac]">account_circle</span>
+</button>
+</header>
+<main class="pt-24 px-6 max-w-4xl mx-auto space-y-8">
+<!-- Account Summary / Hero Card -->
+<section class="relative overflow-hidden bg-primary-container rounded-xl p-8 shadow-[0_10px_30px_-10px_rgba(12,31,21,0.05)]">
+<div class="relative z-10">
+<div class="flex justify-between items-start">
+<div>
+<h2 class="font-headline text-on-primary-container font-bold text-2xl">Gói hiện tại</h2>
+<p class="text-sm font-medium text-on-primary-container/70 mt-1">Current Plan</p>
+</div>
+<span class="bg-primary text-white px-4 py-1.5 rounded-full text-sm font-bold tracking-wide">
+                        NutriAI Pro
+                    </span>
+</div>
+<div class="mt-8 flex items-baseline gap-2">
+<p class="text-sm font-medium text-on-primary-container/80">Hết hạn vào / Expires on:</p>
+<p class="font-mono text-lg font-bold text-on-primary-container">15 thg 5, 2026</p>
+</div>
+</div>
+<!-- Decorative Element -->
+<div class="absolute -right-12 -bottom-12 w-48 h-48 bg-primary/10 rounded-full blur-3xl"></div>
+</section>
+<!-- Main Grid for Content -->
+<div class="grid grid-cols-1 gap-8">
+<!-- Transaction History Section -->
+<section class="space-y-4">
+<div class="flex items-end justify-between px-2">
+<div>
+<h3 class="font-headline text-xl font-bold text-on-secondary-fixed">Lịch sử giao dịch</h3>
+<p class="text-sm text-on-secondary-fixed/60 font-medium">Transaction History</p>
+</div>
+<button class="text-primary text-sm font-bold flex items-center gap-1 hover:underline">
+                        Xuất báo cáo / Export CSV
+                        <span class="material-symbols-outlined text-sm">download</span>
+</button>
+</div>
+<!-- Transaction List (No-Line Rule Applied) -->
+<div class="bg-surface-container-low rounded-xl overflow-hidden p-2">
+<div class="space-y-2">
+<!-- Row 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-5 flex flex-wrap md:flex-nowrap items-center justify-between gap-4 transition-all hover:bg-secondary-container/30 group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">receipt_long</span>
+</div>
+<div>
+<p class="font-mono text-lg font-bold text-on-secondary-fixed">199.000 đ</p>
+<p class="text-xs text-on-secondary-fixed/50 font-medium uppercase tracking-tighter">Gói Năm / Yearly Plan</p>
+</div>
+</div>
+<div class="flex-1 md:text-center">
+<p class="font-mono text-sm text-on-secondary-fixed/80 select-all">NUTRI-7829-XYZ</p>
+<p class="text-[10px] text-on-secondary-fixed/40 font-bold uppercase tracking-widest">Transaction ID</p>
+</div>
+<div class="flex items-center gap-4 min-w-[140px] justify-end">
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-md text-[11px] font-bold uppercase tracking-wider">
+                                    Đã thanh toán
+                                </span>
+<span class="material-symbols-outlined text-on-secondary-fixed/20 group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="bg-surface-container-lowest rounded-xl p-5 flex flex-wrap md:flex-nowrap items-center justify-between gap-4 transition-all hover:bg-secondary-container/30 group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">receipt_long</span>
+</div>
+<div>
+<p class="font-mono text-lg font-bold text-on-secondary-fixed">49.000 đ</p>
+<p class="text-xs text-on-secondary-fixed/50 font-medium uppercase tracking-tighter">Gói Tháng / Monthly Plan</p>
+</div>
+</div>
+<div class="flex-1 md:text-center">
+<p class="font-mono text-sm text-on-secondary-fixed/80 select-all">NUTRI-1204-ABC</p>
+<p class="text-[10px] text-on-secondary-fixed/40 font-bold uppercase tracking-widest">Transaction ID</p>
+</div>
+<div class="flex items-center gap-4 min-w-[140px] justify-end">
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-md text-[11px] font-bold uppercase tracking-wider">
+                                    Đã thanh toán
+                                </span>
+<span class="material-symbols-outlined text-on-secondary-fixed/20 group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+</div>
+<!-- Row 3 -->
+<div class="bg-surface-container-lowest rounded-xl p-5 flex flex-wrap md:flex-nowrap items-center justify-between gap-4 transition-all hover:bg-secondary-container/30 group opacity-80">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center text-outline">
+<span class="material-symbols-outlined">close</span>
+</div>
+<div>
+<p class="font-mono text-lg font-bold text-on-secondary-fixed">199.000 đ</p>
+<p class="text-xs text-on-secondary-fixed/50 font-medium uppercase tracking-tighter">Gói Năm / Yearly Plan</p>
+</div>
+</div>
+<div class="flex-1 md:text-center">
+<p class="font-mono text-sm text-on-secondary-fixed/80 select-all">NUTRI-9901-ERR</p>
+<p class="text-[10px] text-on-secondary-fixed/40 font-bold uppercase tracking-widest">Transaction ID</p>
+</div>
+<div class="flex items-center gap-4 min-w-[140px] justify-end">
+<span class="border-2 border-outline-variant text-outline px-3 py-1 rounded-md text-[11px] font-bold uppercase tracking-wider">
+                                    Đã huỷ
+                                </span>
+<span class="material-symbols-outlined text-on-secondary-fixed/20 group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bottom Actions / Bento Style -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="bg-[#D5F0DD] rounded-xl p-6 flex flex-col justify-between">
+<div>
+<h4 class="font-headline font-bold text-on-secondary-fixed">Phương thức thanh toán</h4>
+<p class="text-sm text-on-secondary-fixed/60">Payment Method</p>
+</div>
+<div class="mt-6 flex items-center gap-3">
+<div class="w-10 h-6 bg-white rounded flex items-center justify-center font-mono font-bold text-[10px] shadow-sm">VISA</div>
+<p class="font-mono text-sm font-medium">•••• •••• •••• 4421</p>
+</div>
+<button class="mt-6 text-primary text-sm font-bold self-start">Cập nhật / Update</button>
+</div>
+<div class="bg-surface-container-low rounded-xl p-6 flex flex-col justify-between">
+<div>
+<h4 class="font-headline font-bold text-on-secondary-fixed">Hỗ trợ kỹ thuật</h4>
+<p class="text-sm text-on-secondary-fixed/60">Technical Support</p>
+</div>
+<p class="mt-2 text-sm text-on-secondary-fixed/80">Bạn cần hỗ trợ về hóa đơn?</p>
+<button class="mt-6 bg-primary text-white px-4 py-2 rounded-md text-sm font-bold w-full">Liên hệ ngay / Contact Support</button>
+</div>
+</section>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe bg-white dark:bg-[#0c1f15] rounded-t-xl border-t border-[#f2f4f3] dark:border-[#1a2e23] shadow-[0_-4px_20px_-10px_rgba(12,31,21,0.05)]">
+<a class="flex flex-col items-center justify-center text-[#0c1f15]/50 dark:text-[#f8faf9]/50 px-4 py-1 hover:bg-[#f2f4f3] transition-all duration-300 tap-highlight-none" href="#">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="font-['Geist_Sans'] text-[10px] font-medium mt-1">Trang chủ</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#0c1f15]/50 dark:text-[#f8faf9]/50 px-4 py-1 hover:bg-[#f2f4f3] transition-all duration-300 tap-highlight-none" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-['Geist_Sans'] text-[10px] font-medium mt-1">Báo cáo</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#86efac] dark:bg-[#006d3e] text-[#0c1f15] dark:text-white rounded-xl px-4 py-1 transition-all duration-300 tap-highlight-none" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-['Geist_Sans'] text-[10px] font-medium mt-1">Thanh toán</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#0c1f15]/50 dark:text-[#f8faf9]/50 px-4 py-1 hover:bg-[#f2f4f3] transition-all duration-300 tap-highlight-none" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-['Geist_Sans'] text-[10px] font-medium mt-1">Cá nhân</span>
+</a>
+</nav>
+</body></html>

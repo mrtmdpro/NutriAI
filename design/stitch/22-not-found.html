@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&amp;family=Geist+Sans:wght@400;500;600;700&amp;family=Geist+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary": "#ffffff",
+                        "outline": "#6e7a70",
+                        "on-surface": "#0c1f15",
+                        "primary-fixed": "#8ff8b4",
+                        "inverse-primary": "#73db9a",
+                        "secondary-container": "#cee9d6",
+                        "tertiary": "#795831",
+                        "surface": "#e8ffee",
+                        "tertiary-fixed": "#ffddb9",
+                        "on-secondary-fixed-variant": "#354c3e",
+                        "on-primary-fixed": "#00210f",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#2b1700",
+                        "primary-fixed-dim": "#73db9a",
+                        "surface-container-low": "#e2f9e8",
+                        "surface-variant": "#d1e8d8",
+                        "tertiary-fixed-dim": "#eabf8f",
+                        "outline-variant": "#bdcabe",
+                        "secondary-fixed-dim": "#b2cdbb",
+                        "on-primary-container": "#006d3e",
+                        "secondary": "#4c6455",
+                        "surface-container-highest": "#d1e8d8",
+                        "primary": "#006d3e",
+                        "tertiary-container": "#ffd2a1",
+                        "on-tertiary-fixed-variant": "#5e411c",
+                        "on-surface-variant": "#3e4a40",
+                        "primary-container": "#86efac",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed": "#092014",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#e0f6e6",
+                        "surface-tint": "#006d3e",
+                        "background": "#e8ffee",
+                        "surface-dim": "#c9e0cf",
+                        "surface-bright": "#e8ffee",
+                        "on-tertiary": "#ffffff",
+                        "surface-container": "#ddf4e3",
+                        "inverse-surface": "#213429",
+                        "on-primary-fixed-variant": "#00522d",
+                        "on-background": "#0c1f15",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-container": "#526a5b",
+                        "on-tertiary-container": "#7a5931",
+                        "secondary-fixed": "#cee9d6",
+                        "surface-container-high": "#d7eedd",
+                        "on-secondary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Be Vietnam Pro", "sans-serif"],
+                        "display": ["Be Vietnam Pro", "sans-serif"],
+                        "body": ["Geist Sans", "sans-serif"],
+                        "label": ["Geist Sans", "sans-serif"],
+                        "mono": ["Geist Mono", "monospace"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Geist Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 w-full z-50 bg-[#e8ffee]/80 backdrop-blur-xl shadow-[0_4px_24px_rgba(12,31,21,0.06)] h-16 flex items-center justify-between px-6 font-['Be_Vietnam_Pro'] tracking-tight">
+<div class="flex items-center gap-4">
+<button class="active:scale-95 transition-transform hover:opacity-80">
+<span class="material-symbols-outlined text-emerald-900" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="text-xl font-bold text-emerald-900">NutriAI</h1>
+</div>
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-emerald-700/60" data-icon="search">search</span>
+<span class="material-symbols-outlined text-emerald-700/60" data-icon="notifications">notifications</span>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-grow flex items-center justify-center px-6 pt-20 pb-24">
+<div class="w-full max-w-[640px] bg-surface-container-lowest rounded-xl p-12 text-center relative overflow-hidden">
+<!-- Structural Layering: Asymmetric abstract circle for Scientific Serenity -->
+<div class="absolute -top-24 -right-24 w-64 h-64 border border-outline-variant/30 rounded-full"></div>
+<div class="relative z-10 flex flex-col items-center">
+<!-- Large Display Number (Geist Mono for Clinical Authority) -->
+<h2 class="font-mono text-[120px] font-bold leading-none text-primary tracking-tighter mb-4">
+                    404
+                </h2>
+<div class="space-y-2 mb-12">
+<h3 class="text-2xl font-semibold text-on-surface leading-tight">
+                        Đã xảy ra lỗi
+                    </h3>
+<p class="text-outline font-medium tracking-wide">
+                        RECORD NOT FOUND / TRUY XUẤT THẤT BẠI
+                    </p>
+</div>
+<!-- Descriptive Clinical Statement -->
+<div class="mb-12 max-w-sm mx-auto">
+<p class="text-on-surface-variant leading-[1.6] text-balance">
+                        Dữ liệu bạn đang tìm kiếm không tồn tại trong hệ thống phân tích. Vui lòng kiểm tra lại đường dẫn hoặc quay về trang chủ để tiếp tục theo dõi sức khỏe.
+                    </p>
+</div>
+<!-- Primary Action Button -->
+<button class="bg-primary-container text-on-primary-fixed px-10 py-4 rounded-xl font-bold active:scale-95 transition-transform hover:opacity-90 flex items-center gap-3">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="flex flex-col items-start leading-none">
+<span>Quay lại</span>
+<span class="text-[10px] uppercase tracking-widest opacity-60">Go Back</span>
+</span>
+</button>
+</div>
+<!-- Technical Data Footer within card -->
+<div class="mt-16 pt-8 border-t border-surface-container-low flex justify-between items-center text-[10px] font-mono text-outline">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<span>SYSTEM_STATUS: ACTIVE</span>
+</div>
+<span>ERR_CODE: 0x404_NULL_ENTITY</span>
+</div>
+</div>
+</main>
+<!-- BottomNavBar Shell -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-[#e8ffee] rounded-t-[1.5rem] shadow-[0_-4px_48px_rgba(12,31,21,0.06)]">
+<button class="flex flex-col items-center justify-center text-emerald-800 px-5 py-2 hover:bg-[#d1e8d8] transition-colors rounded-[1.5rem] active:scale-90 duration-200">
+<span class="material-symbols-outlined" data-icon="home_health">home_health</span>
+<span class="font-['Geist_Sans'] text-[10px] font-medium uppercase tracking-wider mt-1">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-emerald-800 px-5 py-2 hover:bg-[#d1e8d8] transition-colors rounded-[1.5rem] active:scale-90 duration-200">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-['Geist_Sans'] text-[10px] font-medium uppercase tracking-wider mt-1">Analysis</span>
+</button>
+<button class="flex flex-col items-center justify-center text-emerald-800 px-5 py-2 hover:bg-[#d1e8d8] transition-colors rounded-[1.5rem] active:scale-90 duration-200">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+<span class="font-['Geist_Sans'] text-[10px] font-medium uppercase tracking-wider mt-1">Library</span>
+</button>
+<button class="flex flex-col items-center justify-center text-emerald-800 px-5 py-2 hover:bg-[#d1e8d8] transition-colors rounded-[1.5rem] active:scale-90 duration-200">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-['Geist_Sans'] text-[10px] font-medium uppercase tracking-wider mt-1">Profile</span>
+</button>
+</nav>
+<!-- Visual Artifact for Depth (Soft Spectrum Shifting) -->
+<div class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary-container/10 blur-[120px] rounded-full -z-10 pointer-events-none"></div>
+</body></html>

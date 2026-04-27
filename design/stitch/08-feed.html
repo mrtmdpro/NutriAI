@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NutriAI - Bảng tin</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;700&amp;family=Geist+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#f8faf9",
+                    "surface-container-low": "#f2f4f3",
+                    "on-surface-variant": "#3e4a40",
+                    "on-error-container": "#93000a",
+                    "on-primary-fixed-variant": "#00522d",
+                    "tertiary": "#4c6455",
+                    "on-surface": "#191c1c",
+                    "surface-container-highest": "#e1e3e2",
+                    "secondary-fixed": "#d1e8d8",
+                    "error-container": "#ffdad6",
+                    "outline-variant": "#bdcabe",
+                    "on-primary": "#ffffff",
+                    "background": "#f8faf9",
+                    "primary": "#006d3e",
+                    "surface-container-high": "#e6e9e8",
+                    "primary-fixed": "#8ff8b4",
+                    "on-tertiary-container": "#4c6455",
+                    "surface-container": "#eceeed",
+                    "error": "#ba1a1a",
+                    "on-secondary-fixed": "#0c1f15",
+                    "outline": "#6e7a70",
+                    "surface-variant": "#e1e3e2",
+                    "on-background": "#191c1c",
+                    "on-secondary-container": "#55695c",
+                    "primary-container": "#86efac",
+                    "secondary-container": "#d1e8d8",
+                    "surface-dim": "#d8dada",
+                    "surface-tint": "#006d3e",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed-dim": "#73db9a",
+                    "inverse-surface": "#2e3131",
+                    "on-tertiary-fixed": "#092014",
+                    "on-secondary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-fixed": "#00210f",
+                    "on-secondary-fixed-variant": "#374b3f",
+                    "secondary-fixed-dim": "#b6ccbc",
+                    "inverse-on-surface": "#eff1f0",
+                    "on-error": "#ffffff",
+                    "tertiary-fixed-dim": "#b2cdbb",
+                    "on-tertiary-fixed-variant": "#354c3e",
+                    "surface": "#f8faf9",
+                    "secondary": "#4f6356",
+                    "tertiary-container": "#c5e0cd",
+                    "on-primary-container": "#006d3e",
+                    "inverse-primary": "#73db9a",
+                    "tertiary-fixed": "#cee9d6"
+            },
+            "fontFamily": {
+                    "headline": ["Be Vietnam Pro", "sans-serif"],
+                    "display": ["Be Vietnam Pro", "sans-serif"],
+                    "body": ["Be Vietnam Pro", "sans-serif"],
+                    "label": ["Space Grotesk", "sans-serif"],
+                    "sans": ["Geist", "sans-serif"],
+                    "mono": ["Geist Mono", "monospace"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #f8faf9;
+            font-family: 'Geist', sans-serif;
+            color: #191c1c;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface pb-32">
+<!-- TopAppBar -->
+<header class="bg-[#f8faf9] dark:bg-[#0c1f15] docked full-width top-0 z-50 flex justify-between items-center w-full px-6 py-4 h-16 sticky">
+<div class="flex items-center gap-4">
+<button class="text-[#3e4a40] dark:text-emerald-100/60 hover:bg-emerald-50 dark:hover:bg-emerald-900/30 transition-colors p-2 rounded-full">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="text-lg font-bold text-[#0c1f15] dark:text-[#86EFAC] font-['Be_Vietnam_Pro'] leading-relaxed tracking-tight">Bảng tin</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center overflow-hidden border border-outline-variant/30">
+<img alt="User avatar" class="w-full h-full object-cover" data-alt="Microscopic view of healthy plant cellular structure with mint green tones and high scientific precision" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQ5ovUV4GIl-4OYGPBJn9miYs_PA1Ut7CipZXi-Kcp1u4S0QKGR9I7eW5elXB_78stzJR15dLr-EPh5a1rFDQ8zqv_802pRkSnz0b8-nlnKljmo9jJcqmNmhGfiqpyJoFPEsUQkmXxeyHj4REj4SeQoufS517VL4veqBwrzusGvihxxP80L6pFzqzfnE1cy7gGDRFSmZ3a5zC9OR8S0WSgliruBnrQIrbXeFQpNJcel0HW6sQhaqkRga0Af5zIDuWhtvrodOnofHIn"/>
+</div>
+</div>
+</header>
+<main class="max-w-screen-md mx-auto px-6 pt-8">
+<!-- Header Section -->
+<section class="mb-10">
+<div class="flex items-baseline gap-2 mb-2">
+<h2 class="text-3xl font-extrabold tracking-tight text-on-secondary-fixed font-headline">Bảng tin</h2>
+<span class="text-xs font-mono uppercase tracking-widest text-on-surface-variant/60">/ Feed</span>
+</div>
+<p class="text-on-surface-variant leading-relaxed max-w-sm">Bài viết và video giáo dục được tuyển chọn, có dẫn nguồn. / Curated educational articles and videos, sourced.</p>
+</section>
+<!-- For Your Protocol Rail -->
+<section class="mb-12">
+<div class="flex justify-between items-end mb-6">
+<div>
+<h3 class="text-xs font-mono uppercase tracking-widest text-primary mb-1">Dành cho phác đồ của bạn</h3>
+<p class="text-sm text-on-surface-variant font-medium">Personalized Nutrition Protocol</p>
+</div>
+</div>
+<div class="flex gap-4 overflow-x-auto hide-scrollbar -mx-6 px-6">
+<!-- Protocol Card 1 -->
+<div class="flex-none w-72 bg-surface-container-lowest rounded-xl p-6 shadow-[0_12px_40px_-12px_rgba(12,31,21,0.08)]">
+<div class="bg-secondary-container/30 w-fit px-2 py-1 rounded text-[10px] font-mono text-on-secondary-fixed mb-4">NUT-019</div>
+<h4 class="font-bold text-lg leading-tight mb-3 font-headline">Tối ưu hóa khả năng hấp thụ Magie</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed line-clamp-3 mb-4">Các nghiên cứu lâm sàng chỉ ra rằng việc kết hợp Vitamin B6 giúp tăng sinh khả dụng của Magie trong tế bào...</p>
+<div class="flex items-center gap-2 mt-auto">
+<span class="text-[10px] font-mono text-on-surface-variant/70 uppercase">4 phút đọc</span>
+</div>
+</div>
+<!-- Protocol Card 2 -->
+<div class="flex-none w-72 bg-surface-container-lowest rounded-xl p-6 shadow-[0_12px_40px_-12px_rgba(12,31,21,0.08)]">
+<div class="bg-secondary-container/30 w-fit px-2 py-1 rounded text-[10px] font-mono text-on-secondary-fixed mb-4">GLY-442</div>
+<h4 class="font-bold text-lg leading-tight mb-3 font-headline">Kiểm soát Glycemic qua thứ tự ăn</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed line-clamp-3 mb-4">Thực nghiệm cho thấy việc tiêu thụ chất xơ trước tinh bột làm giảm 30% phản ứng insulin sau bữa ăn...</p>
+<div class="flex items-center gap-2 mt-auto">
+<span class="text-[10px] font-mono text-on-surface-variant/70 uppercase">6 phút đọc</span>
+</div>
+</div>
+<!-- Protocol Card 3 -->
+<div class="flex-none w-72 bg-surface-container-lowest rounded-xl p-6 shadow-[0_12px_40px_-12px_rgba(12,31,21,0.08)]">
+<div class="bg-secondary-container/30 w-fit px-2 py-1 rounded text-[10px] font-mono text-on-secondary-fixed mb-4">LPD-908</div>
+<h4 class="font-bold text-lg leading-tight mb-3 font-headline">Lipid và sức khỏe tim mạch 2024</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed line-clamp-3 mb-4">Phân tích mới nhất về sự khác biệt giữa LDL-p và LDL-c trong việc đánh giá nguy cơ xơ vữa động mạch...</p>
+<div class="flex items-center gap-2 mt-auto">
+<span class="text-[10px] font-mono text-on-surface-variant/70 uppercase">8 phút đọc</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Latest Grid -->
+<section class="mb-12">
+<div class="flex items-center gap-3 mb-8">
+<h3 class="text-xl font-bold font-headline">Mới nhất</h3>
+<span class="text-on-surface-variant/40">/</span>
+<span class="text-sm font-mono text-on-surface-variant/60 uppercase tracking-widest">Latest Updates</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Article Card 1 -->
+<article class="bg-surface-container-low rounded-xl p-6 flex flex-col">
+<span class="text-[10px] font-mono text-on-surface-variant/60 mb-2">bởi Quý Somsen</span>
+<h4 class="font-bold text-lg leading-tight mb-3 font-headline">Cơ chế tự thực (Autophagy) và nhịn ăn gián đoạn</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-6 line-clamp-3">Khám phá cách tế bào tái cấu trúc protein bị hỏng trong quá trình nhịn ăn và lợi ích đối với tuổi thọ sinh học.</p>
+<div class="mt-auto flex items-center justify-between">
+<span class="text-[10px] font-mono text-on-surface-variant/70">12.10.2023</span>
+<span class="text-primary-container bg-on-secondary-fixed px-3 py-1 rounded-full text-xs font-bold">Đọc bài</span>
+</div>
+</article>
+<!-- Video Card 2 -->
+<article class="bg-surface-container-low rounded-xl p-6 flex flex-col relative overflow-hidden">
+<div class="absolute top-4 right-4 flex items-center gap-1.5 bg-primary-container px-2 py-1 rounded-md">
+<span class="material-symbols-outlined text-xs" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Video</span>
+</div>
+<span class="text-[10px] font-mono text-on-surface-variant/60 mb-2">bởi Quý Somsen</span>
+<h4 class="font-bold text-lg leading-tight mb-3 font-headline">Kỹ thuật chuẩn bị thực phẩm bảo toàn vi chất</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-6 line-clamp-3">Hướng dẫn cách sơ chế và nấu nướng để tối đa hóa lượng Sulforaphane trong bông cải xanh.</p>
+<div class="mt-auto flex items-center justify-between">
+<span class="text-[10px] font-mono text-on-surface-variant/70">08.10.2023</span>
+<a class="text-primary font-bold text-sm flex items-center gap-1" href="#">Xem video <span class="material-symbols-outlined text-sm">north_east</span></a>
+</div>
+</article>
+<!-- Article Card 3 -->
+<article class="bg-surface-container-low rounded-xl p-6 flex flex-col">
+<span class="text-[10px] font-mono text-on-surface-variant/60 mb-2">bởi Quý Somsen</span>
+<h4 class="font-bold text-lg leading-tight mb-3 font-headline">Ảnh hưởng của Cortisol đến việc tích tụ mỡ bụng</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-6 line-clamp-3">Mối liên hệ giữa stress mãn tính và sự phân bố mô mỡ nội tạng qua lăng kính nội tiết học.</p>
+<div class="mt-auto flex items-center justify-between">
+<span class="text-[10px] font-mono text-on-surface-variant/70">05.10.2023</span>
+<span class="text-primary-container bg-on-secondary-fixed px-3 py-1 rounded-full text-xs font-bold">Đọc bài</span>
+</div>
+</article>
+<!-- Video Card 4 -->
+<article class="bg-surface-container-low rounded-xl p-6 flex flex-col relative overflow-hidden">
+<div class="absolute top-4 right-4 flex items-center gap-1.5 bg-primary-container px-2 py-1 rounded-md">
+<span class="material-symbols-outlined text-xs" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Video</span>
+</div>
+<span class="text-[10px] font-mono text-on-surface-variant/60 mb-2">bởi Quý Somsen</span>
+<h4 class="font-bold text-lg leading-tight mb-3 font-headline">Hệ vi sinh đường ruột và sức khỏe tinh thần</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-6 line-clamp-3">Trục Não-Ruột vận hành như thế nào? Phân tích các chủng Probiotic ảnh hưởng đến Serotonin.</p>
+<div class="mt-auto flex items-center justify-between">
+<span class="text-[10px] font-mono text-on-surface-variant/70">01.10.2023</span>
+<a class="text-primary font-bold text-sm flex items-center gap-1" href="#">Xem video <span class="material-symbols-outlined text-sm">north_east</span></a>
+</div>
+</article>
+<!-- Article Card 5 -->
+<article class="bg-surface-container-low rounded-xl p-6 flex flex-col">
+<span class="text-[10px] font-mono text-on-surface-variant/60 mb-2">bởi Quý Somsen</span>
+<h4 class="font-bold text-lg leading-tight mb-3 font-headline">Vitamin D3 và K2: Cặp bài trùng hoàn hảo</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-6 line-clamp-3">Tại sao không nên bổ sung D3 đơn lẻ? Vai trò của K2 trong việc định hướng canxi vào xương thay vì mạch máu.</p>
+<div class="mt-auto flex items-center justify-between">
+<span class="text-[10px] font-mono text-on-surface-variant/70">28.09.2023</span>
+<span class="text-primary-container bg-on-secondary-fixed px-3 py-1 rounded-full text-xs font-bold">Đọc bài</span>
+</div>
+</article>
+<!-- Video Card 6 -->
+<article class="bg-surface-container-low rounded-xl p-6 flex flex-col relative overflow-hidden">
+<div class="absolute top-4 right-4 flex items-center gap-1.5 bg-primary-container px-2 py-1 rounded-md">
+<span class="material-symbols-outlined text-xs" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Video</span>
+</div>
+<span class="text-[10px] font-mono text-on-surface-variant/60 mb-2">bởi Quý Somsen</span>
+<h4 class="font-bold text-lg leading-tight mb-3 font-headline">Phân tích Protein: Thực vật vs Động vật</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-6 line-clamp-3">So sánh chỉ số DIAAS và thành phần Amino Acid thiết yếu trong các nguồn đạm phổ biến.</p>
+<div class="mt-auto flex items-center justify-between">
+<span class="text-[10px] font-mono text-on-surface-variant/70">25.09.2023</span>
+<a class="text-primary font-bold text-sm flex items-center gap-1" href="#">Xem video <span class="material-symbols-outlined text-sm">north_east</span></a>
+</div>
+</article>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-white dark:bg-[#0c1f15] z-50 rounded-t-2xl shadow-[0_-8px_30px_rgba(12,31,21,0.05)] md:hidden">
+<a class="flex flex-col items-center justify-center text-[#3e4a40] dark:text-[#D5F0DD]/70 px-4 py-1.5 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-all" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="home">home</span>
+<span class="font-['Geist_Mono'] text-[10px] uppercase tracking-widest">Trang chủ</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#86EFAC] text-[#0c1f15] rounded-xl px-4 py-1.5 transition-all" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="menu_book">menu_book</span>
+<span class="font-['Geist_Mono'] text-[10px] uppercase tracking-widest">Thư viện</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#3e4a40] dark:text-[#D5F0DD]/70 px-4 py-1.5 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-all" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="query_stats">query_stats</span>
+<span class="font-['Geist_Mono'] text-[10px] uppercase tracking-widest">Phân tích</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#3e4a40] dark:text-[#D5F0DD]/70 px-4 py-1.5 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-all" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="font-['Geist_Mono'] text-[10px] uppercase tracking-widest">Cá nhân</span>
+</a>
+</nav>
+<!-- Floating Action Button (FAB) - Contextual for "Bảng tin" (Feed) -->
+<button class="fixed right-6 bottom-24 md:bottom-12 w-14 h-14 bg-primary-container text-on-primary-container rounded-2xl shadow-[0_8px_24px_rgba(134,239,172,0.4)] flex items-center justify-center z-40 active:scale-95 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bookmark</span>
+</button>
+</body></html>

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&amp;family=Space+Grotesk:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#d1e8d8",
+                        "surface-variant": "#d1e8d8",
+                        "secondary-container": "#cee9d6",
+                        "surface-container-high": "#d7eedd",
+                        "primary-container": "#86efac",
+                        "on-primary-fixed-variant": "#00522d",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#354c3e",
+                        "surface-container-low": "#e2f9e8",
+                        "on-surface-variant": "#3e4a40",
+                        "on-tertiary-fixed-variant": "#004e59",
+                        "secondary-fixed": "#cee9d6",
+                        "on-surface": "#0c1f15",
+                        "inverse-primary": "#73db9a",
+                        "surface-bright": "#e8ffee",
+                        "on-primary": "#ffffff",
+                        "primary": "#006d3e",
+                        "surface-tint": "#006d3e",
+                        "on-secondary-fixed": "#092014",
+                        "on-background": "#0c1f15",
+                        "surface-container": "#ddf4e3",
+                        "secondary-fixed-dim": "#b2cdbb",
+                        "tertiary-container": "#76eaff",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed": "#9fefff",
+                        "outline": "#6e7a70",
+                        "inverse-surface": "#213429",
+                        "inverse-on-surface": "#e0f6e6",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed-dim": "#60d6eb",
+                        "surface": "#e8ffee",
+                        "on-primary-fixed": "#00210f",
+                        "on-primary-container": "#006d3e",
+                        "on-error-container": "#93000a",
+                        "on-secondary": "#ffffff",
+                        "outline-variant": "#bdcabe",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#001f24",
+                        "on-secondary-container": "#526a5b",
+                        "primary-fixed": "#8ff8b4",
+                        "on-tertiary-container": "#006976",
+                        "secondary": "#4c6455",
+                        "surface-dim": "#c9e0cf",
+                        "tertiary": "#006876",
+                        "background": "#e8ffee",
+                        "primary-fixed-dim": "#73db9a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Be Vietnam Pro"],
+                        "display": ["Be Vietnam Pro"],
+                        "body": ["Be Vietnam Pro"],
+                        "mono": ["Geist Mono"],
+                        "label": ["Space Grotesk"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Be Vietnam Pro', sans-serif; -webkit-font-smoothing: antialiased; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .mono-nums { font-family: 'Geist Mono', monospace; font-variant-numeric: tabular-nums; }
+        .tonal-wash { background: radial-gradient(circle at 50% 50%, #D5F0DD 0%, rgba(232, 255, 238, 0) 70%); }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen pb-24 overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="bg-[#e8ffee] dark:bg-emerald-950 flex items-center justify-start w-full px-4 h-20 gap-4 docked full-width top-0 z-50 transition-colors duration-200 sticky">
+<button class="hover:bg-emerald-100/50 dark:hover:bg-emerald-800/30 transition-colors duration-200 active:scale-95 p-2 rounded-full">
+<span class="material-symbols-outlined text-[#006d3e] dark:text-emerald-400">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<h1 class="font-['Be_Vietnam_Pro'] text-lg font-semibold tracking-tight text-[#006d3e] dark:text-emerald-400 leading-tight">Phân tích tuân thủ</h1>
+<p class="text-xs font-medium text-primary/60 opacity-70">Compliance Analytics</p>
+</div>
+</header>
+<main class="max-w-5xl mx-auto px-4 pt-6 space-y-6 relative">
+<!-- Tonal Wash Decorative Element -->
+<div class="fixed top-0 left-1/2 -translate-x-1/2 w-full h-[600px] tonal-wash -z-10 opacity-50 pointer-events-none"></div>
+<!-- Big Stat Cards Grid -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<!-- Card 1: Streak -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm border border-outline-variant/10 flex flex-col justify-between">
+<div>
+<p class="text-on-surface-variant font-medium text-sm">Chuỗi hiện tại</p>
+<p class="text-[10px] text-on-surface-variant/60 uppercase tracking-widest font-label">Current Streak</p>
+</div>
+<div class="mt-6 flex items-baseline gap-2">
+<span class="mono-nums text-5xl font-bold text-primary tracking-tighter">5</span>
+<span class="material-symbols-outlined text-orange-500 text-3xl" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+</div>
+</div>
+<!-- Card 2: 30-day Rate -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm border border-outline-variant/10 flex flex-col justify-between">
+<div>
+<p class="text-on-surface-variant font-medium text-sm">Tỷ lệ 30 ngày</p>
+<p class="text-[10px] text-on-surface-variant/60 uppercase tracking-widest font-label">30-day Rate</p>
+</div>
+<div class="mt-6">
+<span class="mono-nums text-5xl font-bold text-on-surface tracking-tighter">87%</span>
+<div class="w-full h-1 bg-surface-container-highest rounded-full mt-4 overflow-hidden">
+<div class="h-full bg-primary" style="width: 87%"></div>
+</div>
+</div>
+</div>
+<!-- Card 3: Weekly Rate -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm border border-outline-variant/10 flex flex-col justify-between">
+<div>
+<p class="text-on-surface-variant font-medium text-sm">Tỷ lệ tuần</p>
+<p class="text-[10px] text-on-surface-variant/60 uppercase tracking-widest font-label">Weekly Rate</p>
+</div>
+<div class="mt-6">
+<span class="mono-nums text-5xl font-bold text-on-surface tracking-tighter">92%</span>
+<div class="w-full h-1 bg-surface-container-highest rounded-full mt-4 overflow-hidden">
+<div class="h-full bg-primary" style="width: 92%"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Weekly Trend Chart -->
+<section class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm border border-outline-variant/10">
+<div class="flex justify-between items-center mb-10">
+<div>
+<h2 class="text-lg font-bold text-on-surface">Xu hướng theo tuần</h2>
+<p class="text-xs text-on-surface-variant opacity-70">Weekly Trend Analysis</p>
+</div>
+<span class="material-symbols-outlined text-primary/40">monitoring</span>
+</div>
+<!-- Visual Representation of a Line Chart using SVG -->
+<div class="relative h-48 w-full">
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 1200 200">
+<!-- Grid Lines -->
+<line class="text-outline-variant/10" stroke="currentColor" stroke-width="1" x1="0" x2="1200" y1="0" y2="0"></line>
+<line class="text-outline-variant/10" stroke="currentColor" stroke-width="1" x1="0" x2="1200" y1="100" y2="100"></line>
+<line class="text-outline-variant/10" stroke="currentColor" stroke-width="1" x1="0" x2="1200" y1="200" y2="200"></line>
+<!-- Smooth Line (Interpolated) -->
+<path d="M 0,140 C 100,130 200,150 300,110 C 400,70 500,90 600,60 C 700,30 800,50 900,40 C 1000,30 1100,20 1200,10" fill="none" stroke="#006d3e" stroke-linecap="round" stroke-width="3"></path>
+<!-- Dots -->
+<circle cx="0" cy="140" fill="#86efac" r="5" stroke="#006d3e" stroke-width="2"></circle>
+<circle cx="109" cy="135" fill="#86efac" r="5" stroke="#006d3e" stroke-width="2"></circle>
+<circle cx="218" cy="142" fill="#86efac" r="5" stroke="#006d3e" stroke-width="2"></circle>
+<circle cx="327" cy="105" fill="#86efac" r="5" stroke="#006d3e" stroke-width="2"></circle>
+<circle cx="436" cy="78" fill="#86efac" r="5" stroke="#006d3e" stroke-width="2"></circle>
+<circle cx="545" cy="85" fill="#86efac" r="5" stroke="#006d3e" stroke-width="2"></circle>
+<circle cx="654" cy="55" fill="#86efac" r="5" stroke="#006d3e" stroke-width="2"></circle>
+<circle cx="763" cy="35" fill="#86efac" r="5" stroke="#006d3e" stroke-width="2"></circle>
+<circle cx="872" cy="48" fill="#86efac" r="5" stroke="#006d3e" stroke-width="2"></circle>
+<circle cx="981" cy="42" fill="#86efac" r="5" stroke="#006d3e" stroke-width="2"></circle>
+<circle cx="1090" cy="25" fill="#86efac" r="5" stroke="#006d3e" stroke-width="2"></circle>
+<circle cx="1200" cy="10" fill="#86efac" r="5" stroke="#006d3e" stroke-width="2"></circle>
+</svg>
+<div class="flex justify-between mt-4">
+<span class="mono-nums text-[10px] text-on-surface-variant/50">WEEK 01</span>
+<span class="mono-nums text-[10px] text-on-surface-variant/50">WEEK 06</span>
+<span class="mono-nums text-[10px] text-on-surface-variant/50">WEEK 12</span>
+</div>
+</div>
+</section>
+<!-- 12-Week Heatmap -->
+<section class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm border border-outline-variant/10">
+<div class="flex justify-between items-center mb-8">
+<div>
+<h2 class="text-lg font-bold text-on-surface">Bản đồ 12 tuần</h2>
+<p class="text-xs text-on-surface-variant opacity-70">12-Week Adherence Map</p>
+</div>
+<div class="flex gap-2 items-center">
+<span class="text-[10px] text-on-surface-variant font-medium">Ít</span>
+<div class="flex gap-1">
+<div class="w-3 h-3 rounded-sm bg-surface-container"></div>
+<div class="w-3 h-3 rounded-sm bg-primary-container/40"></div>
+<div class="w-3 h-3 rounded-sm bg-primary-container"></div>
+<div class="w-3 h-3 rounded-sm bg-primary"></div>
+</div>
+<span class="text-[10px] text-on-surface-variant font-medium">Nhiều</span>
+</div>
+</div>
+<div class="flex">
+<!-- Row Labels -->
+<div class="flex flex-col justify-between py-1 pr-4 text-[10px] font-bold text-on-surface-variant/40 h-48">
+<span>T2</span>
+<span>T3</span>
+<span>T4</span>
+<span>T5</span>
+<span>T6</span>
+<span>T7</span>
+<span>CN</span>
+</div>
+<!-- Grid Container (7 rows x 12 columns) -->
+<div class="flex-1 grid grid-cols-12 gap-1.5 h-48">
+<!-- Column 1-12 generation simulation -->
+<!-- Repeat this logic for 7 rows x 12 cols = 84 tiles -->
+<script>
+                        const gridContainer = document.currentScript.parentElement;
+                        const intensities = [
+                            'bg-primary', 'bg-primary-container', 'bg-surface-container', 'bg-primary-container/60',
+                            'bg-primary', 'bg-primary', 'bg-primary-container/20', 'bg-surface-container',
+                            'bg-primary-container', 'bg-primary', 'bg-primary', 'bg-primary-container'
+                        ];
+                        for (let r = 0; r < 7; r++) {
+                            for (let c = 0; c < 12; c++) {
+                                const tile = document.createElement('div');
+                                // Pseudo-random adherence simulation based on row/column
+                                const rand = (r * c + c) % intensities.length;
+                                tile.className = `rounded-[3px] ${intensities[rand]} w-full h-full transition-all duration-300 hover:scale-125 hover:shadow-md cursor-pointer`;
+                                gridContainer.appendChild(tile);
+                            }
+                        }
+                    </script>
+</div>
+</div>
+<div class="flex justify-between pl-10 mt-3">
+<span class="mono-nums text-[10px] text-on-surface-variant/50">MAR</span>
+<span class="mono-nums text-[10px] text-on-surface-variant/50">APR</span>
+<span class="mono-nums text-[10px] text-on-surface-variant/50">MAY</span>
+</div>
+</section>
+<!-- Insights Bento Section -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="bg-primary-container text-on-primary-container p-6 rounded-2xl flex flex-col justify-between overflow-hidden relative group">
+<div class="relative z-10">
+<span class="material-symbols-outlined mb-4">auto_awesome</span>
+<h3 class="text-xl font-bold leading-tight">Phân tích chuyên sâu</h3>
+<p class="text-sm opacity-80 mt-2">Bạn thường tuân thủ tốt nhất vào buổi sáng từ Thứ Hai đến Thứ Sáu.</p>
+</div>
+<div class="absolute -right-10 -bottom-10 opacity-10 group-hover:scale-110 transition-transform duration-500">
+<span class="material-symbols-outlined text-[160px]">insights</span>
+</div>
+</div>
+<div class="bg-surface-container-high p-6 rounded-2xl border border-primary/5">
+<h3 class="text-on-surface font-bold">Mục tiêu kế tiếp</h3>
+<p class="text-xs text-on-surface-variant/70 mb-4">Next Milestone</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-primary">workspace_premium</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between text-xs font-mono mb-1">
+<span>14 ngày chuỗi</span>
+<span class="font-bold">5/14</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 35%"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 h-20 pb-safe bg-white/90 dark:bg-emerald-900/90 backdrop-blur-md shadow-2xl rounded-t-2xl">
+<a class="flex flex-col items-center justify-center text-emerald-800/50 dark:text-emerald-300/50 px-5 py-1.5 hover:text-emerald-700 dark:hover:text-emerald-200 transition-all duration-150" href="#">
+<span class="material-symbols-outlined mb-1">home</span>
+<span class="font-['Be_Vietnam_Pro'] text-[11px] font-medium">Trang chủ</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#86efac] dark:bg-emerald-700 text-[#006d3e] dark:text-emerald-50 rounded-2xl px-5 py-1.5 active:scale-95 transition-all duration-150" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">monitoring</span>
+<span class="font-['Be_Vietnam_Pro'] text-[11px] font-medium">Phân tích</span>
+</a>
+<a class="flex flex-col items-center justify-center text-emerald-800/50 dark:text-emerald-300/50 px-5 py-1.5 hover:text-emerald-700 dark:hover:text-emerald-200 transition-all duration-150" href="#">
+<span class="material-symbols-outlined mb-1">person</span>
+<span class="font-['Be_Vietnam_Pro'] text-[11px] font-medium">Cá nhân</span>
+</a>
+</nav>
+</body></html>

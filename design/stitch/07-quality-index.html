@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&amp;family=Geist+Mono:wght@400;500;600&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container": "#ddf4e3",
+                    "on-secondary-container": "#526a5b",
+                    "outline": "#6e7a70",
+                    "inverse-surface": "#213429",
+                    "primary-container": "#86efac",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed-dim": "#b2cdbb",
+                    "on-primary-fixed": "#00210f",
+                    "primary": "#006d3e",
+                    "inverse-on-surface": "#e0f6e6",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed": "#ffddb9",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed": "#2b1700",
+                    "error": "#ba1a1a",
+                    "on-primary": "#ffffff",
+                    "secondary": "#4c6455",
+                    "primary-fixed-dim": "#73db9a",
+                    "on-primary-container": "#006d3e",
+                    "outline-variant": "#bdcabe",
+                    "on-surface": "#0c1f15",
+                    "surface-bright": "#e8ffee",
+                    "tertiary": "#795831",
+                    "on-surface-variant": "#3e4a40",
+                    "surface-dim": "#c9e0cf",
+                    "on-secondary": "#ffffff",
+                    "surface-container-high": "#d7eedd",
+                    "on-tertiary-container": "#7a5931",
+                    "secondary-fixed": "#cee9d6",
+                    "surface-variant": "#d1e8d8",
+                    "surface-container-highest": "#d1e8d8",
+                    "on-tertiary-fixed-variant": "#5e411c",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed": "#8ff8b4",
+                    "surface-tint": "#006d3e",
+                    "on-primary-fixed-variant": "#00522d",
+                    "on-secondary-fixed": "#092014",
+                    "on-secondary-fixed-variant": "#354c3e",
+                    "surface-container-low": "#e2f9e8",
+                    "tertiary-fixed-dim": "#eabf8f",
+                    "on-background": "#0c1f15",
+                    "inverse-primary": "#73db9a",
+                    "secondary-container": "#cee9d6",
+                    "background": "#e8ffee",
+                    "surface": "#e8ffee",
+                    "on-error": "#ffffff",
+                    "tertiary-container": "#ffd2a1"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Be Vietnam Pro"],
+                    "display": ["Be Vietnam Pro"],
+                    "body": ["Be Vietnam Pro"],
+                    "label": ["Inter"],
+                    "mono": ["Geist Mono"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Be Vietnam Pro', sans-serif; }
+        .tabular-nums { font-variant-numeric: tabular-nums; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="bg-emerald-50 dark:bg-emerald-950 flex justify-between items-center w-full px-6 py-4 fixed top-0 z-50">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-emerald-900 dark:text-emerald-100" data-icon="clinical_notes">clinical_notes</span>
+<h1 class="text-xl font-bold tracking-tight text-emerald-900 dark:text-emerald-50">NutriAI</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-emerald-800/70 dark:text-emerald-200/70 hover:bg-emerald-100 dark:hover:bg-emerald-800 transition-colors px-3 py-1 rounded-xl flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="text-sm font-medium">Search</span>
+</button>
+</div>
+</header>
+<main class="max-w-4xl mx-auto px-6 pt-24">
+<!-- Hero Header -->
+<section class="mb-12">
+<h2 class="text-3xl font-extrabold text-on-surface tracking-tight mb-2">Chỉ số chất lượng độc lập</h2>
+<div class="text-on-surface/70 text-lg leading-relaxed max-w-2xl">
+                Independent Quality Index
+                <p class="mt-2 text-sm">
+                    Bảng xếp hạng các sản phẩm bổ sung dựa trên kiểm nghiệm bên thứ ba, độ tinh khiết và giá theo liều.
+                    <br/>
+<span class="opacity-70">Supplement rankings based on third-party testing, purity, and price per dose.</span>
+</p>
+</div>
+</section>
+<!-- Tier S Section -->
+<section class="mb-10">
+<div class="flex items-center gap-4 mb-6">
+<div class="bg-on-primary-fixed text-primary-fixed px-4 py-1 rounded-xl flex items-center gap-3">
+<span class="font-mono font-bold text-xl">S</span>
+<div class="w-px h-4 bg-primary-fixed/30"></div>
+<span class="text-xs font-bold uppercase tracking-widest">Xuất sắc | Excellent</span>
+</div>
+<div class="font-mono text-sm text-on-surface/60">SCORE 95+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 font-mono text-3xl font-bold text-primary tabular-nums">98</div>
+<div class="mb-6">
+<p class="font-mono text-[10px] tracking-tighter text-on-surface/50 uppercase">Thorne Research</p>
+<h3 class="text-lg font-bold leading-tight mt-1 line-clamp-2 max-w-[80%]">Multivitamin Elite A.M. &amp; P.M. Supplement</h3>
+</div>
+<div class="space-y-4">
+<div class="space-y-1">
+<div class="flex justify-between text-[10px] font-mono uppercase text-on-surface/60">
+<span>Kiểm nghiệm | Lab</span>
+<span class="tabular-nums">39/40</span>
+</div>
+<div class="h-1 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-on-primary-fixed w-[97%]"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-[10px] font-mono uppercase text-on-surface/60">
+<span>Thành phần | Ingredient</span>
+<span class="tabular-nums">38/40</span>
+</div>
+<div class="h-1 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[95%]"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-[10px] font-mono uppercase text-on-surface/60">
+<span>Giá/Liều | Price</span>
+<span class="tabular-nums">32/40</span>
+</div>
+<div class="h-1 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary-fixed-dim w-[80%]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 font-mono text-3xl font-bold text-primary tabular-nums">96</div>
+<div class="mb-6">
+<p class="font-mono text-[10px] tracking-tighter text-on-surface/50 uppercase">Momentous</p>
+<h3 class="text-lg font-bold leading-tight mt-1 line-clamp-2 max-w-[80%]">Omega-3 Fish Oil (NSF Certified)</h3>
+</div>
+<div class="space-y-4">
+<div class="space-y-1">
+<div class="flex justify-between text-[10px] font-mono uppercase text-on-surface/60">
+<span>Kiểm nghiệm | Lab</span>
+<span class="tabular-nums">40/40</span>
+</div>
+<div class="h-1 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-on-primary-fixed w-full"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-[10px] font-mono uppercase text-on-surface/60">
+<span>Thành phần | Ingredient</span>
+<span class="tabular-nums">37/40</span>
+</div>
+<div class="h-1 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[92%]"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-[10px] font-mono uppercase text-on-surface/60">
+<span>Giá/Liều | Price</span>
+<span class="tabular-nums">32/40</span>
+</div>
+<div class="h-1 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary-fixed-dim w-[80%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Tier A Section -->
+<section class="mb-10">
+<div class="flex items-center gap-4 mb-6">
+<div class="bg-primary text-on-primary px-4 py-1 rounded-xl flex items-center gap-3">
+<span class="font-mono font-bold text-xl">A</span>
+<div class="w-px h-4 bg-on-primary/30"></div>
+<span class="text-xs font-bold uppercase tracking-widest">Rất tốt | Very Good</span>
+</div>
+<div class="font-mono text-sm text-on-surface/60">SCORE 85-94</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Repeated Pattern for 4 items -->
+<div class="bg-surface-container-lowest p-6 rounded-xl relative">
+<div class="absolute top-0 right-0 p-4 font-mono text-2xl font-bold text-primary/80 tabular-nums">91</div>
+<div class="mb-6">
+<p class="font-mono text-[10px] tracking-tighter text-on-surface/50 uppercase">Life Extension</p>
+<h3 class="text-lg font-bold leading-tight mt-1 line-clamp-2 max-w-[80%]">BioActive Complete B-Complex</h3>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between text-[10px] font-mono uppercase text-on-surface/60"><span>Kiểm nghiệm</span><span class="tabular-nums">35/40</span></div>
+<div class="h-1 w-full bg-surface-container rounded-full overflow-hidden"><div class="h-full bg-primary w-[87%]"></div></div>
+<div class="flex justify-between text-[10px] font-mono uppercase text-on-surface/60"><span>Thành phần</span><span class="tabular-nums">32/40</span></div>
+<div class="h-1 w-full bg-surface-container rounded-full overflow-hidden"><div class="h-full bg-primary-fixed-dim w-[80%]"></div></div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl relative">
+<div class="absolute top-0 right-0 p-4 font-mono text-2xl font-bold text-primary/80 tabular-nums">89</div>
+<div class="mb-6">
+<p class="font-mono text-[10px] tracking-tighter text-on-surface/50 uppercase">NOW Foods</p>
+<h3 class="text-lg font-bold leading-tight mt-1 line-clamp-2 max-w-[80%]">Vitamin D-3 High Potency 5000 IU</h3>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between text-[10px] font-mono uppercase text-on-surface/60"><span>Kiểm nghiệm</span><span class="tabular-nums">36/40</span></div>
+<div class="h-1 w-full bg-surface-container rounded-full overflow-hidden"><div class="h-full bg-primary w-[90%]"></div></div>
+<div class="flex justify-between text-[10px] font-mono uppercase text-on-surface/60"><span>Giá/Liều</span><span class="tabular-nums">38/40</span></div>
+<div class="h-1 w-full bg-surface-container rounded-full overflow-hidden"><div class="h-full bg-on-primary-fixed w-[95%]"></div></div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl relative">
+<div class="absolute top-0 right-0 p-4 font-mono text-2xl font-bold text-primary/80 tabular-nums">87</div>
+<div class="mb-6">
+<p class="font-mono text-[10px] tracking-tighter text-on-surface/50 uppercase">Nordic Naturals</p>
+<h3 class="text-lg font-bold leading-tight mt-1 line-clamp-2 max-w-[80%]">Ultimate Omega, Lemon Flavor</h3>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between text-[10px] font-mono uppercase text-on-surface/60"><span>Thành phần</span><span class="tabular-nums">34/40</span></div>
+<div class="h-1 w-full bg-surface-container rounded-full overflow-hidden"><div class="h-full bg-primary w-[85%]"></div></div>
+<div class="flex justify-between text-[10px] font-mono uppercase text-on-surface/60"><span>Kiểm nghiệm</span><span class="tabular-nums">33/40</span></div>
+<div class="h-1 w-full bg-surface-container rounded-full overflow-hidden"><div class="h-full bg-primary-fixed-dim w-[82%]"></div></div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl relative">
+<div class="absolute top-0 right-0 p-4 font-mono text-2xl font-bold text-primary/80 tabular-nums">85</div>
+<div class="mb-6">
+<p class="font-mono text-[10px] tracking-tighter text-on-surface/50 uppercase">Pure Encapsulations</p>
+<h3 class="text-lg font-bold leading-tight mt-1 line-clamp-2 max-w-[80%]">Magnesium (Glycinate) Muscle &amp; Heart</h3>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between text-[10px] font-mono uppercase text-on-surface/60"><span>Kiểm nghiệm</span><span class="tabular-nums">32/40</span></div>
+<div class="h-1 w-full bg-surface-container rounded-full overflow-hidden"><div class="h-full bg-primary-fixed-dim w-[80%]"></div></div>
+<div class="flex justify-between text-[10px] font-mono uppercase text-on-surface/60"><span>Giá/Liều</span><span class="tabular-nums">30/40</span></div>
+<div class="h-1 w-full bg-surface-container rounded-full overflow-hidden"><div class="h-full bg-primary-fixed-dim w-[75%]"></div></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Tier B Section -->
+<section class="mb-10">
+<div class="flex items-center gap-4 mb-6">
+<div class="bg-primary-fixed-dim text-on-primary-fixed-variant px-4 py-1 rounded-xl flex items-center gap-3">
+<span class="font-mono font-bold text-xl">B</span>
+<div class="w-px h-4 bg-on-primary-fixed-variant/30"></div>
+<span class="text-xs font-bold uppercase tracking-widest">Khá | Good</span>
+</div>
+<div class="font-mono text-sm text-on-surface/60">SCORE 75-84</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="bg-surface-container-lowest p-6 rounded-xl relative">
+<div class="absolute top-0 right-0 p-4 font-mono text-2xl font-bold text-on-surface/60 tabular-nums">81</div>
+<div class="mb-6">
+<p class="font-mono text-[10px] tracking-tighter text-on-surface/50 uppercase">Nature Made</p>
+<h3 class="text-lg font-bold leading-tight mt-1 line-clamp-2 max-w-[80%]">Super C Complex with Rose Hips</h3>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between text-[10px] font-mono uppercase text-on-surface/60"><span>Kiểm nghiệm</span><span class="tabular-nums">28/40</span></div>
+<div class="h-1 w-full bg-surface-container rounded-full overflow-hidden"><div class="h-full bg-primary-fixed-dim w-[70%]"></div></div>
+</div>
+</div>
+<!-- Extra items for grid symmetry -->
+<div class="bg-surface-container-lowest p-6 rounded-xl relative opacity-80"><div class="animate-pulse bg-surface-container h-32 rounded-lg"></div></div>
+<div class="bg-surface-container-lowest p-6 rounded-xl relative opacity-80"><div class="animate-pulse bg-surface-container h-32 rounded-lg"></div></div>
+<div class="bg-surface-container-lowest p-6 rounded-xl relative opacity-80"><div class="animate-pulse bg-surface-container h-32 rounded-lg"></div></div>
+</div>
+</section>
+<!-- Tier C Section -->
+<section class="mb-20">
+<div class="flex items-center gap-4 mb-6">
+<div class="bg-surface-container-high text-on-surface-variant px-4 py-1 rounded-xl flex items-center gap-3">
+<span class="font-mono font-bold text-xl">C</span>
+<div class="w-px h-4 bg-on-surface-variant/30"></div>
+<span class="text-xs font-bold uppercase tracking-widest">Trung bình | Average</span>
+</div>
+<div class="font-mono text-sm text-on-surface/60">SCORE &lt;75</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="bg-surface-container-lowest/60 p-6 rounded-xl relative grayscale">
+<div class="absolute top-0 right-0 p-4 font-mono text-2xl font-bold text-on-surface/40 tabular-nums">68</div>
+<div class="mb-6">
+<p class="font-mono text-[10px] tracking-tighter text-on-surface/50 uppercase">Generic Pharmacy Brand</p>
+<h3 class="text-lg font-bold leading-tight mt-1 line-clamp-2 max-w-[80%]">Daily Multivitamin for Men</h3>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between text-[10px] font-mono uppercase text-on-surface/60"><span>Kiểm nghiệm</span><span class="tabular-nums">18/40</span></div>
+<div class="h-1 w-full bg-surface-container rounded-full overflow-hidden"><div class="h-full bg-outline-variant w-[45%]"></div></div>
+</div>
+</div>
+<div class="bg-surface-container-lowest/60 p-6 rounded-xl relative grayscale">
+<div class="absolute top-0 right-0 p-4 font-mono text-2xl font-bold text-on-surface/40 tabular-nums">64</div>
+<div class="mb-6">
+<p class="font-mono text-[10px] tracking-tighter text-on-surface/50 uppercase">Store Brand</p>
+<h3 class="text-lg font-bold leading-tight mt-1 line-clamp-2 max-w-[80%]">Standard Vitamin C 500mg</h3>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between text-[10px] font-mono uppercase text-on-surface/60"><span>Kiểm nghiệm</span><span class="tabular-nums">15/40</span></div>
+<div class="h-1 w-full bg-surface-container rounded-full overflow-hidden"><div class="h-full bg-outline-variant w-[38%]"></div></div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center bg-white dark:bg-zinc-950 px-2 pb-6 pt-2 border-t-0 rounded-t-xl shadow-[0_-4px_24px_rgba(0,0,0,0.04)]">
+<a class="flex flex-col items-center justify-center text-emerald-800/60 dark:text-emerald-400/50 px-4 py-1 hover:bg-emerald-50 dark:hover:bg-emerald-900/30 transition-all rounded-xl" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="home">home</span>
+<span class="text-[10px] uppercase tracking-wider font-semibold">Trang chủ | Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-emerald-200 dark:bg-emerald-900 text-emerald-900 dark:text-emerald-100 rounded-xl px-4 py-1" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="import_contacts">import_contacts</span>
+<span class="text-[10px] uppercase tracking-wider font-semibold">Thư viện | Library</span>
+</a>
+<a class="flex flex-col items-center justify-center text-emerald-800/60 dark:text-emerald-400/50 px-4 py-1 hover:bg-emerald-50 dark:hover:bg-emerald-900/30 transition-all rounded-xl" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="monitoring">monitoring</span>
+<span class="text-[10px] uppercase tracking-wider font-semibold">Phân tích | Insights</span>
+</a>
+<a class="flex flex-col items-center justify-center text-emerald-800/60 dark:text-emerald-400/50 px-4 py-1 hover:bg-emerald-50 dark:hover:bg-emerald-900/30 transition-all rounded-xl" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="text-[10px] uppercase tracking-wider font-semibold">Hồ sơ | Profile</span>
+</a>
+</nav>
+</body></html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=Geist+Mono:wght@100..900&amp;family=Be+Vietnam+Pro:wght@100..900&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container": "#ddf4e3",
+                    "on-background": "#0c1f15",
+                    "on-secondary-fixed": "#092014",
+                    "inverse-surface": "#213429",
+                    "outline": "#6e7a70",
+                    "tertiary-fixed": "#9fefff",
+                    "error": "#ba1a1a",
+                    "tertiary-container": "#76eaff",
+                    "secondary-fixed-dim": "#b2cdbb",
+                    "on-primary-fixed": "#00210f",
+                    "surface": "#e8ffee",
+                    "tertiary-fixed-dim": "#60d6eb",
+                    "on-error": "#ffffff",
+                    "inverse-on-surface": "#e0f6e6",
+                    "on-error-container": "#93000a",
+                    "on-primary-container": "#006d3e",
+                    "error-container": "#ffdad6",
+                    "outline-variant": "#bdcabe",
+                    "on-secondary": "#ffffff",
+                    "surface-dim": "#c9e0cf",
+                    "secondary": "#4c6455",
+                    "on-tertiary-container": "#006976",
+                    "primary-fixed": "#8ff8b4",
+                    "on-secondary-container": "#526a5b",
+                    "on-tertiary-fixed": "#001f24",
+                    "background": "#e8ffee",
+                    "tertiary": "#006876",
+                    "primary-fixed-dim": "#73db9a",
+                    "surface-variant": "#d1e8d8",
+                    "surface-container-highest": "#d1e8d8",
+                    "on-primary-fixed-variant": "#00522d",
+                    "primary-container": "#86efac",
+                    "surface-container-high": "#d7eedd",
+                    "secondary-container": "#cee9d6",
+                    "surface-container-low": "#e2f9e8",
+                    "on-surface-variant": "#3e4a40",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed-variant": "#354c3e",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface": "#0c1f15",
+                    "secondary-fixed": "#cee9d6",
+                    "on-tertiary-fixed-variant": "#004e59",
+                    "surface-bright": "#e8ffee",
+                    "inverse-primary": "#73db9a",
+                    "surface-tint": "#006d3e",
+                    "primary": "#006d3e",
+                    "on-primary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "sans": ["Geist", "Inter", "sans-serif"],
+                    "mono": ["Geist Mono", "monospace"],
+                    "headline": ["Be Vietnam Pro", "sans-serif"],
+                    "display": ["Be Vietnam Pro", "sans-serif"],
+                    "body": ["Be Vietnam Pro", "sans-serif"],
+                    "label": ["Inter", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .tabular-nums {
+            font-variant-numeric: tabular-nums;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-sans selection:bg-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-[#e8ffee] dark:bg-emerald-950 flex justify-between items-center px-6 py-4">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#006d3e] dark:text-emerald-400">search</span>
+<span class="font-['Geist_Sans'] font-black text-[#00210f] dark:text-emerald-100 text-xl tracking-tight">NutriAI</span>
+</div>
+<div class="flex-1 max-w-md mx-8 hidden md:block">
+<div class="relative flex items-center">
+<input class="w-full bg-surface-container-highest border-none rounded-xl px-4 py-2 text-sm focus:ring-2 focus:ring-primary transition-all" disabled="" placeholder="Tìm kiếm dưỡng chất..." type="text"/>
+</div>
+</div>
+<div class="h-10 w-10 rounded-full overflow-hidden border-2 border-primary-container">
+<img class="w-full h-full object-cover" data-alt="Close-up professional portrait of a medical researcher in a clean laboratory setting with soft bokeh" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBc_IGNzAH7SOonGBzAx6fwquRRRBE1yHwwkWGMyNT-8OApUCpO0lXIV40UXvGASk8oEE5S1DWlnxqNXnXj4vQn2YOkt9LzC90xjV2V4DgENZ3oU9Msj6GC9pKjASqD39vhYRYRZVZW1Fm6aT5eiqw5MdXHIJt5wTbWvq7rVJn2Nm6h_Ra3li-vrzMTCHRwhbVPIzTs_T2ArwkBGgb7-bKICtxJMjv_xP5EEFEGQYIkFpA28p5kxfztSGsD6d3W23RDCOqbV2XecSlE"/>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="min-h-screen pt-24 pb-32 px-6 flex flex-col items-center justify-center">
+<!-- Search Bar Mobile Persistence -->
+<div class="w-full max-w-lg mb-12 md:hidden">
+<div class="bg-surface-container-low rounded-2xl p-2 flex items-center gap-3">
+<span class="material-symbols-outlined text-outline ml-2">search</span>
+<span class="text-on-surface-variant/50 text-sm">Tìm kiếm thành phần, mã thuốc...</span>
+</div>
+</div>
+<!-- Empty State Card -->
+<div class="w-full max-w-xl bg-surface-container-lowest rounded-3xl p-10 text-center shadow-[0_20px_40px_rgba(12,31,21,0.04)] border border-outline-variant/10">
+<!-- Technical Illustration -->
+<div class="mb-8 flex justify-center">
+<div class="relative w-24 h-24 flex items-center justify-center bg-primary-container/20 rounded-full overflow-hidden">
+<!-- Subtle background "pulse" effect via layering -->
+<div class="absolute inset-0 bg-primary-container/10 scale-75 rounded-full"></div>
+<span class="material-symbols-outlined text-primary text-5xl" style="font-variation-settings: 'wght' 200;">eco</span>
+</div>
+</div>
+<!-- Heading & Subtext -->
+<div class="space-y-4">
+<h1 class="text-2xl font-headline font-bold text-on-primary-fixed tracking-tight">
+                    Cơ sở dữ liệu đang được nạp
+                </h1>
+<p class="text-sm font-sans text-on-surface-variant leading-relaxed max-w-sm mx-auto">
+                    Cơ sở dữ liệu đang được nạp tự động hằng ngày từ <span class="font-mono text-[11px] font-bold uppercase tracking-wider bg-surface-container px-1 rounded">NIH ODS</span>, <span class="font-mono text-[11px] font-bold uppercase tracking-wider bg-surface-container px-1 rounded">PubMed</span>, <span class="font-mono text-[11px] font-bold uppercase tracking-wider bg-surface-container px-1 rounded">OpenFDA</span>. 
+                </p>
+<div class="pt-2">
+<p class="text-xs text-on-surface-variant/70 italic">
+                        The clinical database is being automatically synchronized from NIH ODS, PubMed, and OpenFDA. Please check back later.
+                    </p>
+</div>
+</div>
+<!-- Evidence Badge (Design System Specific) -->
+<div class="mt-10 flex justify-center gap-2">
+<div class="flex items-center gap-1.5 px-3 py-1 bg-tertiary-container/30 rounded-sm">
+<span class="material-symbols-outlined text-[14px] text-on-tertiary-container">sync</span>
+<span class="font-mono text-[10px] text-on-tertiary-container uppercase font-bold tabular-nums">Sync Status: 42%</span>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1 bg-secondary-container rounded-sm">
+<span class="material-symbols-outlined text-[14px] text-on-secondary-container">database</span>
+<span class="font-mono text-[10px] text-on-secondary-container uppercase font-bold">Ref: ST-992</span>
+</div>
+</div>
+</div>
+<!-- Secondary Info -->
+<div class="mt-12 text-center max-w-xs">
+<h3 class="font-mono text-[10px] uppercase tracking-[0.2em] text-outline mb-4">Laboratory Precision</h3>
+<div class="grid grid-cols-3 gap-8">
+<div>
+<div class="text-xl font-mono font-bold tabular-nums text-on-primary-fixed">1.2M</div>
+<div class="text-[9px] text-on-surface-variant uppercase font-bold">Articles</div>
+</div>
+<div>
+<div class="text-xl font-mono font-bold tabular-nums text-on-primary-fixed">84k</div>
+<div class="text-[9px] text-on-surface-variant uppercase font-bold">Nutrients</div>
+</div>
+<div>
+<div class="text-xl font-mono font-bold tabular-nums text-on-primary-fixed">15s</div>
+<div class="text-[9px] text-on-surface-variant uppercase font-bold">Refresh</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-[#e2f9e8] dark:bg-emerald-900/90 backdrop-blur-md shadow-[0_-10px_30px_rgba(12,31,21,0.04)] rounded-t-3xl">
+<a class="flex flex-col items-center justify-center text-emerald-900/50 dark:text-emerald-500/50 px-3 py-2 transition-transform active:scale-95" href="#">
+<span class="material-symbols-outlined mb-1">grid_view</span>
+<div class="font-['Geist_Sans'] text-[10px] text-center leading-tight">
+                T\u1ed5ng quan<br/><span class="opacity-70">Overview</span>
+</div>
+</a>
+<a class="flex flex-col items-center justify-center text-emerald-900/50 dark:text-emerald-500/50 px-3 py-2 transition-transform active:scale-95" href="#">
+<span class="material-symbols-outlined mb-1">description</span>
+<div class="font-['Geist_Sans'] text-[10px] text-center leading-tight">
+                Nh\u1eadt k\u00fd<br/><span class="opacity-70">Journal</span>
+</div>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#86efac] dark:bg-emerald-800 text-[#00210f] dark:text-emerald-50 rounded-xl px-3 py-2 transition-transform active:scale-95 shadow-sm" href="#">
+<span class="material-symbols-outlined mb-1">biotech</span>
+<div class="font-['Geist_Sans'] text-[10px] text-center leading-tight font-bold">
+                Ph\u00f2ng lab<br/><span class="opacity-70">Lab</span>
+</div>
+</a>
+<a class="flex flex-col items-center justify-center text-emerald-900/50 dark:text-emerald-500/50 px-3 py-2 transition-transform active:scale-95" href="#">
+<span class="material-symbols-outlined mb-1">person</span>
+<div class="font-['Geist_Sans'] text-[10px] text-center leading-tight">
+                H\u1ed3 s\u01a1<br/><span class="opacity-70">Profile</span>
+</div>
+</a>
+</nav>
+</body></html>

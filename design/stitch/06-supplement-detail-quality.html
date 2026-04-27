@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&amp;family=Geist+Sans:wght@100..900&amp;family=Be+Vietnam+Pro:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#e8ffee",
+                        "surface": "#e8ffee",
+                        "on-tertiary-container": "#7a5931",
+                        "background": "#e8ffee",
+                        "inverse-on-surface": "#e0f6e6",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-surface": "#213429",
+                        "inverse-primary": "#73db9a",
+                        "surface-dim": "#c9e0cf",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#73db9a",
+                        "surface-container-high": "#d7eedd",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#bdcabe",
+                        "on-background": "#0c1f15",
+                        "primary": "#006d3e",
+                        "error": "#ba1a1a",
+                        "surface-container-highest": "#d1e8d8",
+                        "surface-container": "#ddf4e3",
+                        "secondary-container": "#cee9d6",
+                        "on-tertiary-fixed": "#2b1700",
+                        "on-tertiary": "#ffffff",
+                        "outline": "#6e7a70",
+                        "on-primary-fixed": "#00210f",
+                        "tertiary-fixed": "#ffddb9",
+                        "surface-variant": "#d1e8d8",
+                        "on-tertiary-fixed-variant": "#5e411c",
+                        "secondary-fixed": "#cee9d6",
+                        "secondary": "#4c6455",
+                        "on-surface-variant": "#3e4a40",
+                        "surface-container-low": "#e2f9e8",
+                        "tertiary": "#795831",
+                        "primary-container": "#86efac",
+                        "secondary-fixed-dim": "#b2cdbb",
+                        "error-container": "#ffdad6",
+                        "tertiary-container": "#ffd2a1",
+                        "surface-tint": "#006d3e",
+                        "on-primary-fixed-variant": "#00522d",
+                        "on-secondary-fixed": "#092014",
+                        "on-secondary-container": "#526a5b",
+                        "on-primary-container": "#006d3e",
+                        "primary-fixed": "#8ff8b4",
+                        "on-secondary": "#ffffff",
+                        "on-surface": "#0c1f15",
+                        "tertiary-fixed-dim": "#eabf8f",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#354c3e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Geist Sans", "Be Vietnam Pro"],
+                        "display": ["Geist Sans", "Be Vietnam Pro"],
+                        "body": ["Geist Sans", "Inter"],
+                        "label": ["Geist Sans", "Inter"],
+                        "mono": ["Geist Mono", "monospace"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .tabular-nums { font-variant-numeric: tabular-nums; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="docked w-full top-0 pt-4 pb-2 flex flex-col items-center px-6 w-full max-w-full bg-[#e8ffee] dark:bg-[#0c1f15]">
+<div class="flex items-center justify-between w-full max-w-2xl">
+<button class="active:scale-95 transition-transform p-2 rounded-full hover:bg-[#d5f0dd] dark:hover:bg-[#1a2e23]">
+<span class="material-symbols-outlined text-[#006d3e] dark:text-[#86efac]">arrow_back</span>
+</button>
+<div class="flex flex-col items-center">
+<h1 class="font-['Geist_Sans'] text-[#0c1f15] dark:text-[#e8ffee] text-lg font-semibold tracking-tight">Magnesium Glycinate 200mg</h1>
+<p class="text-on-surface-variant text-xs font-mono uppercase tracking-widest">BY NOW FOODS</p>
+</div>
+<button class="active:scale-95 transition-transform p-2 rounded-full hover:bg-[#d5f0dd] dark:hover:bg-[#1a2e23]">
+<span class="material-symbols-outlined text-[#006d3e] dark:text-[#86efac]">more_vert</span>
+</button>
+</div>
+<!-- Tabs Section -->
+<nav class="flex w-full max-w-2xl mt-6">
+<div class="flex-1 text-center py-3 text-[#526a5b] dark:text-[#a0b5a8] font-medium transition-colors duration-200 cursor-pointer">
+                Thành phần
+            </div>
+<div class="flex-1 text-center py-3 text-[#526a5b] dark:text-[#a0b5a8] font-medium transition-colors duration-200 cursor-pointer">
+                Bằng chứng
+            </div>
+<div class="flex-1 text-center py-3 text-[#006d3e] dark:text-[#86efac] font-bold border-b-2 border-[#006d3e] transition-colors duration-200 cursor-pointer">
+                Chất lượng
+            </div>
+</nav>
+</header>
+<main class="max-w-2xl mx-auto px-6 pt-8 space-y-6">
+<!-- Clinical Header Section -->
+<section class="flex flex-col gap-2">
+<span class="font-mono text-[10px] text-primary uppercase tracking-[0.2em] font-bold">Clinical Audit Log</span>
+<h2 class="text-3xl font-display font-bold tracking-tight text-on-background leading-tight">Chứng chỉ &amp; Kiểm định Chất lượng</h2>
+</section>
+<!-- Score Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl shadow-[0_12px_32px_rgba(12,31,21,0.04)] border border-outline-variant/10">
+<div class="flex flex-col gap-4">
+<div class="flex items-start justify-between">
+<p class="text-sm font-semibold text-on-surface-variant leading-tight">Kiểm nghiệm bên thứ ba</p>
+<span class="material-symbols-outlined text-primary text-xl">verified</span>
+</div>
+<div class="flex items-baseline gap-1">
+<span class="font-mono text-2xl font-bold tabular-nums">32</span>
+<span class="font-mono text-on-surface-variant text-sm">/ 40</span>
+</div>
+<div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 80%"></div>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl shadow-[0_12px_32px_rgba(12,31,21,0.04)] border border-outline-variant/10">
+<div class="flex flex-col gap-4">
+<div class="flex items-start justify-between">
+<p class="text-sm font-semibold text-on-surface-variant leading-tight">Chất lượng thành phần</p>
+<span class="material-symbols-outlined text-primary text-xl">science</span>
+</div>
+<div class="flex items-baseline gap-1">
+<span class="font-mono text-2xl font-bold tabular-nums">24</span>
+<span class="font-mono text-on-surface-variant text-sm">/ 30</span>
+</div>
+<div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 80%"></div>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl shadow-[0_12px_32px_rgba(12,31,21,0.04)] border border-outline-variant/10">
+<div class="flex flex-col gap-4">
+<div class="flex items-start justify-between">
+<p class="text-sm font-semibold text-on-surface-variant leading-tight">Hiệu quả chi phí</p>
+<span class="material-symbols-outlined text-primary text-xl">payments</span>
+</div>
+<div class="flex items-baseline gap-1">
+<span class="font-mono text-2xl font-bold tabular-nums">22</span>
+<span class="font-mono text-on-surface-variant text-sm">/ 30</span>
+</div>
+<div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 73%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Wide Summary Card -->
+<div class="bg-surface-container p-6 rounded-xl space-y-6">
+<div class="flex items-center justify-between">
+<div>
+<p class="text-on-surface-variant font-semibold text-sm uppercase tracking-wider">Điểm tổng</p>
+<p class="text-on-surface text-xs mt-1">Tính toán dựa trên chuẩn Labdoor &amp; NSF</p>
+</div>
+<div class="bg-primary-container px-6 py-2 rounded-full flex items-center gap-2 border border-primary/10 shadow-sm">
+<span class="font-display font-black text-on-primary-container text-2xl tracking-tighter">A</span>
+<span class="w-px h-6 bg-on-primary-container/20"></span>
+<span class="font-mono font-bold text-on-primary-container text-xl tabular-nums">78</span>
+</div>
+</div>
+<div class="pt-4 border-t border-on-surface/5">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant text-sm" style="font-variation-settings: 'FILL' 1;">info</span>
+<p class="text-[11px] font-medium text-on-surface-variant leading-relaxed italic">
+                        Phương pháp kiểm định áp dụng quy trình sắc ký lỏng hiệu năng cao (HPLC) để xác minh độ tinh khiết của Magnesium Glycinate.
+                    </p>
+</div>
+</div>
+</div>
+<!-- Ingredient Evidence Section -->
+<section class="space-y-4">
+<div class="flex items-center justify-between">
+<h3 class="font-display font-bold text-lg">Hồ sơ sản xuất</h3>
+<span class="font-mono text-[10px] text-on-surface-variant">ID: NOW-MG-2024</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="bg-surface-container-low p-4 rounded-xl flex items-center gap-4">
+<div class="bg-white p-2 rounded-lg">
+<span class="material-symbols-outlined text-primary">factory</span>
+</div>
+<div>
+<p class="text-xs font-mono text-on-surface-variant uppercase tracking-tighter">Manufacturing</p>
+<p class="font-semibold text-sm">GMP Certified Facility</p>
+</div>
+</div>
+<div class="bg-surface-container-low p-4 rounded-xl flex items-center gap-4">
+<div class="bg-white p-2 rounded-lg">
+<span class="material-symbols-outlined text-primary">eco</span>
+</div>
+<div>
+<p class="text-xs font-mono text-on-surface-variant uppercase tracking-tighter">Dietary Profile</p>
+<p class="font-semibold text-sm">Non-GMO &amp; Vegan</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Abstract Data Visual -->
+<div class="relative w-full h-32 bg-white rounded-xl overflow-hidden shadow-[0_12px_32px_rgba(12,31,21,0.04)] border border-outline-variant/10">
+<div class="absolute inset-0 flex items-center justify-center opacity-10">
+<div class="w-full h-full" style="background-image: radial-gradient(circle at 2px 2px, #006d3e 1px, transparent 0); background-size: 24px 24px;"></div>
+</div>
+<div class="absolute inset-0 flex flex-col items-center justify-center text-center p-6">
+<p class="font-mono text-[10px] uppercase tracking-widest text-primary mb-1">Authenticity Scan</p>
+<p class="text-sm text-on-surface-variant font-medium">Bản quét phân tử mẫu đối chứng #9928-X</p>
+<div class="flex gap-1 mt-3">
+<div class="w-8 h-1 bg-primary rounded-full"></div>
+<div class="w-12 h-1 bg-primary rounded-full"></div>
+<div class="w-4 h-1 bg-primary/30 rounded-full"></div>
+<div class="w-16 h-1 bg-primary rounded-full"></div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 py-3 bg-[#e8ffee] dark:bg-[#0c1f15] z-50 rounded-t-[1.5rem] shadow-lg">
+<div class="flex flex-col items-center justify-center text-[#526a5b] dark:text-[#a0b5a8] px-5 py-1.5 active:scale-90 transition-all duration-150 hover:text-[#006d3e] dark:hover:text-[#86efac]">
+<span class="material-symbols-outlined">home</span>
+<span class="font-['Geist_Sans'] text-[11px] font-medium tracking-wide uppercase mt-1">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#526a5b] dark:text-[#a0b5a8] px-5 py-1.5 active:scale-90 transition-all duration-150 hover:text-[#006d3e] dark:hover:text-[#86efac]">
+<span class="material-symbols-outlined">search</span>
+<span class="font-['Geist_Sans'] text-[11px] font-medium tracking-wide uppercase mt-1">Search</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-[#86efac] dark:bg-[#006d3e] text-[#0c1f15] dark:text-[#ffffff] rounded-[1.25rem] px-5 py-1.5 transition-all active:scale-90 duration-150">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">local_library</span>
+<span class="font-['Geist_Sans'] text-[11px] font-medium tracking-wide uppercase mt-1">Library</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#526a5b] dark:text-[#a0b5a8] px-5 py-1.5 active:scale-90 transition-all duration-150 hover:text-[#006d3e] dark:hover:text-[#86efac]">
+<span class="material-symbols-outlined">person</span>
+<span class="font-['Geist_Sans'] text-[11px] font-medium tracking-wide uppercase mt-1">Profile</span>
+</div>
+</nav>
+</body></html>
