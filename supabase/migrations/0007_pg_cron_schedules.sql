@@ -53,13 +53,15 @@ end;
 $$;
 
 -- Drop any prior schedules so this migration is idempotent on replay.
+-- The loop variable is `_id` (not `jobid`) to avoid an ambiguous column
+-- reference against `cron.job.jobid`.
 do $$
 declare
-  jobid bigint;
+  _id bigint;
 begin
-  for jobid in select jobid from cron.job where jobname like 'nutriai-%'
+  for _id in select j.jobid from cron.job j where j.jobname like 'nutriai-%'
   loop
-    perform cron.unschedule(jobid);
+    perform cron.unschedule(_id);
   end loop;
 end$$;
 
