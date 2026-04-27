@@ -49,9 +49,9 @@ export async function GET(request: Request) {
     errors: 0,
     slice_start_query: slice[0],
   };
-  // Temporary diagnostic: capture the first 3 error messages for the
-  // response body so we can debug without runtime logs. Remove once
-  // ingestion is verified end-to-end.
+  // First 3 error messages are surfaced in the response body so cron
+  // failures are observable without runtime log access. Logs still
+  // capture the full stack via console.error.
   const sampleErrors: string[] = [];
 
   for (const query of slice) {
@@ -86,5 +86,9 @@ export async function GET(request: Request) {
     }
   }
 
-  return Response.json({ ok: true, stats, sampleErrors });
+  return Response.json({
+    ok: true,
+    stats,
+    ...(sampleErrors.length > 0 ? { sampleErrors } : {}),
+  });
 }
