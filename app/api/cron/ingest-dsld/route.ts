@@ -49,6 +49,10 @@ export async function GET(request: Request) {
     errors: 0,
     slice_start_query: slice[0],
   };
+  // Temporary diagnostic: capture the first 3 error messages for the
+  // response body so we can debug without runtime logs. Remove once
+  // ingestion is verified end-to-end.
+  const sampleErrors: string[] = [];
 
   for (const query of slice) {
     stats.queries += 1;
@@ -63,14 +67,24 @@ export async function GET(request: Request) {
           if (created) stats.supplements_created += 1;
         } catch (err) {
           stats.errors += 1;
+          if (sampleErrors.length < 3) {
+            sampleErrors.push(
+              `${hit.dsldId}: ${(err as Error).message ?? String(err)}`
+            );
+          }
           console.error(`[ingest-dsld] ${hit.dsldId} failed:`, err);
         }
       }
     } catch (err) {
       stats.errors += 1;
+      if (sampleErrors.length < 3) {
+        sampleErrors.push(
+          `query "${query}": ${(err as Error).message ?? String(err)}`
+        );
+      }
       console.error(`[ingest-dsld] query "${query}" failed:`, err);
     }
   }
 
-  return Response.json({ ok: true, stats });
+  return Response.json({ ok: true, stats, sampleErrors });
 }
