@@ -22,6 +22,13 @@ create extension if not exists "vector"   with schema extensions;
 create extension if not exists "pg_trgm"  with schema extensions;
 create extension if not exists "pgcrypto" with schema extensions;
 
+-- The Supabase migration runner uses a tighter search_path than the
+-- runtime DB roles, so `vector`, `gin_trgm_ops`, and `vector_cosine_ops`
+-- aren't visible by default. Add `extensions` for this transaction so
+-- column types and operator classes resolve without schema-qualifying
+-- every reference.
+set local search_path = public, extensions;
+
 -- Re-state the timestamp helper from 0001 so this migration is
 -- self-contained when replayed in isolation. `create or replace` is
 -- idempotent and won't conflict with the original definition.

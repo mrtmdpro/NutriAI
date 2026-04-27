@@ -3,6 +3,11 @@
 create extension if not exists "vector"   with schema extensions;
 create extension if not exists "pgcrypto" with schema extensions;
 
+-- Migration runner has a tighter search_path; expose `extensions`
+-- for this transaction so the `vector` type (used in the function
+-- signature) and the `<=>` cosine operator resolve.
+set local search_path = public, extensions;
+
 ----------------------------------------------------------------------
 -- chat_message_log: rate-limit accounting per user
 ----------------------------------------------------------------------
