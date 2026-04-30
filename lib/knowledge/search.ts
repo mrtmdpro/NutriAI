@@ -657,6 +657,7 @@ export async function getIngredientPageBySlug(input: {
     publishedAt: string;
     updatedAt: string;
   } | null;
+  imageUrl: string | null;
   supplements: RankedSupplement[];
   evidence: IngredientEvidence[];
 } | null> {
@@ -699,7 +700,7 @@ export async function getIngredientPageBySlug(input: {
 
   const { data: pageRow, error: pageErr } = await supabase
     .from("ingredient_pages")
-    .select("body_vn, body_en, kol, published_at, updated_at")
+    .select("body_vn, body_en, kol, published_at, updated_at, image_url")
     .eq("ingredient_id", ing.id)
     .maybeSingle();
   if (pageErr) {
@@ -712,6 +713,7 @@ export async function getIngredientPageBySlug(input: {
     kol: string | null;
     published_at: string;
     updated_at: string;
+    image_url: string | null;
   };
   const page = (pageRow ?? null) as PageRow | null;
 
@@ -743,6 +745,7 @@ export async function getIngredientPageBySlug(input: {
             updatedAt: page.updated_at,
           }
         : null,
+    imageUrl: page?.image_url ?? null,
     supplements,
     evidence,
   };

@@ -1,5 +1,6 @@
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { ExternalLink } from "lucide-react";
@@ -49,7 +50,7 @@ export default async function IngredientDetailPage({
   const data = await getIngredientPageBySlug({ slug, locale });
   if (!data) notFound();
 
-  const { ingredient, page, supplements, evidence } = data;
+  const { ingredient, page, imageUrl, supplements, evidence } = data;
 
   const t = await getTranslations("IngredientPage");
   const tCommon = await getTranslations("Common");
@@ -64,39 +65,61 @@ export default async function IngredientDetailPage({
   return (
     <AppShell>
       <section className="bg-accent/20 border-border border-b">
-        <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6 sm:py-14">
+        <div
+          className={`mx-auto px-4 py-10 sm:px-6 sm:py-14 ${
+            imageUrl ? "max-w-5xl" : "max-w-3xl"
+          }`}
+        >
           <Button asChild variant="ghost" size="xs" className="mb-3 self-start">
             <Link href="/search">← {tCommon("back")}</Link>
           </Button>
-          <div className="flex flex-col gap-3">
-            <Badge variant="outline" className="w-fit">
-              {categoryLabel(ingredient.category)}
-            </Badge>
-            <h1 className="text-foreground text-3xl font-semibold tracking-tight sm:text-4xl">
-              {ingredient.name}
-            </h1>
-            {ingredient.description && (
-              <p className="text-muted-foreground max-w-2xl text-sm leading-relaxed sm:text-base">
-                {ingredient.description}
-              </p>
-            )}
-            <div className="text-muted-foreground flex flex-wrap items-center gap-3 text-xs">
-              {doseRange && (
-                <span>
-                  {t("typicalDose")}: <span className="text-foreground font-medium">{doseRange}</span>
-                </span>
+          <div
+            className={`flex flex-col gap-6 ${
+              imageUrl ? "md:grid md:grid-cols-[1fr_minmax(0,18rem)] md:items-center md:gap-10" : ""
+            }`}
+          >
+            <div className="flex min-w-0 flex-col gap-3">
+              <Badge variant="outline" className="w-fit">
+                {categoryLabel(ingredient.category)}
+              </Badge>
+              <h1 className="text-foreground text-3xl font-semibold tracking-tight sm:text-4xl">
+                {ingredient.name}
+              </h1>
+              {ingredient.description && (
+                <p className="text-muted-foreground max-w-2xl text-sm leading-relaxed sm:text-base">
+                  {ingredient.description}
+                </p>
               )}
-              {page?.kol && (
-                <span>
-                  · {t("by")} <span className="text-foreground font-medium">{page.kol}</span>
-                </span>
-              )}
-              {page?.publishedAt && (
-                <span>
-                  · {t("publishedAt")} {formatDate(page.publishedAt, locale)}
-                </span>
-              )}
+              <div className="text-muted-foreground flex flex-wrap items-center gap-3 text-xs">
+                {doseRange && (
+                  <span>
+                    {t("typicalDose")}: <span className="text-foreground font-medium">{doseRange}</span>
+                  </span>
+                )}
+                {page?.kol && (
+                  <span>
+                    · {t("by")} <span className="text-foreground font-medium">{page.kol}</span>
+                  </span>
+                )}
+                {page?.publishedAt && (
+                  <span>
+                    · {t("publishedAt")} {formatDate(page.publishedAt, locale)}
+                  </span>
+                )}
+              </div>
             </div>
+            {imageUrl && (
+              <div className="bg-background border-border relative aspect-[16/9] overflow-hidden rounded-2xl border md:aspect-square">
+                <Image
+                  src={imageUrl}
+                  alt={ingredient.name}
+                  fill
+                  className="object-cover"
+                  sizes="(min-width: 768px) 18rem, 100vw"
+                  priority
+                />
+              </div>
+            )}
           </div>
         </div>
       </section>
