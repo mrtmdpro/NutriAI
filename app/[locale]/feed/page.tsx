@@ -1,5 +1,6 @@
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { Play, ArrowRight } from "lucide-react";
+import { Link } from "@/i18n/navigation";
 import { AppShell } from "@/components/app-shell";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -65,6 +66,7 @@ export default async function FeedPage({
                     >
                       <ArticleCard
                         article={a}
+                        readMoreLabel={t("readMore")}
                         watchLabel={t("watch")}
                         byLabel={t("by")}
                         videoLabel={t("video")}
@@ -84,6 +86,7 @@ export default async function FeedPage({
                   <ArticleCard
                     key={a.id}
                     article={a}
+                    readMoreLabel={t("readMore")}
                     watchLabel={t("watch")}
                     byLabel={t("by")}
                     videoLabel={t("video")}
@@ -100,26 +103,30 @@ export default async function FeedPage({
 
 function ArticleCard({
   article,
+  readMoreLabel,
   watchLabel,
   byLabel,
   videoLabel,
 }: Readonly<{
   article: {
+    slug: string;
     title: string;
     body: string;
     kol: string | null;
     videoUrl: string | null;
     publishedAt: string;
   };
+  readMoreLabel: string;
   watchLabel: string;
   byLabel: string;
   videoLabel: string;
 }>) {
+  const isVideo = !!article.videoUrl;
   const inner = (
     <Card className="hover:border-primary/40 hover:shadow-sm h-full transition-all group-focus-visible:ring-2 group-focus-visible:ring-ring">
       <CardContent className="flex h-full flex-col gap-2.5">
         <div className="flex items-center gap-2">
-          {article.videoUrl && (
+          {isVideo && (
             <Badge variant="outline" className="gap-1">
               <Play className="size-3" aria-hidden />
               {videoLabel}
@@ -139,26 +146,23 @@ function ArticleCard({
             {article.body}
           </p>
         )}
-        {article.videoUrl && (
-          <div className="text-primary mt-auto inline-flex items-center gap-1 text-xs font-medium">
-            {watchLabel}
-            <ArrowRight
-              className="size-3 transition-transform group-hover:translate-x-0.5"
-              aria-hidden
-            />
-          </div>
-        )}
+        <div className="text-primary mt-auto inline-flex items-center gap-1 text-xs font-medium">
+          {isVideo ? watchLabel : readMoreLabel}
+          <ArrowRight
+            className="size-3 transition-transform group-hover:translate-x-0.5"
+            aria-hidden
+          />
+        </div>
       </CardContent>
     </Card>
   );
 
-  // Article detail pages are scheduled for a later sprint. Until then,
-  // only video articles get a real link target; text articles render
-  // their preview without a "Read more" lie.
-  if (article.videoUrl) {
+  // Video → external link (YouTube / KOL channel).
+  // Otherwise → internal article detail page at /[locale]/articles/[slug].
+  if (isVideo) {
     return (
       <a
-        href={article.videoUrl}
+        href={article.videoUrl!}
         target="_blank"
         rel="noopener noreferrer"
         className="group block focus-visible:outline-none"
@@ -167,5 +171,12 @@ function ArticleCard({
       </a>
     );
   }
-  return <div className="group block">{inner}</div>;
+  return (
+    <Link
+      href={`/articles/${article.slug}`}
+      className="group block focus-visible:outline-none"
+    >
+      {inner}
+    </Link>
+  );
 }

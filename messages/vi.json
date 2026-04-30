@@ -106,6 +106,17 @@
     "saved": "Đã lưu phác đồ.",
     "saveFailed": "Không thể lưu phác đồ."
   },
+  "Article": {
+    "by": "bởi",
+    "publishedAt": "Đăng ngày",
+    "rankingHeading": "Xếp hạng sản phẩm chứa {ingredient}",
+    "rankingSubtitle": "So sánh các sản phẩm trên thị trường Việt Nam dựa trên kiểm nghiệm bên thứ ba, độ tinh khiết và giá theo liều.",
+    "rankingEmpty": "Chưa có sản phẩm nào được xếp hạng cho hoạt chất này.",
+    "viewAllByIngredient": "Xem tất cả sản phẩm chứa {ingredient}",
+    "tier": "Mức",
+    "score": "Điểm",
+    "perDose": "mỗi liều"
+  },
   "Pricing": {
     "title": "Bảng giá NutriAI",
     "subtitle": "Hỗ trợ NutriAI để mở khoá toàn bộ tính năng nâng cao.",

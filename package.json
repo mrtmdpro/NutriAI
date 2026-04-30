@@ -11,6 +11,7 @@
     "start": "next start",
     "lint": "eslint",
     "stitch:generate": "tsx --env-file=.env --env-file-if-exists=.env.local scripts/stitch-generate.mts",
+    "seed:knowledge": "tsx --env-file=.env.local scripts/seed-knowledge.mts",
     "db:types": "npx -y supabase gen types typescript --linked > lib/supabase/database.types.ts",
     "test:e2e": "playwright test",
     "test:e2e:install": "playwright install chromium"
@@ -33,6 +34,8 @@
     "next-themes": "latest",
     "radix-ui": "latest",
     "react": "19.2.4",
+    "react-markdown": "latest",
+    "remark-gfm": "latest",
     "react-dom": "19.2.4",
     "recharts": "latest",
     "resend": "latest",

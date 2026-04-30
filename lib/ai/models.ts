@@ -15,18 +15,18 @@ import { openai } from "@ai-sdk/openai";
  * validate at module load so the rest of the app boots without AI.
  */
 
-function useGateway(): boolean {
+function gatewayConfigured(): boolean {
   const key = process.env.AI_GATEWAY_API_KEY;
   return typeof key === "string" && key.length > 0;
 }
 
 export function chatModel(modelId = "gpt-4o-mini") {
-  if (useGateway()) return `openai/${modelId}` as const;
+  if (gatewayConfigured()) return `openai/${modelId}` as const;
   return openai(modelId);
 }
 
 export function embeddingModel(modelId = "text-embedding-3-small") {
-  if (useGateway()) return `openai/${modelId}` as const;
+  if (gatewayConfigured()) return `openai/${modelId}` as const;
   return openai.embedding(modelId);
 }
 

@@ -129,3 +129,45 @@
     @apply font-sans;
   }
 }
+
+/* Lightweight prose styling for markdown-rendered article bodies.
+ * Scoped to .prose-styled so it doesn't affect shadcn primitives. */
+.prose-styled h2 {
+  @apply text-foreground mt-8 mb-3 text-xl font-semibold tracking-tight first:mt-0 sm:text-2xl;
+}
+.prose-styled h3 {
+  @apply text-foreground mt-6 mb-2 text-base font-semibold tracking-tight sm:text-lg;
+}
+.prose-styled p {
+  @apply text-foreground/90 mb-4 leading-relaxed;
+}
+.prose-styled ul {
+  @apply mb-4 ml-5 list-disc space-y-2;
+}
+.prose-styled ol {
+  @apply mb-4 ml-5 list-decimal space-y-2;
+}
+.prose-styled li {
+  @apply text-foreground/90 leading-relaxed;
+}
+.prose-styled li > p {
+  @apply mb-1;
+}
+.prose-styled strong {
+  @apply text-foreground font-semibold;
+}
+.prose-styled em {
+  @apply italic;
+}
+.prose-styled a {
+  @apply text-primary underline-offset-2 hover:underline;
+}
+.prose-styled hr {
+  @apply border-border my-8;
+}
+.prose-styled blockquote {
+  @apply border-primary/40 text-muted-foreground my-4 border-l-4 pl-4 italic;
+}
+.prose-styled code {
+  @apply bg-muted rounded px-1.5 py-0.5 font-mono text-sm;
+}

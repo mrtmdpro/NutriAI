@@ -439,6 +439,215 @@ export async function listQualityIndex(input: { locale: Locale }): Promise<
     });
 }
 
+/**
+ * Fetch a single article by slug, with the ingredient/supplement it
+ * links to (if any). Used by /[locale]/articles/[slug].
+ */
+export async function getArticleBySlug(input: {
+  slug: string;
+  locale: Locale;
+}): Promise<{
+  id: string;
+  slug: string;
+  title: string;
+  body: string;
+  kol: string | null;
+  videoUrl: string | null;
+  publishedAt: string;
+  ingredientSlug: string | null;
+  ingredientName: string | null;
+  supplementSlug: string | null;
+} | null> {
+  let supabase;
+  try {
+    supabase = await createClient();
+  } catch (err) {
+    if (isMissingEnvError(err)) return null;
+    throw err;
+  }
+
+  const { data, error } = await supabase
+    .from("articles")
+    .select(
+      `
+      id, slug, title_vn, title_en, body_vn, body_en, kol, video_url, published_at,
+      ingredients ( slug, name_vn, name_en ),
+      supplements ( slug )
+    `
+    )
+    .eq("slug", input.slug)
+    .maybeSingle();
+  if (error) {
+    console.error("[getArticleBySlug] query failed:", error);
+    return null;
+  }
+  if (!data) return null;
+
+  type Row = {
+    id: string;
+    slug: string;
+    title_vn: string | null;
+    title_en: string;
+    body_vn: string | null;
+    body_en: string | null;
+    kol: string | null;
+    video_url: string | null;
+    published_at: string;
+    ingredients:
+      | { slug: string; name_vn: string | null; name_en: string }
+      | { slug: string; name_vn: string | null; name_en: string }[]
+      | null;
+    supplements: { slug: string } | { slug: string }[] | null;
+  };
+  const row = data as unknown as Row;
+  const ing = Array.isArray(row.ingredients) ? row.ingredients[0] ?? null : row.ingredients;
+  const sup = Array.isArray(row.supplements) ? row.supplements[0] ?? null : row.supplements;
+
+  return {
+    id: row.id,
+    slug: row.slug,
+    title: pickLocale(row, "title", input.locale),
+    body: pickLocale(row, "body", input.locale),
+    kol: row.kol,
+    videoUrl: row.video_url,
+    publishedAt: row.published_at,
+    ingredientSlug: ing?.slug ?? null,
+    ingredientName: ing ? pickLocale(ing, "name", input.locale) : null,
+    supplementSlug: sup?.slug ?? null,
+  };
+}
+
+/**
+ * Rank all supplements that contain a given ingredient (or any
+ * ingredient whose slug starts with the given prefix — e.g. passing
+ * "creatine" matches "creatine" + "creatine-hcl"). Used by the article
+ * page's ranking section.
+ */
+export async function listSupplementsByIngredientSlug(input: {
+  ingredientSlugPrefix: string;
+  locale: Locale;
+}): Promise<
+  Array<{
+    slug: string;
+    name: string;
+    brand: string;
+    form: string | null;
+    description: string | null;
+    priceVnd: number | null;
+    qualityTier: "S" | "A" | "B" | "C" | null;
+    qualityTotal: number | null;
+    qualityLab: number | null;
+    qualityIngredient: number | null;
+    qualityPrice: number | null;
+    notes: string | null;
+  }>
+> {
+  let supabase;
+  try {
+    supabase = await createClient();
+  } catch (err) {
+    if (isMissingEnvError(err)) return [];
+    throw err;
+  }
+
+  // Fetch ingredient ids with the prefix (handles e.g. creatine + creatine-hcl).
+  const { data: ings, error: ingErr } = await supabase
+    .from("ingredients")
+    .select("id, slug")
+    .or(
+      `slug.eq.${input.ingredientSlugPrefix},slug.like.${input.ingredientSlugPrefix}-%`
+    );
+  if (ingErr || !ings || ings.length === 0) {
+    if (ingErr) console.error("[listSupplementsByIngredientSlug] ing query failed:", ingErr);
+    return [];
+  }
+  const ingredientIds = ings.map((i) => i.id as string);
+
+  const { data: links, error: linkErr } = await supabase
+    .from("supplement_ingredients")
+    .select("supplement_id")
+    .in("ingredient_id", ingredientIds);
+  if (linkErr || !links) {
+    if (linkErr) console.error("[listSupplementsByIngredientSlug] link query failed:", linkErr);
+    return [];
+  }
+  const supplementIds = Array.from(
+    new Set(links.map((l) => l.supplement_id as string))
+  );
+  if (supplementIds.length === 0) return [];
+
+  const { data: rows, error } = await supabase
+    .from("supplements")
+    .select(
+      `
+      slug, name_vn, name_en, brand, form, description_vn, description_en, price_vnd,
+      quality_index ( tier, total_score, lab_test_score, ingredient_quality_score, price_per_dose_score, notes )
+    `
+    )
+    .in("id", supplementIds);
+  if (error || !rows) {
+    if (error) console.error("[listSupplementsByIngredientSlug] supp query failed:", error);
+    return [];
+  }
+
+  type SuppRow = {
+    slug: string;
+    brand: string;
+    form: string | null;
+    price_vnd: number | null;
+    name_vn: string | null;
+    name_en: string;
+    description_vn: string | null;
+    description_en: string | null;
+    quality_index:
+      | {
+          tier: "S" | "A" | "B" | "C";
+          total_score: number;
+          lab_test_score: number;
+          ingredient_quality_score: number;
+          price_per_dose_score: number;
+          notes: string | null;
+        }
+      | {
+          tier: "S" | "A" | "B" | "C";
+          total_score: number;
+          lab_test_score: number;
+          ingredient_quality_score: number;
+          price_per_dose_score: number;
+          notes: string | null;
+        }[]
+      | null;
+  };
+
+  const out = (rows as unknown as SuppRow[]).map((row) => {
+    const qiRaw = row.quality_index;
+    const qi = Array.isArray(qiRaw) ? qiRaw[0] : qiRaw;
+    return {
+      slug: row.slug,
+      name: pickLocale(row, "name", input.locale),
+      brand: row.brand,
+      form: row.form,
+      description: pickLocale(row, "description", input.locale) || null,
+      priceVnd: row.price_vnd,
+      qualityTier: qi?.tier ?? null,
+      qualityTotal: qi?.total_score ?? null,
+      qualityLab: qi?.lab_test_score ?? null,
+      qualityIngredient: qi?.ingredient_quality_score ?? null,
+      qualityPrice: qi?.price_per_dose_score ?? null,
+      notes: qi?.notes ?? null,
+    };
+  });
+
+  // Sort: ranked supplements first (by total_score desc), unranked last.
+  out.sort((a, b) => {
+    const at = a.qualityTotal ?? -1;
+    const bt = b.qualityTotal ?? -1;
+    if (at !== bt) return bt - at;
+    return a.name.localeCompare(b.name);
+  });
+  return out;
+}
+
 type ArticleRow = {
   id: string;
   slug: string;
