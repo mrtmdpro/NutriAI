@@ -106,15 +106,16 @@
     "saved": "Regimen saved.",
     "saveFailed": "Couldn't save the regimen."
   },
-  "Article": {
+  "IngredientPage": {
     "by": "by",
     "publishedAt": "Published",
-    "rankingHeading": "Ranked {ingredient} supplements",
-    "rankingSubtitle": "Vietnamese-market products compared on third-party lab testing, ingredient purity, and price-per-dose.",
-    "rankingEmpty": "No supplements have been ranked for this ingredient yet.",
-    "viewAllByIngredient": "View all {ingredient} supplements",
-    "tier": "Tier",
-    "score": "Score",
+    "typicalDose": "Typical dose",
+    "safetyNotes": "Safety notes",
+    "productsHeading": "Products containing {ingredient}",
+    "productsSubtitle": "Vietnamese-market products compared on third-party lab testing, ingredient purity, and price-per-dose.",
+    "productsEmpty": "No products have been ranked for this ingredient yet.",
+    "evidenceHeading": "Clinical evidence",
+    "evidenceSubtitle": "Cited research relevant to this ingredient.",
     "perDose": "per dose"
   },
   "Pricing": {
@@ -254,7 +255,6 @@
     "subtitle": "Curated articles and KOL videos, all cited.",
     "personalizedHeading": "For your regimen",
     "latestHeading": "Latest",
-    "readMore": "Read more",
     "watch": "Watch",
     "by": "by",
     "empty": "No articles yet.",

@@ -109,14 +109,17 @@ export default async function SupplementDetailPage({
                     {supplement.ingredients.map((ing) => (
                       <TableRow key={ing.id}>
                         <TableCell className="pl-6">
-                          <div className="flex flex-col">
-                            <span className="text-foreground font-medium">
+                          <Link
+                            href={`/ingredients/${ing.slug}`}
+                            className="hover:text-primary group flex flex-col transition-colors"
+                          >
+                            <span className="text-foreground group-hover:text-primary font-medium underline-offset-2 group-hover:underline">
                               {ing.name}
                             </span>
                             <span className="text-muted-foreground text-xs">
                               {categoryLabel(ing.category)}
                             </span>
-                          </div>
+                          </Link>
                         </TableCell>
                         <TableCell className="tabular-nums">
                           {ing.dose} {ing.unit}

@@ -152,23 +152,29 @@ export default async function SearchPage({
                 </h2>
                 <div className="grid gap-2 sm:grid-cols-2">
                   {results.ingredients.map((i) => (
-                    <Card key={i.id}>
-                      <CardContent className="flex flex-col gap-1.5">
-                        <div className="flex items-center justify-between gap-2">
-                          <h3 className="text-foreground truncate text-sm font-medium">
-                            {i.name}
-                          </h3>
-                          <Badge variant="outline" className="shrink-0">
-                            {categoryLabel(i.category)}
-                          </Badge>
-                        </div>
-                        {i.description && (
-                          <p className="text-muted-foreground line-clamp-2 text-xs leading-relaxed">
-                            {i.description}
-                          </p>
-                        )}
-                      </CardContent>
-                    </Card>
+                    <Link
+                      key={i.id}
+                      href={`/ingredients/${i.slug}`}
+                      className="group focus-visible:outline-none"
+                    >
+                      <Card className="hover:border-primary/40 hover:shadow-sm h-full transition-all group-focus-visible:ring-2 group-focus-visible:ring-ring">
+                        <CardContent className="flex flex-col gap-1.5">
+                          <div className="flex items-center justify-between gap-2">
+                            <h3 className="text-foreground group-hover:text-primary truncate text-sm font-medium transition-colors">
+                              {i.name}
+                            </h3>
+                            <Badge variant="outline" className="shrink-0">
+                              {categoryLabel(i.category)}
+                            </Badge>
+                          </div>
+                          {i.description && (
+                            <p className="text-muted-foreground line-clamp-2 text-xs leading-relaxed">
+                              {i.description}
+                            </p>
+                          )}
+                        </CardContent>
+                      </Card>
+                    </Link>
                   ))}
                 </div>
               </div>

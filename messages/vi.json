@@ -106,15 +106,16 @@
     "saved": "Đã lưu phác đồ.",
     "saveFailed": "Không thể lưu phác đồ."
   },
-  "Article": {
+  "IngredientPage": {
     "by": "bởi",
     "publishedAt": "Đăng ngày",
-    "rankingHeading": "Xếp hạng sản phẩm chứa {ingredient}",
-    "rankingSubtitle": "So sánh các sản phẩm trên thị trường Việt Nam dựa trên kiểm nghiệm bên thứ ba, độ tinh khiết và giá theo liều.",
-    "rankingEmpty": "Chưa có sản phẩm nào được xếp hạng cho hoạt chất này.",
-    "viewAllByIngredient": "Xem tất cả sản phẩm chứa {ingredient}",
-    "tier": "Mức",
-    "score": "Điểm",
+    "typicalDose": "Liều dùng thông thường",
+    "safetyNotes": "Lưu ý an toàn",
+    "productsHeading": "Sản phẩm chứa {ingredient}",
+    "productsSubtitle": "So sánh các sản phẩm trên thị trường Việt Nam dựa trên kiểm nghiệm bên thứ ba, độ tinh khiết và giá theo liều.",
+    "productsEmpty": "Chưa có sản phẩm nào được xếp hạng cho hoạt chất này.",
+    "evidenceHeading": "Bằng chứng lâm sàng",
+    "evidenceSubtitle": "Các nghiên cứu được trích dẫn liên quan đến hoạt chất này.",
     "perDose": "mỗi liều"
   },
   "Pricing": {
@@ -254,7 +255,6 @@
     "subtitle": "Bài viết và video giáo dục được tuyển chọn, có dẫn nguồn.",
     "personalizedHeading": "Dành cho phác đồ của bạn",
     "latestHeading": "Mới nhất",
-    "readMore": "Đọc tiếp",
     "watch": "Xem video",
     "by": "bởi",
     "empty": "Chưa có bài viết nào.",

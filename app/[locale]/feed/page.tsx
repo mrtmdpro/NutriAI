@@ -1,6 +1,5 @@
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { Play, ArrowRight } from "lucide-react";
-import { Link } from "@/i18n/navigation";
 import { AppShell } from "@/components/app-shell";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -66,7 +65,6 @@ export default async function FeedPage({
                     >
                       <ArticleCard
                         article={a}
-                        readMoreLabel={t("readMore")}
                         watchLabel={t("watch")}
                         byLabel={t("by")}
                         videoLabel={t("video")}
@@ -86,7 +84,6 @@ export default async function FeedPage({
                   <ArticleCard
                     key={a.id}
                     article={a}
-                    readMoreLabel={t("readMore")}
                     watchLabel={t("watch")}
                     byLabel={t("by")}
                     videoLabel={t("video")}
@@ -103,7 +100,6 @@ export default async function FeedPage({
 
 function ArticleCard({
   article,
-  readMoreLabel,
   watchLabel,
   byLabel,
   videoLabel,
@@ -116,7 +112,6 @@ function ArticleCard({
     videoUrl: string | null;
     publishedAt: string;
   };
-  readMoreLabel: string;
   watchLabel: string;
   byLabel: string;
   videoLabel: string;
@@ -146,19 +141,23 @@ function ArticleCard({
             {article.body}
           </p>
         )}
-        <div className="text-primary mt-auto inline-flex items-center gap-1 text-xs font-medium">
-          {isVideo ? watchLabel : readMoreLabel}
-          <ArrowRight
-            className="size-3 transition-transform group-hover:translate-x-0.5"
-            aria-hidden
-          />
-        </div>
+        {isVideo && (
+          <div className="text-primary mt-auto inline-flex items-center gap-1 text-xs font-medium">
+            {watchLabel}
+            <ArrowRight
+              className="size-3 transition-transform group-hover:translate-x-0.5"
+              aria-hidden
+            />
+          </div>
+        )}
       </CardContent>
     </Card>
   );
 
-  // Video → external link (YouTube / KOL channel).
-  // Otherwise → internal article detail page at /[locale]/articles/[slug].
+  // Articles in /feed are KOL editorial. Video articles open the
+  // external `video_url`. Text-only KOL posts render as previews —
+  // there is no internal article detail route at the moment because
+  // canonical educational content lives on /ingredients/[slug].
   if (isVideo) {
     return (
       <a
@@ -171,12 +170,5 @@ function ArticleCard({
       </a>
     );
   }
-  return (
-    <Link
-      href={`/articles/${article.slug}`}
-      className="group block focus-visible:outline-none"
-    >
-      {inner}
-    </Link>
-  );
+  return <div className="group block">{inner}</div>;
 }
