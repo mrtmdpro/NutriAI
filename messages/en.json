@@ -116,7 +116,7 @@
     "variantsSubtitle": "{ingredient} comes in several derivative forms with different solubility, absorption rates, and supporting evidence.",
     "variantsCount": "{count, plural, =0 {no products yet} one {# product} other {# products}}",
     "productsHeading": "Products containing {ingredient}",
-    "productsSubtitle": "Vietnamese-market products compared on third-party lab testing, ingredient purity, and price-per-dose.",
+    "productsSubtitle": "Vietnamese-market products containing this ingredient, compared on composition, regulatory profile, and price.",
     "productsEmpty": "No products have been ranked for this ingredient yet.",
     "evidenceHeading": "Clinical evidence",
     "evidenceSubtitle": "Cited research relevant to this ingredient.",
