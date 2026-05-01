@@ -50,7 +50,7 @@ export default async function IngredientDetailPage({
   const data = await getIngredientPageBySlug({ slug, locale });
   if (!data) notFound();
 
-  const { ingredient, page, imageUrl, supplements, evidence } = data;
+  const { ingredient, parent, variants, page, imageUrl, supplements, evidence } = data;
 
   const t = await getTranslations("IngredientPage");
   const tCommon = await getTranslations("Common");
@@ -71,7 +71,9 @@ export default async function IngredientDetailPage({
           }`}
         >
           <Button asChild variant="ghost" size="xs" className="mb-3 self-start">
-            <Link href="/search">← {tCommon("back")}</Link>
+            <Link href={parent ? `/ingredients/${parent.slug}` : "/search"}>
+              ← {parent ? parent.name : tCommon("back")}
+            </Link>
           </Button>
           <div
             className={`flex flex-col gap-6 ${
@@ -79,9 +81,16 @@ export default async function IngredientDetailPage({
             }`}
           >
             <div className="flex min-w-0 flex-col gap-3">
-              <Badge variant="outline" className="w-fit">
-                {categoryLabel(ingredient.category)}
-              </Badge>
+              <div className="flex flex-wrap items-center gap-2">
+                <Badge variant="outline">
+                  {categoryLabel(ingredient.category)}
+                </Badge>
+                {parent && (
+                  <Badge variant="secondary">
+                    {t("partOf", { parent: parent.name })}
+                  </Badge>
+                )}
+              </div>
               <h1 className="text-foreground text-3xl font-semibold tracking-tight sm:text-4xl">
                 {ingredient.name}
               </h1>
@@ -146,6 +155,47 @@ export default async function IngredientDetailPage({
               </CardContent>
             </Card>
           )}
+        </section>
+      )}
+
+      {variants.length > 0 && (
+        <section className="mx-auto max-w-3xl px-4 pb-10 sm:px-6">
+          <div className="mb-4 flex flex-col gap-1">
+            <h2 className="text-foreground text-xl font-semibold tracking-tight sm:text-2xl">
+              {t("variantsHeading")}
+            </h2>
+            <p className="text-muted-foreground text-sm">
+              {t("variantsSubtitle", { ingredient: ingredient.name })}
+            </p>
+          </div>
+          <ul className="grid gap-3 sm:grid-cols-2">
+            {variants.map((v) => (
+              <li key={v.slug}>
+                <Link
+                  href={`/ingredients/${v.slug}`}
+                  className="group focus-visible:outline-none"
+                >
+                  <Card className="hover:border-primary/40 hover:shadow-sm h-full transition-all group-focus-visible:ring-2 group-focus-visible:ring-ring">
+                    <CardContent className="flex flex-col gap-2 py-4">
+                      <div className="flex items-start justify-between gap-3">
+                        <h3 className="text-foreground group-hover:text-primary text-sm font-medium leading-snug transition-colors">
+                          {v.name}
+                        </h3>
+                        <Badge variant="outline" className="shrink-0 text-[11px]">
+                          {t("variantsCount", { count: v.productCount })}
+                        </Badge>
+                      </div>
+                      {v.description && (
+                        <p className="text-muted-foreground line-clamp-2 text-xs leading-relaxed">
+                          {v.description}
+                        </p>
+                      )}
+                    </CardContent>
+                  </Card>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </section>
       )}
 

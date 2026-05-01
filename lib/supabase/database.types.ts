@@ -60,6 +60,9 @@ export type Database = {
           typical_dose_min: number | null;
           typical_dose_max: number | null;
           typical_unit: string | null;
+          // Self-reference: non-null marks this ingredient as a
+          // derivative of the parent molecule. See migration 0011.
+          parent_ingredient_id: string | null;
           // pgvector wire format on read (see clinical_evidence.embedding).
           embedding: string | null;
         };
@@ -77,6 +80,7 @@ export type Database = {
           typical_dose_min?: number | null;
           typical_dose_max?: number | null;
           typical_unit?: string | null;
+          parent_ingredient_id?: string | null;
           embedding?: number[] | string | null;
           created_at?: string;
           updated_at?: string;

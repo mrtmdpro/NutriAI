@@ -129,11 +129,16 @@ export async function searchKnowledge(input: {
 
   // The ingredient rail is fixed-size and only shown on page 1 (the page
   // component decides). We always fetch the same first slice here.
+  //
+  // Derivatives (e.g. Creatine HCl) are filtered out at the top level —
+  // they surface as variants under their parent's ingredient page so
+  // search results stay focused on canonical molecules.
   let ingQuery = supabase
     .from("ingredients")
     .select(
       `id, slug, name_vn, name_en, category, description_vn, description_en`
     )
+    .is("parent_ingredient_id", null)
     .range(0, INGREDIENT_RAIL_SIZE - 1);
   if (trimmed.length > 0) {
     ingQuery = ingQuery.textSearch("search_vector", trimmed, {
@@ -625,10 +630,85 @@ export async function listEvidenceByIngredient(input: {
   }));
 }
 
+export type IngredientVariant = {
+  slug: string;
+  name: string;
+  description: string | null;
+  productCount: number;
+};
+
+/**
+ * Direct child ingredients (derivatives / forms) of a parent
+ * molecule, sorted by product count desc then name. Used by the
+ * ingredient page's "Variants & forms" section.
+ */
+export async function listIngredientVariants(input: {
+  parentIngredientId: string;
+  locale: Locale;
+}): Promise<IngredientVariant[]> {
+  let supabase;
+  try {
+    supabase = await createClient();
+  } catch (err) {
+    if (isMissingEnvError(err)) return [];
+    throw err;
+  }
+
+  const { data: rows, error } = await supabase
+    .from("ingredients")
+    .select(
+      "id, slug, name_vn, name_en, description_vn, description_en"
+    )
+    .eq("parent_ingredient_id", input.parentIngredientId);
+  if (error || !rows || rows.length === 0) {
+    if (error) console.error("[listIngredientVariants] query failed:", error);
+    return [];
+  }
+
+  type Row = {
+    id: string;
+    slug: string;
+    name_vn: string | null;
+    name_en: string;
+    description_vn: string | null;
+    description_en: string | null;
+  };
+  const ingRows = rows as unknown as Row[];
+
+  // One small fan-out to count linked supplements per variant.
+  // Variants are a tight set (typically 1–5 per molecule) so per-row
+  // count queries don't hurt; if this ever scales out we can swap to
+  // a single grouped count.
+  const counts = await Promise.all(
+    ingRows.map(async (r) => {
+      const { count } = await supabase
+        .from("supplement_ingredients")
+        .select("supplement_id", { count: "exact", head: true })
+        .eq("ingredient_id", r.id);
+      return [r.id, count ?? 0] as const;
+    })
+  );
+  const countMap = new Map(counts);
+
+  const out: IngredientVariant[] = ingRows.map((r) => ({
+    slug: r.slug,
+    name: pickLocale(r, "name", input.locale),
+    description: pickLocale(r, "description", input.locale) || null,
+    productCount: countMap.get(r.id) ?? 0,
+  }));
+
+  out.sort((a, b) => {
+    if (b.productCount !== a.productCount) return b.productCount - a.productCount;
+    return a.name.localeCompare(b.name);
+  });
+  return out;
+}
+
 /**
  * Canonical ingredient detail page: ingredient row + (optional)
  * bilingual page body + ranked products containing it + top clinical
- * evidence rows.
+ * evidence rows + parent molecule (when this is a derivative) +
+ * derivative variants (when this is a parent molecule).
  *
  * Returns `null` only when the slug doesn't resolve to an ingredient.
  * Ingredients without an authored `ingredient_pages` row still render
@@ -651,6 +731,8 @@ export async function getIngredientPageBySlug(input: {
     typicalDoseMax: number | null;
     typicalUnit: string | null;
   };
+  parent: { slug: string; name: string } | null;
+  variants: IngredientVariant[];
   page: {
     body: string;
     kol: string | null;
@@ -672,7 +754,7 @@ export async function getIngredientPageBySlug(input: {
   const { data: ingRow, error: ingErr } = await supabase
     .from("ingredients")
     .select(
-      "id, slug, name_vn, name_en, category, description_vn, description_en, safety_notes_vn, safety_notes_en, typical_dose_min, typical_dose_max, typical_unit"
+      "id, slug, name_vn, name_en, category, description_vn, description_en, safety_notes_vn, safety_notes_en, typical_dose_min, typical_dose_max, typical_unit, parent_ingredient_id"
     )
     .eq("slug", input.slug)
     .maybeSingle();
@@ -695,6 +777,7 @@ export async function getIngredientPageBySlug(input: {
     typical_dose_min: number | null;
     typical_dose_max: number | null;
     typical_unit: string | null;
+    parent_ingredient_id: string | null;
   };
   const ing = ingRow as unknown as IngFullRow;
 
@@ -717,12 +800,37 @@ export async function getIngredientPageBySlug(input: {
   };
   const page = (pageRow ?? null) as PageRow | null;
 
-  const [supplements, evidence] = await Promise.all([
+  // Fan out the per-ingredient queries in parallel: products + evidence
+  // are always relevant; parent + variants depend on which side of the
+  // hierarchy this ingredient sits on. We fire all four; the parent
+  // lookup is a single .eq() and the variants lookup is a single .eq()
+  // so the cost is negligible even when the result is empty.
+  const [supplements, evidence, parentRow, variants] = await Promise.all([
     listSupplementsByIngredientId({ ingredientId: ing.id, locale: input.locale }),
     listEvidenceByIngredient({ ingredientId: ing.id, locale: input.locale }),
+    ing.parent_ingredient_id
+      ? supabase
+          .from("ingredients")
+          .select("slug, name_vn, name_en")
+          .eq("id", ing.parent_ingredient_id)
+          .maybeSingle()
+          .then(({ data, error }) => {
+            if (error) console.error("[getIngredientPageBySlug] parent query failed:", error);
+            return data;
+          })
+      : Promise.resolve(null),
+    listIngredientVariants({ parentIngredientId: ing.id, locale: input.locale }),
   ]);
 
   const body = page ? pickLocale(page, "body", input.locale) : "";
+
+  type ParentRow = { slug: string; name_vn: string | null; name_en: string };
+  const parent = parentRow
+    ? {
+        slug: (parentRow as unknown as ParentRow).slug,
+        name: pickLocale(parentRow as unknown as ParentRow, "name", input.locale),
+      }
+    : null;
 
   return {
     ingredient: {
@@ -736,6 +844,8 @@ export async function getIngredientPageBySlug(input: {
       typicalDoseMax: ing.typical_dose_max,
       typicalUnit: ing.typical_unit,
     },
+    parent,
+    variants,
     page:
       page && body
         ? {

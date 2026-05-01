@@ -119,32 +119,6 @@ export default async function SearchPage({
           />
         ) : (
           <div className="flex flex-col gap-10">
-            {results.supplements.length > 0 && (
-              <div>
-                <h2 className="text-foreground mb-4 text-lg font-semibold tracking-tight">
-                  {t("supplementsHeading")}
-                </h2>
-                <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                  {results.supplements.map((s) => (
-                    <SupplementCard
-                      key={s.id}
-                      slug={s.slug}
-                      name={s.name}
-                      brand={s.brand}
-                      form={s.form}
-                      description={s.description}
-                      priceVnd={s.price_vnd}
-                      qualityTier={s.quality_tier}
-                      qualityTotal={s.quality_total}
-                      perDoseLabel={tSupp("perDose")}
-                      byLabel={tSupp("by")}
-                      locale={locale}
-                    />
-                  ))}
-                </div>
-              </div>
-            )}
-
             {results.ingredients.length > 0 && (
               <div>
                 <h2 className="text-foreground mb-4 text-lg font-semibold tracking-tight">
@@ -175,6 +149,32 @@ export default async function SearchPage({
                         </CardContent>
                       </Card>
                     </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {results.supplements.length > 0 && (
+              <div>
+                <h2 className="text-foreground mb-4 text-lg font-semibold tracking-tight">
+                  {t("supplementsHeading")}
+                </h2>
+                <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                  {results.supplements.map((s) => (
+                    <SupplementCard
+                      key={s.id}
+                      slug={s.slug}
+                      name={s.name}
+                      brand={s.brand}
+                      form={s.form}
+                      description={s.description}
+                      priceVnd={s.price_vnd}
+                      qualityTier={s.quality_tier}
+                      qualityTotal={s.quality_total}
+                      perDoseLabel={tSupp("perDose")}
+                      byLabel={tSupp("by")}
+                      locale={locale}
+                    />
                   ))}
                 </div>
               </div>
