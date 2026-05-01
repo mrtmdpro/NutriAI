@@ -1,5 +1,11 @@
 import { setRequestLocale, getTranslations } from "next-intl/server";
-import { Search, Sparkles, BarChart3, ArrowRight } from "lucide-react";
+import {
+  Search,
+  ArrowRight,
+  FlaskConical,
+  Bell,
+  RefreshCw,
+} from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { AppShell } from "@/components/app-shell";
@@ -19,10 +25,6 @@ export default async function HomePage({
         <div className="bg-accent/40 absolute inset-0 -z-10" aria-hidden />
         <div className="mx-auto max-w-5xl px-6 py-20 sm:py-28">
           <div className="flex flex-col items-center text-center gap-6">
-            <span className="bg-primary/10 text-primary border-primary/20 inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium">
-              <Sparkles className="size-3.5" aria-hidden />
-              NutriAI · BR1 + BR2 + BR4
-            </span>
             <h1 className="text-foreground text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
               {t("heroTitle")}
             </h1>
@@ -50,17 +52,17 @@ export default async function HomePage({
       <section className="mx-auto max-w-5xl px-6 pb-20">
         <div className="grid gap-4 sm:grid-cols-3">
           <ValueProp
-            icon={<Search className="text-primary size-5" aria-hidden />}
+            icon={<FlaskConical className="text-primary size-5" aria-hidden />}
             title={t("valueProp1Title")}
             body={t("valueProp1Body")}
           />
           <ValueProp
-            icon={<BarChart3 className="text-primary size-5" aria-hidden />}
+            icon={<Bell className="text-primary size-5" aria-hidden />}
             title={t("valueProp2Title")}
             body={t("valueProp2Body")}
           />
           <ValueProp
-            icon={<Sparkles className="text-primary size-5" aria-hidden />}
+            icon={<RefreshCw className="text-primary size-5" aria-hidden />}
             title={t("valueProp3Title")}
             body={t("valueProp3Body")}
           />

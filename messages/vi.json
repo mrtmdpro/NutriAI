@@ -18,17 +18,17 @@
     "menu": "Mở menu"
   },
   "Home": {
-    "heroTitle": "Lựa chọn thực phẩm bổ sung an toàn, dựa trên khoa học",
-    "heroSubtitle": "Tra cứu hoạt chất, so sánh chất lượng và giá cả, cùng hỗ trợ AI trích dẫn từ nguồn đáng tin cậy.",
+    "heroTitle": "Lựa chọn thực phẩm chức năng thông minh dựa trên bằng chứng khoa học",
+    "heroSubtitle": "Tra cứu hoạt chất, so sánh chất lượng và giá cả cùng AI với bằng chứng trích dẫn từ nguồn khoa học uy tín.",
     "heroSearchPlaceholder": "Tìm hoạt chất hoặc sản phẩm bổ sung...",
     "ctaSearch": "Bắt đầu tra cứu",
     "ctaPricing": "Xem các gói",
-    "valueProp1Title": "Cơ sở dữ liệu minh bạch",
-    "valueProp1Body": "Mỗi câu trả lời đều dẫn nguồn đến nghiên cứu lâm sàng được kiểm duyệt.",
-    "valueProp2Title": "Theo dõi tuân thủ",
-    "valueProp2Body": "Lịch nhắc thông minh giúp bạn dùng thực phẩm bổ sung đều đặn.",
-    "valueProp3Title": "Trợ lý AI có dẫn chứng",
-    "valueProp3Body": "Trả lời cá nhân hoá, không bịa, luôn kèm trích dẫn."
+    "valueProp1Title": "Thông tin khoa học",
+    "valueProp1Body": "Trả lời mọi thắc mắc dựa trên chứng cứ khoa học đáng tin cậy.",
+    "valueProp2Title": "Thông báo mỗi ngày",
+    "valueProp2Body": "Đảm bảo bạn dùng đúng liều, đúng lúc mỗi ngày.",
+    "valueProp3Title": "Cập nhật liên tục",
+    "valueProp3Body": "Tiếp cận thông tin về thực phẩm chức năng mới nhất, chính xác nhất."
   },
   "Auth": {
     "loginTitle": "Đăng nhập",

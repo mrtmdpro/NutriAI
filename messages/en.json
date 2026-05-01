@@ -18,17 +18,17 @@
     "menu": "Open menu"
   },
   "Home": {
-    "heroTitle": "Make safe, science-backed supplement decisions",
-    "heroSubtitle": "Look up ingredients, compare quality and price, and chat with an AI that cites every claim.",
+    "heroTitle": "Smart supplement choices, grounded in scientific evidence",
+    "heroSubtitle": "Look up ingredients, compare quality and price with an AI that cites every claim from trusted scientific sources.",
     "heroSearchPlaceholder": "Search ingredients or supplements...",
     "ctaSearch": "Start searching",
     "ctaPricing": "See pricing",
-    "valueProp1Title": "Transparent database",
-    "valueProp1Body": "Every answer links back to peer-reviewed clinical sources.",
-    "valueProp2Title": "Adherence tracking",
-    "valueProp2Body": "Smart reminders help you keep your routine consistent.",
-    "valueProp3Title": "Grounded AI assistant",
-    "valueProp3Body": "Personalized answers that never hallucinate — always cited."
+    "valueProp1Title": "Scientific information",
+    "valueProp1Body": "Every question answered with trusted scientific evidence.",
+    "valueProp2Title": "Daily reminders",
+    "valueProp2Body": "Stay on the right dose, at the right time, every day.",
+    "valueProp3Title": "Continuously updated",
+    "valueProp3Body": "Stay current with the latest, most accurate supplement information."
   },
   "Auth": {
     "loginTitle": "Sign in",
