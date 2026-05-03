@@ -77,7 +77,7 @@ export default async function IngredientDetailPage({
           </Button>
           <div
             className={`flex flex-col gap-6 ${
-              imageUrl ? "md:grid md:grid-cols-[1fr_minmax(0,18rem)] md:items-center md:gap-10" : ""
+              imageUrl ? "md:grid md:grid-cols-[1fr_minmax(0,22rem)] md:items-center md:gap-10" : ""
             }`}
           >
             <div className="flex min-w-0 flex-col gap-3">
@@ -118,13 +118,13 @@ export default async function IngredientDetailPage({
               </div>
             </div>
             {imageUrl && (
-              <div className="bg-background border-border relative aspect-[16/9] overflow-hidden rounded-2xl border md:aspect-square">
+              <div className="bg-background border-border relative aspect-[16/9] overflow-hidden rounded-2xl border">
                 <Image
                   src={imageUrl}
                   alt={ingredient.name}
                   fill
                   className="object-cover"
-                  sizes="(min-width: 768px) 18rem, 100vw"
+                  sizes="(min-width: 768px) 22rem, 100vw"
                   priority
                 />
               </div>
