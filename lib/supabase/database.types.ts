@@ -101,6 +101,10 @@ export type Database = {
           description_en: string | null;
           source_url: string | null;
           price_vnd: number | null;
+          // Marketplace listing URL (today: Shopee VN search URLs;
+          // post-approval: tracked URLs). See migration 0012.
+          affiliate_url: string | null;
+          affiliate_platform: string | null;
         };
         Insert: {
           id?: string;
@@ -114,6 +118,8 @@ export type Database = {
           description_en?: string | null;
           source_url?: string | null;
           price_vnd?: number | null;
+          affiliate_url?: string | null;
+          affiliate_platform?: string | null;
           created_at?: string;
           updated_at?: string;
         };

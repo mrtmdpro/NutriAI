@@ -1,6 +1,6 @@
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, ShoppingBag } from "lucide-react";
 import { AppShell } from "@/components/app-shell";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -80,6 +80,25 @@ export default async function SupplementDetailPage({
                 {supplement.description}
               </p>
             )}
+            {supplement.affiliateUrl &&
+              supplement.affiliatePlatform === "shopee" && (
+                <div className="flex flex-col gap-1.5">
+                  <Button asChild size="lg" className="self-start">
+                    <a
+                      href={supplement.affiliateUrl}
+                      target="_blank"
+                      rel="sponsored nofollow noopener"
+                    >
+                      <ShoppingBag className="size-4" aria-hidden />
+                      {t("buyOnShopee")}
+                      <ExternalLink className="size-4" aria-hidden />
+                    </a>
+                  </Button>
+                  <p className="text-muted-foreground max-w-2xl text-[11px] leading-relaxed">
+                    {t("affiliateInlineDisclosure")}
+                  </p>
+                </div>
+              )}
           </div>
         </div>
       </section>

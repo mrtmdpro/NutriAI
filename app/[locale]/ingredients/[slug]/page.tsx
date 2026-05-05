@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, ShoppingBag } from "lucide-react";
 import type { Metadata } from "next";
 import { Link } from "@/i18n/navigation";
 import { AppShell } from "@/components/app-shell";
@@ -54,6 +54,7 @@ export default async function IngredientDetailPage({
 
   const t = await getTranslations("IngredientPage");
   const tCommon = await getTranslations("Common");
+  const tSupplement = await getTranslations("Supplement");
   const categoryLabel = await getCategoryLabel();
 
   const doseRange = formatDoseRange(
@@ -228,6 +229,8 @@ export default async function IngredientDetailPage({
                     form={s.form}
                     description={s.description}
                     priceVnd={s.priceVnd}
+                    affiliateUrl={s.affiliateUrl}
+                    affiliatePlatform={s.affiliatePlatform}
                     tier={s.qualityTier}
                     total={s.qualityTotal}
                     lab={s.qualityLab}
@@ -236,6 +239,7 @@ export default async function IngredientDetailPage({
                     notes={s.notes}
                     perDoseLabel={t("perDose")}
                     byLabel={t("by")}
+                    buyOnShopeeLabel={tSupplement("buyOnShopee")}
                     locale={locale}
                   />
                 </li>
@@ -318,6 +322,8 @@ function RankedCard({
   form,
   description,
   priceVnd,
+  affiliateUrl,
+  affiliatePlatform,
   tier,
   total,
   lab,
@@ -326,6 +332,7 @@ function RankedCard({
   notes,
   perDoseLabel,
   byLabel,
+  buyOnShopeeLabel,
   locale,
 }: Readonly<{
   rank: number;
@@ -335,6 +342,8 @@ function RankedCard({
   form: string | null;
   description: string | null;
   priceVnd: number | null;
+  affiliateUrl: string | null;
+  affiliatePlatform: string | null;
   tier: "S" | "A" | "B" | "C" | null;
   total: number | null;
   lab: number | null;
@@ -343,60 +352,85 @@ function RankedCard({
   notes: string | null;
   perDoseLabel: string;
   byLabel: string;
+  buyOnShopeeLabel: string;
   locale: "vi" | "en";
 }>) {
+  // The affiliate pill renders as a SIBLING of the parent <Link>, not
+  // nested inside it — HTML disallows nested anchors. Absolute
+  // positioning floats it over the bottom-right of the card; clicks on
+  // the pill resolve to its own <a> without bubbling through the
+  // outer Link, since they're separate DOM subtrees.
+  const showAffiliate =
+    affiliateUrl != null && affiliatePlatform === "shopee";
+
   return (
-    <Link
-      href={`/supplements/${slug}`}
-      className="group focus-visible:outline-none"
-    >
-      <Card className="hover:border-primary/40 hover:shadow-sm h-full transition-all group-focus-visible:ring-2 group-focus-visible:ring-ring">
-        <CardHeader className="flex flex-row items-start justify-between gap-3">
-          <div className="flex min-w-0 flex-1 flex-col gap-1">
-            <div className="flex items-center gap-2 text-xs">
-              <span className="bg-primary/10 text-primary inline-flex size-6 items-center justify-center rounded-full text-[11px] font-semibold tabular-nums">
-                #{rank}
+    <div className="relative">
+      <Link
+        href={`/supplements/${slug}`}
+        className="group block focus-visible:outline-none"
+      >
+        <Card className="hover:border-primary/40 hover:shadow-sm h-full transition-all group-focus-visible:ring-2 group-focus-visible:ring-ring">
+          <CardHeader className="flex flex-row items-start justify-between gap-3">
+            <div className="flex min-w-0 flex-1 flex-col gap-1">
+              <div className="flex items-center gap-2 text-xs">
+                <span className="bg-primary/10 text-primary inline-flex size-6 items-center justify-center rounded-full text-[11px] font-semibold tabular-nums">
+                  #{rank}
+                </span>
+                <span className="text-muted-foreground">{byLabel} {brand}</span>
+              </div>
+              <h3 className="text-foreground line-clamp-2 text-sm font-medium leading-snug">
+                {name}
+              </h3>
+            </div>
+            {tier && (
+              <QualityTierBadge tier={tier} total={total ?? undefined} size="sm" />
+            )}
+          </CardHeader>
+          <CardContent className="flex flex-col gap-3">
+            {notes && (
+              <p className="text-muted-foreground text-xs leading-relaxed">
+                {notes}
+              </p>
+            )}
+            {(lab != null || ingredient != null || price != null) && (
+              <div className="flex flex-col gap-1.5">
+                {lab != null && <ScoreRow label="Lab" value={lab} outOf={40} />}
+                {ingredient != null && (
+                  <ScoreRow label="Ingredient" value={ingredient} outOf={30} />
+                )}
+                {price != null && <ScoreRow label="Price" value={price} outOf={30} />}
+              </div>
+            )}
+            <div className="text-muted-foreground flex items-center justify-between text-xs">
+              <span>
+                {form}
+                {form && priceVnd != null ? " · " : ""}
+                {priceVnd != null ? `${formatVnd(priceVnd, locale)} ${perDoseLabel}` : ""}
               </span>
-              <span className="text-muted-foreground">{byLabel} {brand}</span>
+              {/* spacer so card content doesn't run under the affiliate pill */}
+              {showAffiliate && <span aria-hidden className="w-24 shrink-0" />}
             </div>
-            <h3 className="text-foreground line-clamp-2 text-sm font-medium leading-snug">
-              {name}
-            </h3>
-          </div>
-          {tier && (
-            <QualityTierBadge tier={tier} total={total ?? undefined} size="sm" />
-          )}
-        </CardHeader>
-        <CardContent className="flex flex-col gap-3">
-          {notes && (
-            <p className="text-muted-foreground text-xs leading-relaxed">
-              {notes}
-            </p>
-          )}
-          {(lab != null || ingredient != null || price != null) && (
-            <div className="flex flex-col gap-1.5">
-              {lab != null && <ScoreRow label="Lab" value={lab} outOf={40} />}
-              {ingredient != null && (
-                <ScoreRow label="Ingredient" value={ingredient} outOf={30} />
-              )}
-              {price != null && <ScoreRow label="Price" value={price} outOf={30} />}
-            </div>
-          )}
-          <div className="text-muted-foreground flex items-center justify-between text-xs">
-            <span>
-              {form}
-              {form && priceVnd != null ? " · " : ""}
-              {priceVnd != null ? `${formatVnd(priceVnd, locale)} ${perDoseLabel}` : ""}
-            </span>
-          </div>
-          {description && (
-            <p className="text-muted-foreground line-clamp-2 text-[11px] leading-relaxed">
-              {description}
-            </p>
-          )}
-        </CardContent>
-      </Card>
-    </Link>
+            {description && (
+              <p className="text-muted-foreground line-clamp-2 text-[11px] leading-relaxed">
+                {description}
+              </p>
+            )}
+          </CardContent>
+        </Card>
+      </Link>
+      {showAffiliate && affiliateUrl && (
+        <a
+          href={affiliateUrl}
+          target="_blank"
+          rel="sponsored nofollow noopener"
+          aria-label={buyOnShopeeLabel}
+          className="bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:ring-ring absolute bottom-4 right-4 inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-medium shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2"
+        >
+          <ShoppingBag className="size-3" aria-hidden />
+          {buyOnShopeeLabel}
+        </a>
+      )}
+    </div>
   );
 }
 

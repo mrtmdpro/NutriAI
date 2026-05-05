@@ -241,7 +241,9 @@
     "publishedAt": "Published",
     "viewSource": "View source",
     "doseColumn": "Dose",
-    "dailyValue": "% Daily value"
+    "dailyValue": "% Daily value",
+    "buyOnShopee": "Buy on Shopee",
+    "affiliateInlineDisclosure": "Affiliate link. NutriAI may earn a commission on purchases made through this link, with no impact on the price you pay."
   },
   "QualityIndex": {
     "title": "Independent Quality Index",

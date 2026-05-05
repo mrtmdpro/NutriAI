@@ -201,6 +201,8 @@ type SupplementDetailRow = {
   net_quantity: string | null;
   source_url: string | null;
   price_vnd: number | null;
+  affiliate_url: string | null;
+  affiliate_platform: string | null;
   name_vn: string | null;
   name_en: string;
   description_vn: string | null;
@@ -270,6 +272,7 @@ export async function getSupplementBySlug(input: {
       `
       id, slug, name_vn, name_en, brand, form, net_quantity,
       description_vn, description_en, source_url, price_vnd,
+      affiliate_url, affiliate_platform,
       created_at,
       supplement_ingredients (
         dose, unit, pct_daily_value,
@@ -356,6 +359,8 @@ export async function getSupplementBySlug(input: {
     description: pickLocale(row, "description", input.locale) || null,
     sourceUrl: row.source_url,
     priceVnd: row.price_vnd,
+    affiliateUrl: row.affiliate_url,
+    affiliatePlatform: row.affiliate_platform,
     ingredients,
     evidence,
     quality: qi
@@ -451,6 +456,8 @@ export type RankedSupplement = {
   form: string | null;
   description: string | null;
   priceVnd: number | null;
+  affiliateUrl: string | null;
+  affiliatePlatform: string | null;
   qualityTier: "S" | "A" | "B" | "C" | null;
   qualityTotal: number | null;
   qualityLab: number | null;
@@ -464,6 +471,8 @@ type RankedSuppRow = {
   brand: string;
   form: string | null;
   price_vnd: number | null;
+  affiliate_url: string | null;
+  affiliate_platform: string | null;
   name_vn: string | null;
   name_en: string;
   description_vn: string | null;
@@ -523,6 +532,7 @@ export async function listSupplementsByIngredientId(input: {
     .select(
       `
       slug, name_vn, name_en, brand, form, description_vn, description_en, price_vnd,
+      affiliate_url, affiliate_platform,
       quality_index ( tier, total_score, lab_test_score, ingredient_quality_score, price_per_dose_score, notes )
     `
     )
@@ -543,6 +553,8 @@ export async function listSupplementsByIngredientId(input: {
         form: row.form,
         description: pickLocale(row, "description", input.locale) || null,
         priceVnd: row.price_vnd,
+        affiliateUrl: row.affiliate_url,
+        affiliatePlatform: row.affiliate_platform,
         qualityTier: qi?.tier ?? null,
         qualityTotal: qi?.total_score ?? null,
         qualityLab: qi?.lab_test_score ?? null,

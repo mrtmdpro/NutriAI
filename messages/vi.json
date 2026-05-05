@@ -241,7 +241,9 @@
     "publishedAt": "Công bố",
     "viewSource": "Xem nguồn",
     "doseColumn": "Liều",
-    "dailyValue": "% Nhu cầu hàng ngày"
+    "dailyValue": "% Nhu cầu hàng ngày",
+    "buyOnShopee": "Mua trên Shopee",
+    "affiliateInlineDisclosure": "Liên kết tiếp thị liên kết. NutriAI có thể nhận hoa hồng khi bạn mua qua liên kết này, không ảnh hưởng đến giá bạn trả."
   },
   "QualityIndex": {
     "title": "Chỉ số chất lượng độc lập",

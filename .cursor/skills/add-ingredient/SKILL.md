@@ -122,8 +122,40 @@ For each product capture:
 - `name_en`, `name_vn` — bilingual product name (often identical, since brand names don't translate)
 - `brand`, `form`, `net_quantity`, `description_en/vn`, `source_url`, `price_vnd`
 - `dose` and `unit` for the `supplement_ingredients` link
+- **`affiliate_url`** — the Shopee VN listing URL the user will buy from. Required on every `vn-*` row. See [Affiliate URL handling](#affiliate-url-handling) below.
+- **`affiliate_platform`** — `'shopee'` for now. Free-text column; future Tiki/Lazada additions don't need a migration.
 
 Score each on the [Quality Index rubric](#quality-index-rubric) below.
+
+### Affiliate URL handling
+
+The `vn-` prefix is the contract: a `vn-*` slug means **VN-marketplace
+product with an affiliate URL required**. Without `affiliate_url`, the
+"Mua trên Shopee" CTA disappears from both the ranked card and the
+detail page — the row is functionally invisible commercially.
+
+Default to a **Shopee VN search URL** built from `name_en`:
+
+```
+'https://shopee.vn/search?keyword=' || replace(lower(name_en), ' ', '%20')
+```
+
+This is a deterministic placeholder that lands the user on Shopee's
+results page for the brand + product. It never rots when individual
+sellers churn. If you can spend the time to click through and pick a
+specific seller's listing, swap the search URL for the canonical
+`https://shopee.vn/{vanity}-i.{shop_id}.{item_id}` URL and update the
+[`docs/affiliate/shopee-todo.csv`](../../../docs/affiliate/shopee-todo.csv)
+canonical column.
+
+Post Shopee Affiliate program approval, every `affiliate_url` is
+swapped to a tracked variant via a single UPDATE — see
+[`docs/affiliate/README.md`](../../../docs/affiliate/README.md) for
+the lifecycle.
+
+Editorial integrity guard: **never** let the prospect of higher
+commission influence Quality Index scoring. The rubric below stays
+independent of affiliate revenue.
 
 ### Step 6 — Generate the hero illustration
 
@@ -182,7 +214,7 @@ Use the Supabase MCP `execute_sql` tool. All writes use `ON CONFLICT DO UPDATE` 
 
    Use `$body_vn$ ... $body_vn$` dollar-quoted strings to avoid escape-hell with markdown bodies.
 
-3. **Upsert `supplements`** (one INSERT per product, all `ON CONFLICT (slug) DO UPDATE`).
+3. **Upsert `supplements`** (one INSERT per product, all `ON CONFLICT (slug) DO UPDATE`). Required columns: `slug`, `name_en`, `name_vn`, `brand`, `form`, `net_quantity`, `description_en/vn`, `source_url`, `price_vnd`, **`affiliate_url`**, **`affiliate_platform = 'shopee'`**. The two affiliate columns can default to the deterministic search URL described in [Affiliate URL handling](#affiliate-url-handling) above.
 
 4. **Wipe + reinsert `supplement_ingredients` links** (cleaner than upsert because it removes stale links if a re-run shrinks the product set):
 
