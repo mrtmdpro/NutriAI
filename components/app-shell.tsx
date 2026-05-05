@@ -8,6 +8,7 @@ import { getCurrentUser } from "@/lib/auth";
 import { UserMenu } from "@/components/user-menu";
 
 const NAV_ITEMS = [
+  { href: "/ingredients", key: "ingredients" as const },
   { href: "/search", key: "search" as const },
   { href: "/quality-index", key: "qualityIndex" as const },
   { href: "/feed", key: "feed" as const },
@@ -23,6 +24,7 @@ export async function AppShell({
   const user = await getCurrentUser();
 
   const navLabels: Record<(typeof NAV_ITEMS)[number]["key"], string> = {
+    ingredients: t("ingredients"),
     search: t("search"),
     qualityIndex: t("qualityIndex"),
     feed: t("feed"),

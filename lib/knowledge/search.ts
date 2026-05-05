@@ -716,6 +716,119 @@ export async function listIngredientVariants(input: {
   return out;
 }
 
+export type IngredientCatalogEntry = {
+  slug: string;
+  name: string;
+  category: string;
+  description: string | null;
+  imageUrl: string | null;
+  productCount: number;
+  hasPage: boolean;
+};
+
+/**
+ * Catalog of every top-level ingredient (parent_ingredient_id IS NULL)
+ * for the /[locale]/ingredients index page. Derivatives like
+ * `creatine-hcl` are excluded — they surface only via their parent's
+ * detail page, mirroring the search-results filter.
+ *
+ * Joins ingredient_pages.image_url so cards can render a hero
+ * thumbnail when one's been authored. Per-row product count comes
+ * from a fan-out of count queries; ingredient catalog is small (~20
+ * rows expected), so this is fine without a materialized view.
+ */
+export async function listAllIngredients(input: {
+  locale: Locale;
+  category?: string;
+}): Promise<IngredientCatalogEntry[]> {
+  let supabase;
+  try {
+    supabase = await createClient();
+  } catch (err) {
+    if (isMissingEnvError(err)) return [];
+    throw err;
+  }
+
+  let q = supabase
+    .from("ingredients")
+    .select(
+      `id, slug, name_vn, name_en, category, description_vn, description_en,
+       ingredient_pages ( image_url, body_vn, body_en )`
+    )
+    .is("parent_ingredient_id", null)
+    .order("category", { ascending: true })
+    .order("name_en", { ascending: true });
+  if (input.category && input.category !== "all") {
+    q = q.eq("category", input.category);
+  }
+
+  const { data: rows, error } = await q;
+  if (error || !rows || rows.length === 0) {
+    if (error) console.error("[listAllIngredients] query failed:", error);
+    return [];
+  }
+
+  type Row = {
+    id: string;
+    slug: string;
+    name_vn: string | null;
+    name_en: string;
+    category: string;
+    description_vn: string | null;
+    description_en: string | null;
+    ingredient_pages:
+      | {
+          image_url: string | null;
+          body_vn: string | null;
+          body_en: string | null;
+        }
+      | {
+          image_url: string | null;
+          body_vn: string | null;
+          body_en: string | null;
+        }[]
+      | null;
+  };
+  const ingRows = rows as unknown as Row[];
+
+  // Per-ingredient count of *curated* supplements (vn-* prefix only).
+  // DSLD-ingested rows linked many ingredients to junk supplements
+  // (whey containing "calories", "cholesterol", etc.); those don't
+  // belong on the catalog page. We fetch the small (~60-row) set of
+  // vn-* supplement_ingredients pairs once and intersect in JS rather
+  // than relying on Supabase's embedded-resource filter, which
+  // doesn't reliably restrict the count.
+  const { data: vnLinks } = await supabase
+    .from("supplement_ingredients")
+    .select("ingredient_id, supplements!inner(slug)")
+    .like("supplements.slug", "vn-%");
+  const countMap = new Map<string, number>();
+  for (const link of (vnLinks ?? []) as Array<{ ingredient_id: string }>) {
+    countMap.set(link.ingredient_id, (countMap.get(link.ingredient_id) ?? 0) + 1);
+  }
+
+  // Filter out DSLD-noise rows (calories, cholesterol, total-fat, etc.)
+  // by requiring either an authored ingredient_pages row OR at least
+  // one linked supplement. Both signals indicate active curation;
+  // purely-ingested rows that have neither are useful for the search
+  // corpus but not worth surfacing as a top-level catalog entry.
+  return ingRows
+    .map((r) => {
+      const pageRaw = r.ingredient_pages;
+      const page = Array.isArray(pageRaw) ? pageRaw[0] ?? null : pageRaw;
+      return {
+        slug: r.slug,
+        name: pickLocale(r, "name", input.locale),
+        category: r.category,
+        description: pickLocale(r, "description", input.locale) || null,
+        imageUrl: page?.image_url ?? null,
+        productCount: countMap.get(r.id) ?? 0,
+        hasPage: !!(page?.body_vn || page?.body_en),
+      };
+    })
+    .filter((e) => e.hasPage || e.productCount > 0);
+}
+
 /**
  * Canonical ingredient detail page: ingredient row + (optional)
  * bilingual page body + ranked products containing it + top clinical

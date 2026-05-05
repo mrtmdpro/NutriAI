@@ -5,6 +5,7 @@
   },
   "Nav": {
     "search": "Search",
+    "ingredients": "Ingredients",
     "qualityIndex": "Quality Index",
     "feed": "Feed",
     "dashboard": "Dashboard",
@@ -105,6 +106,17 @@
     },
     "saved": "Regimen saved.",
     "saveFailed": "Couldn't save the regimen."
+  },
+  "Ingredients": {
+    "title": "Ingredients",
+    "subtitle": "The catalog of compounds NutriAI tracks — synthesized from NIH ODS, PubMed, and OpenFDA — alongside the products on the Vietnamese market that contain them.",
+    "countSummary": "{total, plural, one {# ingredient} other {# ingredients}}, with {withPage, plural, one {# in-depth article} other {# in-depth articles}}.",
+    "filters": "Filter by category",
+    "categoryAll": "All",
+    "products": "{count, plural, =0 {no products yet} one {# product} other {# products}}",
+    "readMore": "Read more",
+    "empty": "No ingredients in this category yet.",
+    "clearFilter": "Show all ingredients"
   },
   "IngredientPage": {
     "by": "by",
